@@ -1,2 +1,9 @@
+# Ignore artifacts:
+build/
+dist/
+
 # Ignore markdown files:
 **/*.markdown
+
+# Ignore other specific files:
+package-lock.json
