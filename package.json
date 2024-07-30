@@ -7,6 +7,7 @@
         "dev": "vite",
         "test": "vitest run",
         "build": "tsc -b && vite build",
+        "compile": "tsc --noEmit",
         "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
         "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
         "format": "npx prettier . --write",

@@ -20,6 +20,9 @@ jobs:
             - name: Install deps
               run: npm ci
 
+            - name: Compile
+              run: npm run compile
+
             - name: Run lint and format
               run: |
                   npm run lint
