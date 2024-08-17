@@ -6,7 +6,6 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/alpimi-planner-frontend/',
     test: {
         globals: true,
         environment: 'jsdom',
