@@ -1,17 +1,15 @@
-name: Default ci pipeline
+name: Default development pipeline
 
 on:
     push:
     pull_request:
 
 jobs:
-    build:
+    compile:
+        name: Compile
         runs-on: ubuntu-latest
-
         steps:
             - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
             - name: Use Node.js
               uses: actions/setup-node@v4
               with:
@@ -23,10 +21,37 @@ jobs:
             - name: Compile
               run: npm run compile
 
+    lint:
+        name: Lint and format
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20.16.0'
+
+            - name: Install deps
+              run: npm ci
+
             - name: Run lint and format
               run: |
                   npm run lint
                   npm run format
+
+    unit:
+        name: Unit tests
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20.16.0'
+
+            - name: Install deps
+              run: npm ci
 
             - name: Run unit tests
               run: npm run test
