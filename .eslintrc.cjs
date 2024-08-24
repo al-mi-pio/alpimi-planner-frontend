@@ -7,8 +7,15 @@ module.exports = {
         'plugin:react-hooks/recommended',
         'plugin:react/recommended',
         'prettier',
+        'plugin:storybook/recommended',
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
+    ignorePatterns: [
+        'dist',
+        'storybook-static',
+        'node_modules',
+        '.eslintrc.cjs',
+        'vite.config.ts',
+    ],
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh', 'react', '@typescript-eslint', 'prettier'],
     rules: {
