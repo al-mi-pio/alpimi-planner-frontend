@@ -17,9 +17,11 @@ const meta = {
     args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
 
+// noinspection JSUnusedGlobalSymbols
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// noinspection JSUnusedGlobalSymbols
 export const Primary: Story = {
     args: {
         primary: true,
@@ -27,12 +29,14 @@ export const Primary: Story = {
     },
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Secondary: Story = {
     args: {
         label: 'Button',
     },
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Large: Story = {
     args: {
         size: 'large',
@@ -40,6 +44,7 @@ export const Large: Story = {
     },
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const Small: Story = {
     args: {
         size: 'small',

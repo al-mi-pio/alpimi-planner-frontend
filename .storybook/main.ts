@@ -14,4 +14,5 @@ const config: StorybookConfig = {
         options: {},
     },
 };
+// noinspection JSUnusedGlobalSymbols
 export default config;

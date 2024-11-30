@@ -12,4 +12,5 @@ const preview: Preview = {
     tags: ['autodocs'],
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default preview;
