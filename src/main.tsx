@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import './i18n';
 
+import { GlobalStyle } from '@/main.style.tsx';
+import { ThemeProvider } from '@/shared/contexts/Theme.tsx';
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -18,6 +21,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <ThemeProvider>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+        </ThemeProvider>
     </React.StrictMode>
 );
