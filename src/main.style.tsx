@@ -5,6 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 import { darkColors, lightColors } from '@/shared/constants/colors.ts';
 import { ThemeContext } from '@/shared/contexts/Theme.tsx';
 
+// noinspection CssUnknownTarget
 const CommonGlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Inter';
