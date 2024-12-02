@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 import {
     StyledDescription,
@@ -26,11 +26,24 @@ export interface TextProps extends React.ComponentProps<typeof StyledInput> {
 /**
  * A UI component which accepts user text input
  */
-const Text = ({ type, label, error, ...defaultProps }: TextProps) => (
-    <label>
-        {label && <StyledLabel>{label}</StyledLabel>}
-        <StyledInput $error={!!error} type={type || 'text'} {...defaultProps} />
-        {error && <StyledDescription>{error}</StyledDescription>}
-    </label>
-);
+const Text = ({ type, label, error, ...defaultProps }: TextProps) => {
+    const errorDescriptionId = useId();
+    return (
+        <label>
+            {label && <StyledLabel>{label}</StyledLabel>}
+            <StyledInput
+                $error={!!error}
+                aria-invalid={!!error}
+                aria-describedby={error ? errorDescriptionId : undefined}
+                type={type || 'text'}
+                {...defaultProps}
+            />
+            {error && (
+                <StyledDescription role="alert" id={errorDescriptionId}>
+                    {error}
+                </StyledDescription>
+            )}
+        </label>
+    );
+};
 export default Text;

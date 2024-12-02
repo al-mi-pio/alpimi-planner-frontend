@@ -4,8 +4,8 @@ export const darkColors = {
     sectionBackground: '#30292F',
     primaryBackground: '#282127',
     elementBackground: '#3D3A41',
-    primaryAccent: '#A0A1AE',
-    error: '#ED505F',
+    primaryAccent: '#B5B5C3',
+    error: '#E01C30',
     success: '#49A95C',
     highlight: '#1D8EE5',
 } as const;
@@ -17,7 +17,7 @@ export const lightColors = {
     primaryBackground: '#C9C8C8',
     elementBackground: '#FEFEFE',
     primaryAccent: '#FFFFFF',
-    error: '#ED505F',
+    error: '#E01C30',
     success: '#49A95C',
     highlight: '#1D8EE5',
 } as const;
