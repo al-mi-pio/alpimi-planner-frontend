@@ -1,15 +1,9 @@
-import { createContext, ReactNode, useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 
-export type Theme = 'dark' | 'light';
-export type ThemeContext = {
-    theme: Theme;
-    setTheme: (theme: Theme) => void;
-};
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-export const ThemeContext = createContext<ThemeContext>({
-    theme: 'dark',
-    setTheme: () => {},
-});
+import { darkTheme, lightTheme } from '@/shared/constants/colors';
+import { Theme, ThemeContext } from '@/shared/contexts/ThemeContext';
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setThemeState] = useState<Theme>(
@@ -23,7 +17,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            {children}
+            <StyledThemeProvider
+                theme={theme === 'light' ? lightTheme : darkTheme}
+            >
+                {children}
+            </StyledThemeProvider>
         </ThemeContext.Provider>
     );
 };

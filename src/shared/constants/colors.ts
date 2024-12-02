@@ -21,3 +21,12 @@ export const lightColors = {
     success: '#49A95C',
     highlight: '#1D8EE5',
 } as const;
+
+export const lightTheme = {
+    name: 'light',
+    colors: lightColors,
+};
+export const darkTheme = {
+    name: 'dark',
+    colors: darkColors,
+};

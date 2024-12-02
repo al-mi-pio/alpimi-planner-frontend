@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.tsx';
+import App from './App';
 import './i18n';
 
-import { GlobalStyle } from '@/main.style.tsx';
-import { ThemeProvider } from '@/shared/contexts/Theme.tsx';
+import { GlobalStyle } from '@/main.style';
+import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const router = createBrowserRouter([
     {
