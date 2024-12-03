@@ -1,0 +1,41 @@
+import styled from 'styled-components';
+
+import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
+
+export const StyledInput = styled.input<{ $error?: boolean }>`
+    & {
+        font-size: ${fontSizes.small};
+        line-height: ${lineHeights.small};
+        padding: ${sizes.smallXL};
+        border: none;
+        border-radius: ${sizes.smallXL};
+        width: 300px;
+        color: ${(props) => props.theme.colors.secondaryText};
+        background-color: ${(props) => props.theme.colors.primaryAccent};
+        outline: 1px solid ${(props) => props.theme.colors.primaryText};
+        ${(props) =>
+            props.$error
+                ? `outline: 2px solid ${props.theme.colors.error};
+                   color: ${props.theme.colors.error};`
+                : ''};
+    }
+    &:focus {
+        outline: 2px solid ${(props) => props.theme.colors.highlight};
+    }
+`;
+
+export const StyledLabel = styled.p`
+    font-size: ${fontSizes.small};
+    line-height: ${lineHeights.small};
+    margin-bottom: ${sizes.smallXXL};
+    margin-left: ${sizes.smallXL};
+    color: ${(props) => props.theme.colors.primaryText};
+`;
+
+export const StyledDescription = styled.p`
+    font-size: ${fontSizes.small};
+    line-height: ${lineHeights.small};
+    margin-top: ${sizes.smallXXL};
+    margin-left: ${sizes.smallXL};
+    color: ${(props) => props.theme.colors.error};
+`;

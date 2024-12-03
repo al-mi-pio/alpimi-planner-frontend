@@ -24,6 +24,8 @@ i18n.use(initReactI18next)
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
-    });
+    })
+    .then(() => {});
 
+// noinspection JSUnusedGlobalSymbols
 export default i18n;

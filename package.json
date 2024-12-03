@@ -1,81 +1,67 @@
 {
-    "name": "alpimi-planner-frontend",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "test": "vitest run",
-        "build": "tsc -b && vite build",
-        "compile": "tsc --noEmit",
-        "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
-        "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
-        "format": "npx prettier . --write",
-        "prepare": "husky",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
-    },
-    "dependencies": {
-        "i18next": "^23.12.2",
-        "i18next-browser-languagedetector": "^8.0.0",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "react-i18next": "^15.0.0",
-        "react-router-dom": "^6.25.1",
-        "styled-components": "^6.1.12"
-    },
-    "devDependencies": {
-        "@storybook/addon-a11y": "^8.2.9",
-        "@storybook/addon-essentials": "^8.2.9",
-        "@storybook/addon-interactions": "^8.2.9",
-        "@storybook/addon-links": "^8.2.9",
-        "@storybook/addon-onboarding": "^8.2.9",
-        "@storybook/blocks": "^8.2.9",
-        "@storybook/manager-api": "^8.2.9",
-        "@storybook/react": "^8.2.9",
-        "@storybook/react-vite": "^8.2.9",
-        "@storybook/test": "^8.2.9",
-        "@storybook/theming": "^8.2.9",
-        "@testing-library/dom": "^10.4.0",
-        "@testing-library/jest-dom": "^6.4.8",
-        "@testing-library/react": "^16.0.0",
-        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-        "@types/react": "^18.3.3",
-        "@types/react-dom": "^18.3.0",
-        "@typescript-eslint/eslint-plugin": "^7.18.0",
-        "@typescript-eslint/parser": "^7.18.0",
-        "@vitejs/plugin-basic-ssl": "^1.1.0",
-        "@vitejs/plugin-react-swc": "^3.7.0",
-        "eslint": "^8.57.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.2.1",
-        "eslint-plugin-react": "^7.35.0",
-        "eslint-plugin-react-hooks": "^4.6.2",
-        "eslint-plugin-react-refresh": "^0.4.9",
-        "eslint-plugin-storybook": "^0.8.0",
-        "globals": "^15.8.0",
-        "husky": "^9.1.4",
-        "jsdom": "^24.1.1",
-        "lint-staged": "^15.2.7",
-        "prettier": "^3.3.3",
-        "storybook": "^8.2.9",
-        "typescript": "^5.5.4",
-        "vite": "^5.3.5",
-        "vitest": "^2.0.4"
-    },
-    "overrides": {
-        "eslint": "^8.57.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "npm run lint && npm run format && npm run test"
-        }
-    },
-    "lint-staged": {
-        "src/**/*.{ts,tsx,js,jsx}": [
-            "npm run format",
-            "npm run lint"
-        ]
-    }
+  "name": "alpimi-planner-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "build": "tsc -b && vite build",
+    "compile": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
+    "format": "npx prettier . --write",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "i18next": "^23.12.2",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.0",
+    "react-router-dom": "^6.25.1",
+    "styled-components": "^6.1.12"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.4.6",
+    "@storybook/addon-essentials": "^8.4.6",
+    "@storybook/addon-interactions": "^8.4.6",
+    "@storybook/addon-links": "^8.4.6",
+    "@storybook/addon-onboarding": "^8.4.6",
+    "@storybook/blocks": "^8.4.6",
+    "@storybook/manager-api": "^8.4.6",
+    "@storybook/react": "^8.4.6",
+    "@storybook/react-vite": "^8.4.6",
+    "@storybook/test": "^8.4.6",
+    "@storybook/theming": "^8.4.6",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "eslint-plugin-storybook": "^0.11.1",
+    "globals": "^15.8.0",
+    "jsdom": "^24.1.1",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
+    "storybook": "^8.4.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.4"
+  },
+  "overrides": {
+    "eslint": "^8.57.0"
+  }
 }

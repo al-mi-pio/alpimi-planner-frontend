@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.tsx';
+import App from './App';
 import './i18n';
+
+import { GlobalStyle } from '@/main.style';
+import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const router = createBrowserRouter([
     {
@@ -18,6 +21,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <ThemeProvider>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+        </ThemeProvider>
     </React.StrictMode>
 );
