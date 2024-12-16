@@ -16,6 +16,11 @@ export const lineHeights = {
     small: '19pt',
 } as const;
 
+export const fontWeights = {
+    regular: '400',
+    bold: '700',
+} as const;
+
 export const sizes = {
     large3Xl: '10em',
     largeXXL: '8em',
