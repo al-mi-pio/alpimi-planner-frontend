@@ -26,7 +26,7 @@ export interface TextProps extends React.ComponentProps<typeof StyledInput> {
 /**
  * A UI component which accepts user text input
  */
-const Text = ({ type, label, error, ...defaultProps }: TextProps) => {
+const Text = ({ type = 'text', label, error, ...defaultProps }: TextProps) => {
     const errorDescriptionId = useId();
     return (
         <label>
@@ -35,7 +35,7 @@ const Text = ({ type, label, error, ...defaultProps }: TextProps) => {
                 $error={!!error}
                 aria-invalid={!!error}
                 aria-describedby={error ? errorDescriptionId : undefined}
-                type={type || 'text'}
+                type={type}
                 {...defaultProps}
             />
             {error && (

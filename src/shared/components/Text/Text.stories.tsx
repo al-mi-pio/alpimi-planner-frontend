@@ -2,27 +2,24 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Text from '@/shared/components/Text';
 
-const meta = {
+// noinspection JSUnusedGlobalSymbols
+export default {
     title: 'Shared/Components/Text',
     component: Text,
 } satisfies Meta<typeof Text>;
 
 // noinspection JSUnusedGlobalSymbols
-export default meta;
-type Story = StoryObj<typeof meta>;
+export const Default: StoryObj<typeof Text> = {};
 
 // noinspection JSUnusedGlobalSymbols
-export const Default: Story = {};
-
-// noinspection JSUnusedGlobalSymbols
-export const WithLabel: Story = {
+export const WithLabel: StoryObj<typeof Text> = {
     args: {
         label: 'Input label',
     },
 };
 
 // noinspection JSUnusedGlobalSymbols
-export const WithError: Story = {
+export const WithError: StoryObj<typeof Text> = {
     args: {
         label: 'Input label',
         error: 'Something went wrong',
