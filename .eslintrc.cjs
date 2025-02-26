@@ -3,6 +3,7 @@ module.exports = {
     env: { browser: true, es2020: true },
     extends: [
         'eslint:recommended',
+        'eslint-plugin-react-compiler',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
         'plugin:react/recommended',
@@ -25,6 +26,7 @@ module.exports = {
             { allowConstantExport: true },
         ],
         'prettier/prettier': 'error',
+        'react-compiler/react-compiler': 'error',
     },
     settings: {
         react: {
