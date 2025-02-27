@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import path from 'path';
@@ -15,7 +15,11 @@ export default defineConfig({
         include: ['**/*.{test,unit}.?(c|m)[jt]s?(x)'],
     },
     plugins: [
-        react(),
+        react({
+            babel: {
+                plugins: [['babel-plugin-react-compiler', { target: '19' }]],
+            },
+        }),
         basicSsl({
             name: 'alpimi',
             domains: ['alpimi.pl'],
