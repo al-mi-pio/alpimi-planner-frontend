@@ -22,5 +22,4 @@ const P = ({ bold, secondary, children, ...defaultProps }: PProps) => (
     </StyledP>
 );
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default P;
