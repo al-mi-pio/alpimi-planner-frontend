@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-import { HeadingLevel } from '@/shared/components/H/H';
+import { HeadingLevel } from '@/shared/components/H/types';
 import {
     fontSizes,
     lineHeights,
     fontWeights,
-    sizes,
 } from '@/shared/constants/dimensions';
 
 export const StyledH = styled.p<{
@@ -14,8 +13,7 @@ export const StyledH = styled.p<{
     $secondary?: boolean;
 }>`
     font-size: ${(props) => Object.values(fontSizes)[props.$level - 1]};
-    line-height: ${lineHeights.small};
-    margin: ${sizes.smallXL} 0;
+    line-height: ${(props) => Object.values(lineHeights)[props.$level - 1]};
     font-weight: ${(props) =>
         props.$bold ? fontWeights.bold : fontWeights.regular};
     color: ${(props) =>
