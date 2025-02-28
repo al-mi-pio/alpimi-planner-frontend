@@ -4,7 +4,6 @@ import { fn } from '@storybook/test';
 
 import Button from '@/shared/components/Button';
 
-// noinspection JSUnusedGlobalSymbols
 export default {
     title: 'Shared/Components/Button',
     argTypes: {
@@ -16,7 +15,6 @@ export default {
     component: Button,
 } satisfies Meta<typeof Button>;
 
-// noinspection JSUnusedGlobalSymbols
 export const Default: StoryObj<typeof Button> = {
     args: {
         appearance: 'primary',
