@@ -1,8 +1,6 @@
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
-import { StyledP } from '@/shared/components/P/P.style';
-
-export interface PProps extends ComponentProps<typeof StyledP> {
+export interface PProps extends ComponentPropsWithRef<'p'> {
     /**
      * If the text should appear bold
      */
