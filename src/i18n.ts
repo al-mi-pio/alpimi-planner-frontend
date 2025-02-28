@@ -27,5 +27,4 @@ i18n.use(initReactI18next)
     })
     .then(() => {});
 
-// noinspection JSUnusedGlobalSymbols
 export default i18n;

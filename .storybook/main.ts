@@ -14,5 +14,5 @@ const config: StorybookConfig = {
     },
     staticDirs: ['../public'],
 };
-// noinspection JSUnusedGlobalSymbols
+
 export default config;
