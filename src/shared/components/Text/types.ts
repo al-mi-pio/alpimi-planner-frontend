@@ -1,10 +1,9 @@
-import { ComponentProps } from 'react';
-
-import { StyledInput } from '@/shared/components/Text/Text.style';
+import { ComponentPropsWithRef } from 'react';
 
 export type TextTypes = 'text' | 'password' | 'email';
 
-export interface TextProps extends ComponentProps<typeof StyledInput> {
+export interface TextProps
+    extends Omit<ComponentPropsWithRef<'input'>, 'children'> {
     /**
      * What type of value the input expects
      */

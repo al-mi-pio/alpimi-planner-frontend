@@ -1,15 +1,9 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 export type Appearance = 'primary' | 'secondary';
 
 export interface ButtonProps
-    extends Omit<
-        DetailedHTMLProps<
-            ButtonHTMLAttributes<HTMLButtonElement>,
-            HTMLButtonElement
-        >,
-        'children'
-    > {
+    extends Omit<ComponentPropsWithRef<'button'>, 'children'> {
     /**
      * The appearance of the button
      */
