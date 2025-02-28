@@ -24,6 +24,10 @@ const CommonGlobalStyle = createGlobalStyle`
         font-family: 'Inter', sans-serif;
         margin: 0;
     }
+
+    input:focus, a:focus, button:focus {
+        outline: 2px solid ${(props) => props.theme.colors.highlight};
+    }
 `;
 
 const DarkGlobalStyle = createGlobalStyle`

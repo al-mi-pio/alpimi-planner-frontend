@@ -1,17 +1,5 @@
-import React from 'react';
-
-import { StyledP } from '@/shared/components/P/P.style.tsx';
-
-export interface PProps extends React.ComponentProps<typeof StyledP> {
-    /**
-     * If the text should appear bold
-     */
-    bold?: boolean;
-    /**
-     * If the text should be a secondary color
-     */
-    secondary?: boolean;
-}
+import { StyledP } from '@/shared/components/P/P.style';
+import { PProps } from '@/shared/components/P/types';
 
 /**
  * A UI component which renders a styled paragraph

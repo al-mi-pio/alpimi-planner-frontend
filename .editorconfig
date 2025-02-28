@@ -8,3 +8,6 @@ indent_size = 4
 
 [{package.json,package-lock.json}]
 indent_size = 2
+
+[.storybook/preview.tsx]
+end_of_line = crlf

@@ -67,6 +67,7 @@ Makefile          text
 makefile          text
 # Fixes syntax highlighting on GitHub to allow comments
 tsconfig.json     linguist-language=JSON-with-Comments
+.storybook/preview.tsx  text eol=crlf
 
 # Graphics
 *.ai              binary
