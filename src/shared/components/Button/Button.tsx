@@ -5,8 +5,12 @@ import H from '@/shared/components/H';
 /**
  * A UI component which renders a styled button
  */
-const Button = ({ appearance, label, ...defaultProps }: ButtonProps) => (
-    <StyledButton $appearance={appearance ?? 'primary'} {...defaultProps}>
+const Button = ({
+    appearance = 'primary',
+    label,
+    ...defaultProps
+}: ButtonProps) => (
+    <StyledButton $appearance={appearance} {...defaultProps}>
         <H level={4}>{label}</H>
     </StyledButton>
 );
