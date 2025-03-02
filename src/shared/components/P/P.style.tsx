@@ -6,7 +6,7 @@ import {
     fontWeights,
 } from '@/shared/constants/dimensions';
 
-export const StyledP = styled.p<{ $bold?: boolean; $secondary?: boolean }>`
+export const StyledP = styled.p<{ $bold: boolean; $secondary: boolean }>`
     font-size: ${fontSizes.small};
     line-height: ${lineHeights.small};
     font-weight: ${(props) =>

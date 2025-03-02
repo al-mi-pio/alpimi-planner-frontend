@@ -9,8 +9,8 @@ import {
 
 export const StyledH = styled.p<{
     $level: HeadingLevel;
-    $bold?: boolean;
-    $secondary?: boolean;
+    $bold: boolean;
+    $secondary: boolean;
 }>`
     font-size: ${(props) => Object.values(fontSizes)[props.$level - 1]};
     line-height: ${(props) => Object.values(lineHeights)[props.$level - 1]};

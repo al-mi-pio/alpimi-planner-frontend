@@ -72,4 +72,35 @@ export default {
     ),
 } satisfies Meta;
 
-export const Default: StoryObj = {};
+export const Default: StoryObj = {
+    parameters: {
+        docs: {
+            source: {
+                code:
+                    '// Add secondary="true" to any icon to change it\'s palette\n\n' +
+                    '<Calendar />\n' +
+                    '<Clock />\n' +
+                    '<GitHub />\n' +
+                    '<Group />\n' +
+                    '<LinkedIn />\n' +
+                    '<Plus />\n' +
+                    '<SortDown />\n' +
+                    '<UserCircle />\n' +
+                    '<Book />\n' +
+                    '<Search />\n' +
+                    '<Arrowhead direction="left" />\n' +
+                    '<Arrowhead direction="down" />\n' +
+                    '<Arrowhead direction="up" />\n' +
+                    '<Arrowhead />\n' +
+                    '<LeftArrow />\n' +
+                    '<RightArrow />\n' +
+                    '<WarningSign weight={0} />\n' +
+                    '<WarningSign weight={0.25} />\n' +
+                    '<WarningSign weight={0.5} />\n' +
+                    '<WarningSign weight={0.75} />\n' +
+                    '<WarningSign />\n' +
+                    '<ErrorSign />',
+            },
+        },
+    },
+};

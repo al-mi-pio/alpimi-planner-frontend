@@ -4,7 +4,13 @@ import { HProps } from '@/shared/components/H/types';
 /**
  * A UI component which renders a styled heading
  */
-const H = ({ level, bold, secondary, children, ...defaultProps }: HProps) => (
+const H = ({
+    level,
+    bold = false,
+    secondary = false,
+    children,
+    ...defaultProps
+}: HProps) => (
     <StyledH
         $level={level}
         $bold={bold}

@@ -4,12 +4,29 @@ import H from '@/shared/components/H';
 
 export default {
     title: 'Shared/Components/H',
+    argTypes: {
+        level: {
+            control: { type: 'range', min: 1, max: 6 },
+            type: {
+                name: 'number',
+                required: true,
+            },
+            description:
+                'Level of the heading, reflects the HTML &lt;h1&gt;, &lt;h2&gt;... etc. tags numeration',
+        },
+        bold: {
+            type: 'boolean',
+            description: 'If the text should appear bold',
+        },
+        secondary: {
+            type: 'boolean',
+            description: 'If the text should be a secondary color',
+        },
+        children: {
+            description: 'Text that will be rendered',
+        },
+    },
     component: H,
-    render: ({ level, bold, secondary }) => (
-        <H level={level} bold={bold} secondary={secondary}>
-            {'Example text'}
-        </H>
-    ),
 } satisfies Meta<typeof H>;
 
 export const Default: StoryObj<typeof H> = {
@@ -17,5 +34,6 @@ export const Default: StoryObj<typeof H> = {
         level: 1,
         bold: false,
         secondary: false,
+        children: 'Example text',
     },
 };
