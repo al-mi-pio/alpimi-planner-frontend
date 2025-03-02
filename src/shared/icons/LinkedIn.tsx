@@ -1,13 +1,14 @@
 import { Icon } from '@/shared/icons/Icon.style';
 
-const LinkedIn = () => (
+const LinkedIn = ({ secondary }: { secondary?: boolean }) => (
     <Icon
+        $secondary={secondary}
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
         width="50"
         height="50"
-        viewBox="0 0 50 50"
+        viewBox="-3 -3 57 57"
     >
         <path
             fill="currentColor"

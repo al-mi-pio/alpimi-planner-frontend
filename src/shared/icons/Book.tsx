@@ -1,6 +1,6 @@
 import { Icon } from '@/shared/icons/Icon.style';
 
-const SortDown = ({ secondary }: { secondary?: boolean }) => (
+const Book = ({ secondary }: { secondary?: boolean }) => (
     <Icon
         $secondary={secondary}
         xmlns="http://www.w3.org/2000/svg"
@@ -8,13 +8,13 @@ const SortDown = ({ secondary }: { secondary?: boolean }) => (
         y="0px"
         width="50"
         height="50"
-        viewBox="-5 -5 60 60"
+        viewBox="0 0 50 50"
     >
         <path
             fill="currentColor"
-            d="M4 13H46C49 13 50 15 48 17L27 36C26 37 24 37 23 36L2 17C0 15 1 13 4 13Z"
+            d="M35 12v5H15V12Zm5-3q0-2-2-2H15q-5 0-5 5V40q0 4 4 4H40V42H15a1 1 0 01-1-6H38q2 0 2-2Z"
         />
     </Icon>
 );
 
-export default SortDown;
+export default Book;

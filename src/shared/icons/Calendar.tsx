@@ -1,13 +1,14 @@
 import { Icon } from '@/shared/icons/Icon.style';
 
-const Calendar = () => (
+const Calendar = ({ secondary }: { secondary?: boolean }) => (
     <Icon
+        $secondary={secondary}
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
         width="50"
         height="50"
-        viewBox="0 0 50 50"
+        viewBox="-10 -10 70 70"
     >
         <path
             fill="currentColor"

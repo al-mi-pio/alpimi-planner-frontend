@@ -5,7 +5,8 @@ export const darkColors = {
     primaryBackground: '#282127',
     elementBackground: '#3D3A41',
     primaryAccent: '#B5B5C3',
-    error: '#E01C30',
+    error: '#F13E4F',
+    warning: '#EDD550',
     success: '#49A95C',
     highlight: '#1D8EE5',
 } as const;
@@ -17,7 +18,8 @@ export const lightColors = {
     primaryBackground: '#C9C8C8',
     elementBackground: '#FEFEFE',
     primaryAccent: '#FFFFFF',
-    error: '#E01C30',
+    error: '#F13E4F',
+    warning: '#EDD550',
     success: '#49A95C',
     highlight: '#1D8EE5',
 } as const;
