@@ -18,19 +18,3 @@ export const StyledInput = styled.input<{ $error?: boolean }>`
                    color: ${props.theme.colors.error};`
             : ''};
 `;
-
-export const StyledLabel = styled.p`
-    font-size: ${fontSizes.small};
-    line-height: ${lineHeights.small};
-    margin-bottom: ${sizes.smallXXL};
-    margin-left: ${sizes.smallXL};
-    color: ${(props) => props.theme.colors.primaryText};
-`;
-
-export const StyledDescription = styled.p`
-    font-size: ${fontSizes.small};
-    line-height: ${lineHeights.small};
-    margin-top: ${sizes.smallXXL};
-    margin-left: ${sizes.smallXL};
-    color: ${(props) => props.theme.colors.error};
-`;
