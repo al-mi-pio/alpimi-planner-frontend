@@ -28,6 +28,6 @@ describe('Button.tsx', () => {
         const button = screen.getByRole('button', { name: 'Test text' });
         await user.click(button);
 
-        expect(mockOnClick).toBeCalledTimes(1);
+        expect(mockOnClick).toHaveBeenCalledOnce();
     });
 });

@@ -1,11 +1,8 @@
 import { useId } from 'react';
 
-import {
-    StyledDescription,
-    StyledInput,
-    StyledLabel,
-} from '@/shared/components/Text/Text.style';
+import { StyledInput } from '@/shared/components/Text/Text.style';
 import { TextProps } from '@/shared/components/Text/types';
+import { Label, ErrorDescription } from '@/shared/styles/Strings';
 
 /**
  * A UI component which accepts user text input
@@ -14,7 +11,7 @@ const Text = ({ type = 'text', label, error, ...defaultProps }: TextProps) => {
     const errorDescriptionId = useId();
     return (
         <label>
-            {label && <StyledLabel>{label}</StyledLabel>}
+            {label && <Label>{label}</Label>}
             <StyledInput
                 $error={!!error}
                 aria-invalid={!!error}
@@ -23,9 +20,9 @@ const Text = ({ type = 'text', label, error, ...defaultProps }: TextProps) => {
                 {...defaultProps}
             />
             {error && (
-                <StyledDescription role="alert" id={errorDescriptionId}>
+                <ErrorDescription role="alert" id={errorDescriptionId}>
                     {error}
-                </StyledDescription>
+                </ErrorDescription>
             )}
         </label>
     );
