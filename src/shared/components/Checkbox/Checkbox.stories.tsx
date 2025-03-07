@@ -1,16 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Text from '@/shared/components/Text';
+import Checkbox from '@/shared/components/Checkbox';
 
 export default {
-    title: 'Shared/Components/Text',
+    title: 'Shared/Components/Checkbox',
     argTypes: {
-        type: {
-            options: ['text', 'password', 'email'],
-            control: { type: 'select' },
-            type: 'string',
-            description: 'What type of value the input expects',
-        },
         label: {
             type: 'string',
             description: 'Optional label that describes the input',
@@ -20,20 +14,20 @@ export default {
             description: 'Optional error message, also highlights the input',
         },
     },
-    component: Text,
-} satisfies Meta<typeof Text>;
+    component: Checkbox,
+} satisfies Meta<typeof Checkbox>;
 
-export const Default: StoryObj<typeof Text> = {
+export const Default: StoryObj<typeof Checkbox> = {
     args: {
         label: 'Input label',
     },
 };
 
-export const WithError: StoryObj<typeof Text> = {
+export const WithError: StoryObj<typeof Checkbox> = {
     args: {
         label: 'Input label',
         error: 'Something went wrong',
     },
 };
 
-export const WithoutLabel: StoryObj<typeof Text> = {};
+export const WithoutLabel: StoryObj<typeof Checkbox> = {};
