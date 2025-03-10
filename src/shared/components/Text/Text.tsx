@@ -1,7 +1,7 @@
 import { useId } from 'react';
 
-import { StyledInput } from '@/shared/components/Text/Text.style';
 import { TextProps } from '@/shared/components/Text/types';
+import { StyledInput } from '@/shared/styles/Common';
 import { Label, ErrorDescription } from '@/shared/styles/Strings';
 
 /**
