@@ -7,8 +7,11 @@ export default {
     title: 'Shared/Components/Link',
     argTypes: {
         href: {
-            type: 'string',
             description: 'Target URL to navigate to',
+            type: {
+                name: 'string',
+                required: true,
+            },
         },
     },
     component: Link,
