@@ -68,7 +68,7 @@ describe('Select.tsx', () => {
         });
 
         expect(dropdown).toHaveProperty('value', 'test');
-        screen.getByText('Nie znaleziono...');
+        screen.getByText('No results...');
     });
 
     test('Reset value on backspace click', async () => {
