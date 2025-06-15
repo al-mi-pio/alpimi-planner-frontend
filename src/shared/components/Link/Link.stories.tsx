@@ -13,6 +13,11 @@ export default {
                 required: true,
             },
         },
+        children: {
+            description: 'A component that should be wrapped with the link',
+            // @ts-expect-error ReactNode is ok
+            type: 'string | ReactNode',
+        },
     },
     component: Link,
 } satisfies Meta<typeof Link>;

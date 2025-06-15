@@ -8,16 +8,6 @@ export default {
         type: {
             options: ['text', 'password', 'email'],
             control: { type: 'select' },
-            type: 'string',
-            description: 'What type of value the input expects',
-        },
-        label: {
-            type: 'string',
-            description: 'Optional label that describes the input',
-        },
-        error: {
-            type: 'string',
-            description: 'Optional error message, also highlights the input',
         },
     },
     component: Text,

@@ -5,14 +5,6 @@ import P from '@/shared/components/P';
 export default {
     title: 'Shared/Components/P',
     argTypes: {
-        bold: {
-            type: 'boolean',
-            description: 'If the text should appear bold',
-        },
-        secondary: {
-            type: 'boolean',
-            description: 'If the text should be a secondary color',
-        },
         children: {
             description: 'Text that will be rendered',
         },

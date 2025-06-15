@@ -7,12 +7,6 @@ export default {
     argTypes: {
         level: {
             control: { type: 'range', min: 1, max: 6 },
-            type: {
-                name: 'number',
-                required: true,
-            },
-            description:
-                'Level of the heading, reflects the HTML &lt;h1&gt;, &lt;h2&gt;... etc. tags numeration',
         },
         bold: {
             type: 'boolean',
