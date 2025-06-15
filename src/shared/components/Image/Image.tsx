@@ -1,4 +1,16 @@
-import { ImageProps } from '@/shared/components/Image/types';
+import { ComponentPropsWithRef } from 'react';
+
+export interface ImageProps
+    extends Omit<ComponentPropsWithRef<'img'>, 'children'> {
+    /**
+     * Url or path to the image
+     */
+    src: string;
+    /**
+     * Alternative text that describes the image
+     */
+    alt: string;
+}
 
 /**
  * A UI component which renders an image

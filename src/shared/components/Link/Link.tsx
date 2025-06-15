@@ -1,5 +1,13 @@
+import { ComponentPropsWithRef } from 'react';
+
 import { StyledLink, StyledP } from '@/shared/components/Link/Link.style';
-import { LinkProps } from '@/shared/components/Link/types';
+
+export interface LinkProps extends ComponentPropsWithRef<'a'> {
+    /**
+     * Target URL to navigate to
+     */
+    href: string;
+}
 
 /**
  * A UI component used for navigation

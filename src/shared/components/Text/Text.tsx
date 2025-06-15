@@ -1,8 +1,24 @@
-import { useId } from 'react';
+import { ComponentPropsWithRef, useId } from 'react';
 
-import { TextProps } from '@/shared/components/Text/types';
+import { TextTypes } from '@/shared/components/Text/types';
 import { StyledInput } from '@/shared/styles/Common';
-import { Label, ErrorDescription } from '@/shared/styles/Strings';
+import { ErrorDescription, Label } from '@/shared/styles/Strings';
+
+export interface TextProps
+    extends Omit<ComponentPropsWithRef<'input'>, 'children'> {
+    /**
+     * What type of value the input expects
+     */
+    type?: TextTypes;
+    /**
+     * Optional label placed above the input
+     */
+    label?: string;
+    /**
+     * Optional error message underneath the field, also highlights the input
+     */
+    error?: string;
+}
 
 /**
  * A UI component which accepts user text input

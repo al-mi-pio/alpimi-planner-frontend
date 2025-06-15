@@ -1,6 +1,21 @@
+import { ComponentPropsWithRef } from 'react';
+
 import { StyledButton } from '@/shared/components/Button/Button.style';
-import { ButtonProps } from '@/shared/components/Button/types';
+import { Appearance } from '@/shared/components/Button/types';
 import H from '@/shared/components/H';
+
+export interface ButtonProps
+    extends Omit<ComponentPropsWithRef<'button'>, 'children'> {
+    /**
+     * The appearance of the button
+     */
+    appearance?: Appearance;
+
+    /**
+     * Text label that describes the button
+     */
+    label?: string;
+}
 
 /**
  * A UI component which renders a styled button

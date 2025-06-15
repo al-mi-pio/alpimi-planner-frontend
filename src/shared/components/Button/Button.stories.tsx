@@ -10,15 +10,6 @@ export default {
         appearance: {
             options: ['primary', 'secondary'],
             control: { type: 'radio' },
-            type: 'string',
-            description: 'The appearance of the button',
-        },
-        label: {
-            description: 'Text label that describes the button',
-        },
-        onClick: {
-            description:
-                'Function that will be called when a button is clicked',
         },
     },
     component: Button,
