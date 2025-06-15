@@ -35,12 +35,22 @@ const DarkGlobalStyle = createGlobalStyle`
     body {
         background-color: ${darkColors.primaryBackground};
     }
+    
+    * {
+        scrollbar-color: ${darkColors.primaryAccent} transparent;
+        scrollbar-width: thin;
+    }
 `;
 
 const LightGlobalStyle = createGlobalStyle`
     html,
     body {
         background-color: ${lightColors.primaryBackground};
+    }
+
+    * {
+        scrollbar-color: ${lightColors.primaryAccent} transparent;
+        scrollbar-width: thin;
     }
 `;
 
