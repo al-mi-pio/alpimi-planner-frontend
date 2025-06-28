@@ -4,7 +4,7 @@ import { afterEach, describe, expect, test, vi } from 'vitest';
 import Checkbox from '@/shared/components/Checkbox';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Checkbox.tsx', () => {
+describe('Checkbox', () => {
     afterEach(() => {
         vi.restoreAllMocks();
     });

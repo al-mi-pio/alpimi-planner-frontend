@@ -1,7 +1,10 @@
 import type { Preview } from '@storybook/react';
+import { Suspense, useEffect } from 'react';
+import { I18nextProvider } from 'react-i18next';
 
 import { ThemeProvider } from 'styled-components';
 
+import i18n from '@/i18n';
 import { GlobalStyle } from '@/main.style';
 import {
     darkColors,
@@ -20,6 +23,18 @@ export const globalTypes = {
             items: [
                 { value: 'dark', icon: 'circlehollow', title: 'dark' },
                 { value: 'light', icon: 'circle', title: 'light' },
+            ],
+            showName: true,
+        },
+    },
+    locale: {
+        name: 'Locale',
+        description: 'Internationalization locale',
+        toolbar: {
+            icon: 'globe',
+            items: [
+                { value: 'en', title: 'English' },
+                { value: 'pl', title: 'Polski' },
             ],
             showName: true,
         },
@@ -47,13 +62,22 @@ const preview: Preview = {
     decorators: [
         (Story, context) => {
             const theme = context.parameters.theme || context.globals.theme;
+            const { locale } = context.globals;
+
+            useEffect(() => {
+                i18n.changeLanguage(locale).then();
+            }, [locale]);
             return (
-                <ThemeProvider
-                    theme={theme === 'light' ? lightTheme : darkTheme}
-                >
-                    <GlobalStyle />
-                    <Story />
-                </ThemeProvider>
+                <Suspense fallback={<div>loading translations...</div>}>
+                    <I18nextProvider i18n={i18n}>
+                        <ThemeProvider
+                            theme={theme === 'light' ? lightTheme : darkTheme}
+                        >
+                            <GlobalStyle />
+                            <Story />
+                        </ThemeProvider>
+                    </I18nextProvider>
+                </Suspense>
             );
         },
     ],

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 
-export const StyledInput = styled.input<{ $error?: boolean }>`
+export const InputStyles = css<{ $error?: boolean }>`
     font-size: ${fontSizes.small};
     line-height: ${lineHeights.small};
     padding: ${sizes.smallXL};
@@ -17,4 +17,8 @@ export const StyledInput = styled.input<{ $error?: boolean }>`
             ? `outline: 2px solid ${props.theme.colors.error};
                    color: ${props.theme.colors.error};`
             : ''};
+`;
+
+export const StyledInput = styled.input<{ $error?: boolean }>`
+    ${InputStyles}
 `;

@@ -7,7 +7,7 @@ import Select from '@/shared/components/Select';
 import { selectOptionsMock } from '@/shared/components/Select/mocks';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Select.tsx', () => {
+describe('Select', () => {
     test('Render correct labels and options', async () => {
         render(
             <Select

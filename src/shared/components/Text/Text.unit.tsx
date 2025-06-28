@@ -4,7 +4,7 @@ import { afterEach, describe, expect, vi, test } from 'vitest';
 import Text from '@/shared/components/Text';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Text.tsx', () => {
+describe('Text', () => {
     afterEach(() => {
         vi.restoreAllMocks();
     });
