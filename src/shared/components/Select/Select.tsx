@@ -25,7 +25,7 @@ export interface SelectProps extends ComponentPropsWithRef<ReactSelect> {
  * A UI component which accepts user selective input
  */
 const Select = ({ label, error, ...defaultProps }: SelectProps) => {
-    const { t } = useTranslation(['translation', 'common']);
+    const { t } = useTranslation();
     const errorDescriptionId = useId();
 
     return (
