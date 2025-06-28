@@ -1,7 +1,7 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 
-import '../../i18n';
+import './i18n';
 
 import { AllTheProviders } from '@/shared/test-utils/AllProviders';
 
