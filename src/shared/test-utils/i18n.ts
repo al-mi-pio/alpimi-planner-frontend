@@ -1,7 +1,9 @@
 import { initReactI18next } from 'react-i18next';
 
 // eslint-disable-next-line import-x/extensions
-import general from '../../../public/locales/en/general.json';
+import english from '../../../public/locales/en/general.json';
+// eslint-disable-next-line import-x/extensions
+import polish from '../../../public/locales/pl/general.json';
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend/cjs';
 
@@ -14,7 +16,7 @@ i18n.use(initReactI18next)
         ns: ['general'],
         defaultNS: 'general',
         debug: true,
-        resources: { en: { general } },
+        resources: { en: { general: english }, pl: { general: polish } },
     })
     .then(() => {});
 
