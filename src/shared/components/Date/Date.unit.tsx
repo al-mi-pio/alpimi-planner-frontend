@@ -3,7 +3,7 @@ import { describe, test } from 'vitest';
 import Date from '@/shared/components/Date';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Date.tsx', () => {
+describe('Date', () => {
     test('Render correct labels', () => {
         render(<Date label="Test label" error="Test error" />);
 

@@ -3,7 +3,7 @@ import { describe, test } from 'vitest';
 import P from '@/shared/components/P';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('P.tsx', () => {
+describe('P', () => {
     test('Render correct text with no parameters', () => {
         render(<P>{'Test text'}</P>);
         screen.getByText('Test text');

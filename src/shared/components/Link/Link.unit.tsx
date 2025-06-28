@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import Link from '@/shared/components/Link';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Link.tsx', () => {
+describe('Link', () => {
     test('Render correct text', () => {
         render(<Link href="https://www.example.com/">{'Test text'}</Link>);
 

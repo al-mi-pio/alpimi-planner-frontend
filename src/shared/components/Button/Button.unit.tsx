@@ -4,7 +4,7 @@ import { afterAll, describe, expect, test, vi } from 'vitest';
 import Button from '@/shared/components/Button';
 import { render, screen } from '@/shared/test-utils/render';
 
-describe('Button.tsx', () => {
+describe('Button', () => {
     afterAll(() => {
         vi.restoreAllMocks();
     });
