@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 
+export const FocusStyle = css`
+    outline: 2px solid ${(props) => props.theme.colors.highlight};
+`;
+
 export const InputStyles = css<{ $error?: boolean }>`
     font-size: ${fontSizes.small};
     line-height: ${lineHeights.small};
