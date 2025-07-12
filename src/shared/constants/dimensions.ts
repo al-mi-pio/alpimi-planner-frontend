@@ -1,19 +1,19 @@
 export const fontSizes = {
-    large3Xl: '80pt',
-    largeXXL: '40pt',
-    largeXL: '32pt',
-    large: '26pt',
-    regular: '20pt',
-    small: '16pt',
+    large3Xl: '80px',
+    largeXXL: '40px',
+    largeXL: '32px',
+    large: '26px',
+    regular: '20px',
+    small: '16px',
 } as const;
 
 export const lineHeights = {
-    large3Xl: '97pt',
-    largeXXL: '48pt',
-    largeXL: '39pt',
-    large: '31pt',
-    regular: '24pt',
-    small: '19pt',
+    large3Xl: '97px',
+    largeXXL: '48px',
+    largeXL: '39px',
+    large: '31px',
+    regular: '24px',
+    small: '19px',
 } as const;
 
 export const fontWeights = {

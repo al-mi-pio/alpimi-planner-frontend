@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { darkColors, lightColors } from '@/shared/constants/colors';
 import { ThemeContext } from '@/shared/contexts/ThemeContext';
+import { FocusStyle } from '@/shared/styles/Common';
 
 // noinspection CssUnknownTarget
 const CommonGlobalStyle = createGlobalStyle`
@@ -25,8 +26,8 @@ const CommonGlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
-    input:focus, a:focus, button:focus {
-        outline: 2px solid ${(props) => props.theme.colors.highlight};
+    input:focus, a:focus p, a:focus, button:focus {
+        ${FocusStyle}
     }
 `;
 
