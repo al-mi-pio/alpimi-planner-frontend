@@ -19,6 +19,17 @@ export const Default: StoryObj<typeof DashboardHeader> = {
     },
 };
 
+export const TwoButtons: StoryObj<typeof DashboardHeader> = {
+    args: {
+        header: 'Main page',
+        backRoute: '/',
+        navigation: [
+            { label: 'Data', route: '/test' },
+            { label: 'Edit', route: '/' },
+        ],
+    },
+};
+
 export const NoComingBack: StoryObj<typeof DashboardHeader> = {
     args: {
         header: 'Main page',
