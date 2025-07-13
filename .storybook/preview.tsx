@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -73,8 +74,10 @@ const preview: Preview = {
                         <ThemeProvider
                             theme={theme === 'light' ? lightTheme : darkTheme}
                         >
-                            <GlobalStyle />
-                            <Story />
+                            <BrowserRouter>
+                                <GlobalStyle />
+                                <Story />
+                            </BrowserRouter>
                         </ThemeProvider>
                     </I18nextProvider>
                 </Suspense>
