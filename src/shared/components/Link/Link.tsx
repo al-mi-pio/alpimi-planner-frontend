@@ -14,7 +14,11 @@ export interface LinkProps extends ComponentPropsWithRef<'a'> {
  */
 const Link = ({ children, ...defaultProps }: LinkProps) => (
     <StyledLink {...defaultProps}>
-        <StyledP>{children}</StyledP>
+        {typeof children === 'string' ? (
+            <StyledP>{children}</StyledP>
+        ) : (
+            children
+        )}
     </StyledLink>
 );
 

@@ -33,5 +33,6 @@ export const Icon: StoryObj<typeof Link> = {
     args: {
         href: 'https://github.com/',
         children: <GitHub />,
+        'aria-label': 'GitHub',
     },
 };
