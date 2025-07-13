@@ -23,6 +23,9 @@ export interface DashboardHeaderProps
     header?: string;
 }
 
+/**
+ * A header displayed at the top of dashboard pages
+ */
 export const DashboardHeader = ({
     backRoute,
     header,
