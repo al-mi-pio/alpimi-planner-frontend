@@ -6,6 +6,7 @@ import {
     ButtonGroup,
     Header,
     Nav,
+    Spacer,
     StyledButton,
     User,
     Wrapper,
@@ -38,10 +39,12 @@ export const DashboardHeader = ({
     return (
         <Wrapper {...defaultProps}>
             <Nav>
-                {!!backRoute && (
+                {backRoute ? (
                     <Link href={backRoute} aria-label={t('Previous page')}>
                         <Arrowhead direction="left" />
                     </Link>
+                ) : (
+                    <Spacer />
                 )}
 
                 <ButtonGroup>

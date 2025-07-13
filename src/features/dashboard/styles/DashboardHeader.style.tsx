@@ -24,6 +24,14 @@ export const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0;
+    margin: 0 3%;
+
+    & p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 `;
 
 export const User = styled.div`
@@ -42,13 +50,16 @@ export const ButtonGroup = styled.div`
     display: flex;
     gap: ${sizes.smallXL};
     padding: ${sizes.smallXL} 0;
-    margin-left: 3%;
+`;
+
+export const Spacer = styled.div`
+    width: ${sizes.small};
 `;
 
 export const StyledButton = styled(Button)<{ $selected?: boolean }>`
     min-height: unset;
     max-height: 40px;
-    min-width: 120px;
+    min-width: unset;
     padding: ${sizes.smallXL} ${sizes.regular};
     ${({ $selected, theme }) =>
         $selected
