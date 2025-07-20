@@ -11,20 +11,21 @@ i18n.use(initReactI18next)
     .init({
         ns: ['general'],
         defaultNS: 'general',
-        supportedLngs: ['pl', 'en'],
-        fallbackLng: 'en',
+        supportedLngs: ['pl', 'en-US'],
+        fallbackLng: 'en-US',
         detection: {
             order: [
-                'path',
+                'querystring',
                 'cookie',
+                'localStorage',
                 'navigator',
                 'htmlTag',
-                'localStorage',
+                'path',
                 'subdomain',
             ],
-            caches: ['cookie'],
+            caches: ['localStorage'],
         },
     })
-    .then(() => {});
+    .then();
 
 export default i18n;
