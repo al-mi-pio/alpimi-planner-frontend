@@ -7,6 +7,7 @@ import App from './App';
 import './i18n';
 
 import { GlobalStyle } from '@/main.style';
+import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
         <ThemeProvider>
             <QueryClientProvider client={queryClient}>
                 <GlobalStyle />
+                <GlobalToastStyles />
                 <RouterProvider router={router} />
             </QueryClientProvider>
         </ThemeProvider>
