@@ -18,6 +18,7 @@ import Search from '@/shared/icons/Search';
 import SortDown from '@/shared/icons/SortDown';
 import UserCircle from '@/shared/icons/UserCircle';
 import WarningSign from '@/shared/icons/WarningSign';
+import X from '@/shared/icons/X';
 
 const Heading = styled(H)`
     margin-bottom: 0.5em;
@@ -58,6 +59,7 @@ export default {
                         <Arrowhead secondary={secondary} />
                         <LeftArrow secondary={secondary} />
                         <RightArrow secondary={secondary} />
+                        <X secondary={secondary} />
                         <br />
                         <WarningSign secondary={secondary} weight={0} />
                         <WarningSign secondary={secondary} weight={0.25} />
