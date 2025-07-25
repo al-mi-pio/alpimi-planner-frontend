@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import styled from 'styled-components';
-
 import P from '@/shared/components/P';
 import { TreeItem } from '@/shared/components/Tree/components/TreeItem';
 import { Tree } from '@/shared/components/Tree/styles/Tree.style';
@@ -10,12 +8,7 @@ import { CollisionType } from '@/shared/components/Tree/types';
 import Book from '@/shared/icons/Book';
 import Clock from '@/shared/icons/Clock';
 import Group from '@/shared/icons/Group';
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-`;
+import { StoryWrapper } from '@/shared/styles/Stories';
 
 const CustomTree = () => {
     const [value, setValue] = useState<string | undefined>();
@@ -31,7 +24,7 @@ const CustomTree = () => {
         }));
 
     return (
-        <Wrapper>
+        <StoryWrapper>
             <Tree tabIndex={0}>
                 <TreeItem
                     icon={<Group />}
@@ -99,7 +92,7 @@ const CustomTree = () => {
                 </TreeItem>
             </Tree>
             <P>{`Current value: ${value}`}</P>
-        </Wrapper>
+        </StoryWrapper>
     );
 };
 

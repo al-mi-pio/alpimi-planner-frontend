@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { toast } from 'react-toastify';
 
-import styled from 'styled-components';
-
 import Button from '@/shared/components/Button';
 import Toast from '@/shared/components/Toast/index';
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-`;
+import { StoryWrapper } from '@/shared/styles/Stories';
 
 const CustomToast = ({ content }: { content: string }) => {
     const notify = () => toast(content);
@@ -20,14 +13,14 @@ const CustomToast = ({ content }: { content: string }) => {
     const success = () => toast.success(content);
 
     return (
-        <Wrapper>
+        <StoryWrapper>
             <Button label={'Show normal toast'} onClick={notify} />
             <Button label={'Show info toast'} onClick={info} />
             <Button label={'Show warning toast'} onClick={warning} />
             <Button label={'Show error toast'} onClick={error} />
             <Button label={'Show success toast'} onClick={success} />
             <Toast />
-        </Wrapper>
+        </StoryWrapper>
     );
 };
 
