@@ -18,13 +18,10 @@ import Search from '@/shared/icons/Search';
 import SortDown from '@/shared/icons/SortDown';
 import UserCircle from '@/shared/icons/UserCircle';
 import WarningSign from '@/shared/icons/WarningSign';
-
-const Heading = styled(H)`
-    margin-bottom: 0.5em;
-`;
+import X from '@/shared/icons/X';
+import { StoryWrapper } from '@/shared/styles/Stories';
 
 const Wrapper = styled.div<{ $secondary: boolean }>`
-    margin-bottom: 2em;
     padding: 1em;
     background-color: ${(props) =>
         props.$secondary
@@ -35,12 +32,10 @@ const Wrapper = styled.div<{ $secondary: boolean }>`
 export default {
     title: 'Shared/Icons',
     render: () => (
-        <>
+        <StoryWrapper>
             {[undefined, true].map((secondary) => (
                 <>
-                    <Heading level={2}>
-                        {secondary ? 'Secondary' : 'Default'}
-                    </Heading>
+                    <H level={2}>{secondary ? 'Secondary' : 'Default'}</H>
                     <Wrapper $secondary={!!secondary}>
                         <Calendar secondary={secondary} />
                         <Clock secondary={secondary} />
@@ -58,6 +53,7 @@ export default {
                         <Arrowhead secondary={secondary} />
                         <LeftArrow secondary={secondary} />
                         <RightArrow secondary={secondary} />
+                        <X secondary={secondary} />
                         <br />
                         <WarningSign secondary={secondary} weight={0} />
                         <WarningSign secondary={secondary} weight={0.25} />
@@ -68,7 +64,7 @@ export default {
                     </Wrapper>
                 </>
             ))}
-        </>
+        </StoryWrapper>
     ),
 } satisfies Meta;
 

@@ -2,6 +2,7 @@ import { ComponentPropsWithRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { StyledButton } from '@/shared/components/Close/Close.style';
+import X from '@/shared/icons/X';
 
 export interface CloseProps
     extends Omit<ComponentPropsWithRef<'button'>, 'children'> {
@@ -19,7 +20,7 @@ const Close = (props: CloseProps) => {
 
     return (
         <StyledButton {...props} aria-label={t('Close')}>
-            X
+            <X />
         </StyledButton>
     );
 };

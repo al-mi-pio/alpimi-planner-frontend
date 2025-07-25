@@ -12,4 +12,10 @@ export const StyledButton = styled.button<{ $color?: string }>`
     &:hover {
         background-color: ${({ theme }) => theme.colors.secondaryText};
     }
+
+    & svg {
+        ${({ $color }) => ($color ? `color: ${$color}` : '')};
+        max-width: calc(${sizes.regular} - ${sizes.smallXL});
+        max-height: calc(${sizes.regular} - ${sizes.smallXL});
+    }
 `;

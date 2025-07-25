@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 import i18n from '@/i18n';
 import { GlobalStyle } from '@/main.style';
+import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
 import {
     darkColors,
     darkTheme,
@@ -74,6 +75,7 @@ const preview: Preview = {
                             theme={theme === 'light' ? lightTheme : darkTheme}
                         >
                             <GlobalStyle />
+                            <GlobalToastStyles />
                             <Story />
                         </ThemeProvider>
                     </I18nextProvider>

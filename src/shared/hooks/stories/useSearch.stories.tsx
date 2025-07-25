@@ -1,19 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import styled from 'styled-components';
-
 import H from '@/shared/components/H';
 import P from '@/shared/components/P';
 import Search from '@/shared/components/Search';
 import { useSearch } from '@/shared/hooks/useSearch';
 import { mockColorData } from '@/shared/mocks/search';
-
-const StyledWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-`;
+import { StoryWrapper } from '@/shared/styles/Stories';
 
 const Component = ({ debounceDelay }: { debounceDelay: number }) => {
     const [data] = useState(mockColorData);
@@ -24,15 +17,15 @@ const Component = ({ debounceDelay }: { debounceDelay: number }) => {
     });
 
     return (
-        <StyledWrapper>
+        <StoryWrapper>
             <H level={4}>{'Wyszukaj kolor po nazwie'}</H>
             <Search {...bindSearch} />
-            <StyledWrapper>
+            <StoryWrapper>
                 {filteredData.map(({ name, description }) => (
                     <P key={name}>{name + ' - ' + description}</P>
                 ))}
-            </StyledWrapper>
-        </StyledWrapper>
+            </StoryWrapper>
+        </StoryWrapper>
     );
 };
 
