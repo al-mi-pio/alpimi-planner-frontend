@@ -30,6 +30,7 @@ export const CenterBox = styled.div`
     background-color: ${({ theme }) => theme.colors.elementBackground};
     box-shadow: -6px 6px ${({ theme }) => theme.colors.primaryText}80;
     padding: ${sizes.large};
+    width: 450px;
 `;
 
 export const AuthForm = styled.form`
@@ -41,7 +42,7 @@ export const AuthForm = styled.form`
         margin: 0 auto;
     }
 
-    & button {
+    & > button {
         margin-top: ${sizes.small};
     }
 `;
