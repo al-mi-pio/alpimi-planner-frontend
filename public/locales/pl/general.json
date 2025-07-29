@@ -2,5 +2,6 @@
     "Hello world": "Witaj świecie",
     "No results...": "Brak wyników...",
     "Search": "Wyszukiwanie",
-    "Close": "Zamknij"
+    "Close": "Zamknij",
+    "Network Error": "Problem z połączeniem internetowym"
 }
