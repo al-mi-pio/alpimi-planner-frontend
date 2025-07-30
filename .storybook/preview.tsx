@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { MemoryRouter } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -13,6 +15,8 @@ import {
     lightColors,
     lightTheme,
 } from '@/shared/constants/colors';
+
+const queryClient = new QueryClient();
 
 export const globalTypes = {
     theme: {
@@ -74,9 +78,13 @@ const preview: Preview = {
                         <ThemeProvider
                             theme={theme === 'light' ? lightTheme : darkTheme}
                         >
-                            <GlobalStyle />
-                            <GlobalToastStyles />
-                            <Story />
+                            <QueryClientProvider client={queryClient}>
+                                <GlobalStyle />
+                                <GlobalToastStyles />
+                                <MemoryRouter>
+                                    <Story />
+                                </MemoryRouter>
+                            </QueryClientProvider>
                         </ThemeProvider>
                     </I18nextProvider>
                 </Suspense>
