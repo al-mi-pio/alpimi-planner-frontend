@@ -2,7 +2,6 @@
 /// <reference types="vite/client" />
 import react from '@vitejs/plugin-react';
 
-import basicSsl from '@vitejs/plugin-basic-ssl';
 import path from 'path';
 import { defineConfig } from 'vite';
 
@@ -19,11 +18,6 @@ export default defineConfig({
             babel: {
                 plugins: [['babel-plugin-react-compiler', { target: '19' }]],
             },
-        }),
-        basicSsl({
-            name: 'alpimi',
-            domains: ['alpimi.pl'],
-            certDir: '/.devServer/cert',
         }),
     ],
     resolve: {

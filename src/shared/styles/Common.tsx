@@ -12,7 +12,7 @@ export const InputStyles = css<{ $error?: boolean }>`
     padding: ${sizes.smallXL};
     border: none;
     border-radius: ${sizes.smallXL};
-    width: 300px;
+    width: 100%;
     color: ${(props) => props.theme.colors.secondaryText};
     background-color: ${(props) => props.theme.colors.primaryAccent};
     outline: 1px solid ${(props) => props.theme.colors.primaryText};

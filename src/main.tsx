@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './i18n';
 
+import LoginPage from '@/features/auth/pages/login';
+import Auth from '@/features/auth/template';
 import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+    },
+    {
+        path: '/login',
+        element: (
+            <Auth>
+                <LoginPage />
+            </Auth>
+        ),
     },
     {
         path: '*',

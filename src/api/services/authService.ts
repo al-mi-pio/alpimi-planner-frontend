@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-import { ErrorResponse } from '@/api/types';
 import { AuthLogin, AuthRefresh, AuthResponse } from '@/api/types/AuthService';
-import { getDefaultConfig, parseAxiosResponse } from '@/api/utils';
+import {
+    catchApiErrors,
+    getDefaultConfig,
+    parseAxiosResponse,
+} from '@/api/utils';
 import { apiUrl } from '@/shared/constants/configuration';
 
 export const authUrl = `${apiUrl}/Auth`;
@@ -13,14 +16,10 @@ export const authLogin: AuthLogin = (data, config?): Promise<AuthResponse> =>
     axios
         .post(authLoginUrl, data, getDefaultConfig(config))
         .then(parseAxiosResponse)
-        .catch((error) => {
-            throw error.response.data as ErrorResponse;
-        });
+        .catch(catchApiErrors);
 
 export const authRefresh: AuthRefresh = (config?): Promise<AuthResponse> =>
     axios
         .get(authRefreshUrl, getDefaultConfig(config))
         .then(parseAxiosResponse)
-        .catch((error) => {
-            throw error.response.data as ErrorResponse;
-        });
+        .catch(catchApiErrors);

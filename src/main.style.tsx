@@ -26,6 +26,10 @@ const CommonGlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
+    html, body {
+        padding: 0;
+    }
+
     input:focus, a:focus p, a:focus, button:focus {
         ${FocusStyle}
     }
