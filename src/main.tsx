@@ -10,16 +10,17 @@ import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
 import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
+import { landingPage, login } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: landingPage,
         element: <App />,
     },
     {
-        path: '/login',
+        path: login,
         element: (
             <Auth>
                 <LoginPage />

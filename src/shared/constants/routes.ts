@@ -1,5 +1,6 @@
 export const landingPage = '/';
 export const login = '/login';
+export const resetPassword = '/resetpassword';
 export const schedules = '/dashboard';
 export const createSchedule = `${schedules}/create/schedule`;
 
