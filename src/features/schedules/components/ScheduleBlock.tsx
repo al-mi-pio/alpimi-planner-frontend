@@ -45,7 +45,11 @@ export const ScheduleBlock = ({
             </Block>
         );
     return (
-        <Block onClick={() => navigate(createSchedule)} {...defaultProps}>
+        <Block
+            onClick={() => navigate(createSchedule)}
+            aria-label={t('Create a new schedule')}
+            {...defaultProps}
+        >
             <Plus />
         </Block>
     );
