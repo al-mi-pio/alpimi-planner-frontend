@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import { AxiosError } from 'axios';

@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { Block } from '@/features/schedules/styles/ScheduleBlock.style';
 import H from '@/shared/components/H';
