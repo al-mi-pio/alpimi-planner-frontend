@@ -3,5 +3,11 @@
     "No results...": "Brak wyników...",
     "Search": "Wyszukiwanie",
     "Close": "Zamknij",
-    "Network Error": "Problem z połączeniem internetowym"
+    "Network Error": "Problem z połączeniem internetowym",
+    "{{count}} h": "{{count}} godz.",
+    "{{count}} wk": "{{count}} tyg.",
+    "{{count}} wk_one": "{{count}} tydz.",
+    "{{count}} mo.": "{{count}} mies.",
+    "{{count}} yr.": "{{count}} l.",
+    "{{count}} yr._one": "{{count}} rok"
 }

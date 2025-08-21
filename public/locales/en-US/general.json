@@ -3,5 +3,12 @@
     "No results...": "No results...",
     "Search": "Search",
     "Close": "Close",
-    "Network Error": "Network Error"
+    "Network Error": "Network Error",
+    "{{count}} h": "{{count}} h",
+    "{{count}} wk": "{{count}} wk",
+    "{{count}} wk_other": "{{count}} wks",
+    "{{count}} mo.": "{{count}} mo.",
+    "{{count}} mo._other": "{{count}} mos.",
+    "{{count}} yr.": "{{count}} yr.",
+    "{{count}} yr._other": "{{count}} yrs."
 }
