@@ -5,6 +5,11 @@ import { ScheduleBlock } from '@/features/schedules/components/ScheduleBlock';
 export default {
     title: 'Features/Schedules/Components/ScheduleBlock',
     component: ScheduleBlock,
+    argTypes: {
+        modifyDate: {
+            control: 'text',
+        },
+    },
 } satisfies Meta<typeof ScheduleBlock>;
 
 export const Default: StoryObj<typeof ScheduleBlock> = {
