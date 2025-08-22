@@ -1,8 +1,8 @@
 import { ComponentPropsWithRef } from 'react';
 
-import { StyledButton } from '@/shared/components/Button/Button.style';
 import { Appearance } from '@/shared/components/Button/types';
 import H from '@/shared/components/H';
+import { StyledButton } from '@/shared/styles/Common';
 
 export interface ButtonProps
     extends Omit<ComponentPropsWithRef<'button'>, 'children'> {

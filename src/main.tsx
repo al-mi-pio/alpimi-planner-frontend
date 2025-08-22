@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 
 import App from './App';
 import './i18n';
@@ -10,16 +10,17 @@ import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
 import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
+import { landingPage, login } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: landingPage,
         element: <App />,
     },
     {
-        path: '/login',
+        path: login,
         element: (
             <Auth>
                 <LoginPage />

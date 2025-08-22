@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import { AxiosError } from 'axios';
@@ -16,6 +16,7 @@ import Link from '@/shared/components/Link';
 import LoadingBox from '@/shared/components/LoadingBox';
 import MessageBox from '@/shared/components/MessageBox';
 import Text from '@/shared/components/Text';
+import { resetPassword, schedules } from '@/shared/constants/routes';
 import { MessageType } from '@/shared/types';
 
 const LoginPage = () => {
@@ -33,7 +34,7 @@ const LoginPage = () => {
     const onSuccess = ({ content }: AuthResponse) => {
         localStorage.setItem('accessToken', content);
         setMessage(t('Login successful'));
-        navigate(params.get('redirect') ?? '/dashboard');
+        navigate(params.get('redirect') ?? schedules);
     };
     const onError = (response: ErrorResponse | AxiosError) => {
         if ('errors' in response) setMessage(response.errors[0].message);
@@ -102,7 +103,7 @@ const LoginPage = () => {
                     label={t('Sign in')}
                 />
 
-                <Link href="/resetpassword">{t('I forgot my password')}</Link>
+                <Link href={resetPassword}>{t('I forgot my password')}</Link>
             </AuthForm>
         </LoadingBox>
     );

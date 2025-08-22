@@ -7,7 +7,7 @@ import { authLogin } from '@/api/services/authService';
 import LoginPage from '@/features/auth/pages/login';
 import { render, screen } from '@/shared/test-utils/render';
 
-vi.mock('@/api/services/authService', { spy: true });
+vi.mock('@/api/services/authService');
 
 describe('LoginPage', () => {
     afterAll(() => {
