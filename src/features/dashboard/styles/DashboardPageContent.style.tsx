@@ -1,0 +1,26 @@
+import styled from 'styled-components';
+
+import H from '@/shared/components/H';
+import { sizes } from '@/shared/constants/dimensions';
+
+export const Wrapper = styled.div`
+    height: 100%;
+    padding-top: ${sizes.large};
+    margin: 0 ${sizes.largeXL};
+`;
+
+export const Content = styled.div`
+    background-color: ${({ theme }) => theme.colors.sectionBackground};
+    padding: ${sizes.regular};
+    display: flex;
+    flex-direction: column;
+    gap: ${sizes.regular};
+
+    & > div:first-child {
+        width: 350px;
+    }
+`;
+
+export const Title = styled(H)`
+    margin-bottom: ${sizes.smallXL};
+`;
