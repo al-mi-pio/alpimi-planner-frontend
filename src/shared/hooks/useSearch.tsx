@@ -31,7 +31,7 @@ export const useSearch = <T = object,>({
                 isContainedInOtherString(text, String(item[filterKey]))
             )
         );
-    }, [text]);
+    }, [text, data]);
 
     return {
         filteredData,
