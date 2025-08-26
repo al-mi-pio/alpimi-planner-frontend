@@ -51,9 +51,9 @@ export const DashboardHeader = ({
                     {navigation.map(({ label, route }) => (
                         <StyledButton
                             $selected={window.location.pathname === route}
-                            key={label}
+                            key={t(label)}
                             appearance="secondary"
-                            label={label}
+                            label={t(label)}
                             onClick={() => navigate(route)}
                         />
                     ))}
@@ -62,7 +62,7 @@ export const DashboardHeader = ({
 
             <Header>
                 <H level={4} bold>
-                    {header}
+                    {header && t(header)}
                 </H>
             </Header>
 
