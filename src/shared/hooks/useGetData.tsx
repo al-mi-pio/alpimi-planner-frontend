@@ -17,9 +17,11 @@ export const useGetData = <T = object,>(
     const { t } = useTranslation('general');
 
     useEffect(() => {
-        const result = queryState.error as ErrorResponse | AxiosError;
+        const result = queryState.error as ErrorResponse | AxiosError | 404;
         if (result)
-            if ('errors' in result)
+            if (result === 404)
+                toast.error(t('Storybook is not setup for mocking'));
+            else if ('errors' in result)
                 if (result.status === 401)
                     navigate({
                         pathname: login,
