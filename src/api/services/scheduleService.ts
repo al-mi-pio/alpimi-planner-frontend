@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ScheduleGetAll } from '@/api/types/ScheduleService';
+import { ScheduleGetAll, SchedulePost } from '@/api/types/ScheduleService';
 import {
     catchApiErrors,
     getDefaultConfig,
@@ -13,5 +13,11 @@ export const scheduleUrl = `${apiUrl}/Schedule`;
 export const scheduleGetAll: ScheduleGetAll = (config?) =>
     axios
         .get(scheduleUrl, getDefaultConfig(config))
+        .then(parseAxiosResponse)
+        .catch(catchApiErrors);
+
+export const schedulePost: SchedulePost = (data, config?) =>
+    axios
+        .post(scheduleUrl, data, getDefaultConfig(config))
         .then(parseAxiosResponse)
         .catch(catchApiErrors);
