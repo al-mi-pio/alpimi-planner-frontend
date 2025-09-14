@@ -9,11 +9,20 @@ import './i18n';
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
 import Dashboard from '@/features/dashboard/template';
-import { schedulesDashboardHeader } from '@/features/schedules/constants';
+import {
+    createScheduleDashboardHeader,
+    schedulesDashboardHeader,
+} from '@/features/schedules/constants';
+import CreateSchedulePage from '@/features/schedules/pages/create';
 import SchedulesPage from '@/features/schedules/pages/list';
 import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
-import { landingPage, login, schedules } from '@/shared/constants/routes';
+import {
+    createSchedule,
+    landingPage,
+    login,
+    schedules,
+} from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
 const queryClient = new QueryClient();
@@ -35,6 +44,14 @@ const router = createBrowserRouter([
         element: (
             <Dashboard headerProps={schedulesDashboardHeader}>
                 <SchedulesPage />
+            </Dashboard>
+        ),
+    },
+    {
+        path: createSchedule,
+        element: (
+            <Dashboard headerProps={createScheduleDashboardHeader}>
+                <CreateSchedulePage />
             </Dashboard>
         ),
     },
