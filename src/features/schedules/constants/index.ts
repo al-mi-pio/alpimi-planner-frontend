@@ -9,17 +9,17 @@ export const schedulesDashboardHeader = {
     header: 'Schedule browser',
     navigation: [
         {
-            label: 'Create new',
+            label: 'Add new',
             route: createSchedule,
         },
     ],
 };
 
 export const createScheduleDashboardHeader = {
-    header: 'Create new',
+    header: 'Creating new schedule',
     navigation: [
         {
-            label: 'Create new',
+            label: 'Add new',
             route: createSchedule,
         },
     ],

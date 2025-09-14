@@ -30,7 +30,7 @@ const CreateSchedulePage = () => {
     const { binders, submit, isErrored } = useScheduleForm({ errors, post });
 
     return (
-        <DashboardPageContent title={t('Create a new schedule')}>
+        <DashboardPageContent title={t('Details')}>
             <CreateScheduleForm loading={isPending}>
                 <FormContent>
                     <FormSection>
