@@ -4,6 +4,7 @@
     "Search": "Wyszukiwanie",
     "Close": "Zamknij",
     "Network Error": "Problem z połączeniem internetowym",
+    "Storybook is not setup for mocking": "Storybook nie jest skonfigurowany do mockowania",
     "{{count}} h": "{{count}} godz.",
     "{{count}} wk": "{{count}} tyg.",
     "{{count}} wk_one": "{{count}} tydz.",

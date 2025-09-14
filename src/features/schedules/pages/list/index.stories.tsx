@@ -6,7 +6,7 @@ import SchedulesPage from '@/features/schedules/pages/list/index';
 import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
-    title: 'Pages/Schedules',
+    title: 'Pages/Schedules List',
     component: SchedulesPage,
     render: () => (
         <Dashboard headerProps={schedulesDashboardHeader}>

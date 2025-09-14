@@ -1,27 +1,32 @@
-import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
+import type { DefaultError } from '@tanstack/query-core';
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from '@/api/types';
 import { login } from '@/shared/constants/routes';
 
-export const useGetData = <T = object,>(
-    queryOptions: UndefinedInitialDataOptions<T>
+export const useMutateData = <
+    TData = unknown,
+    TError = DefaultError,
+    TVariables = void,
+    TContext = unknown,
+>(
+    mutationOptions: UseMutationOptions<TData, TError, TVariables, TContext>
 ) => {
-    const queryState = useQuery({ retry: false, ...queryOptions });
     const navigate = useNavigate();
     const { t } = useTranslation('general');
-
-    useEffect(() => {
-        const result = queryState.error as ErrorResponse | AxiosError | 404;
+    const handleError = (
+        error: TError,
+        variables: TVariables,
+        context?: TContext
+    ) => {
+        const result = error as ErrorResponse | AxiosError;
         if (result)
-            if (result === 404)
-                toast.error(t('Storybook is not setup for mocking'));
-            else if ('errors' in result)
+            if ('errors' in result) {
                 if (result.status === 401)
                     navigate({
                         pathname: login,
@@ -33,9 +38,15 @@ export const useGetData = <T = object,>(
                                     : location.pathname
                             ),
                     });
-                else toast.error(result.errors[0].message);
-            else toast.error(t(result.message));
-    }, [queryState.error]);
+            } else toast.error(t(result.message));
 
-    return queryState;
+        if (mutationOptions.onError)
+            mutationOptions.onError(error, variables, context);
+    };
+
+    return useMutation({
+        retry: false,
+        ...mutationOptions,
+        onError: handleError,
+    });
 };

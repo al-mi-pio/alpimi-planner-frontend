@@ -5,6 +5,8 @@ import { sizes } from '@/shared/constants/dimensions';
 
 export const ScheduleList = styled(LoadingBox)`
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: ${sizes.small};
     gap: ${sizes.smallXL};
 `;

@@ -15,6 +15,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${sizes.regular};
+    border-radius: ${sizes.smallXL};
 
     & > div:first-child {
         width: 350px;

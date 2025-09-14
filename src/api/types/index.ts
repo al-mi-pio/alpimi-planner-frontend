@@ -36,12 +36,15 @@ export interface GetResponse<T> extends ServiceResponse {
 export type PatchResponse<T> = GetResponse<T>;
 
 export interface ErrorMessage {
-    message: 'string';
+    field?: string;
+    message: string;
 }
 
 export interface ErrorResponse extends ServiceResponse {
     errors: ErrorMessage[];
 }
+
+export type ErrorsState<T> = Partial<Record<keyof T, string>>;
 
 export type ApiCustomBodyService<T, K> = (
     data: T,

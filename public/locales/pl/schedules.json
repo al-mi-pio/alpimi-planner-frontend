@@ -1,5 +1,20 @@
 {
     "Modified: {{time}} ago": "Zmodyfikowano: {{time}} temu",
-    "Create a new schedule": "Utwórz nowy plan",
-    "My schedules": "Moje plany"
+    "Details": "Szczegóły",
+    "My schedules": "Moje plany",
+    "Basic": "Podstawowe",
+    "Name": "Nazwa",
+    "School year start date": "Data rozpoczęcia semestru",
+    "School year end date": "Data zakończenia semestru",
+    "Advanced": "Zaawansowane",
+    "School hour": "Godzina lekcyjna",
+    "School days": "Dni zajęć szkolnych",
+    "Create": "Utwórz",
+    "Monday": "Poniedziałek",
+    "Tuesday": "Wtorek",
+    "Wednesday": "Środa",
+    "Thursday": "Czwartek",
+    "Friday": "Piątek",
+    "Saturday": "Sobota",
+    "Sunday": "Niedziela"
 }

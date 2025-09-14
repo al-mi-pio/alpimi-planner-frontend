@@ -1,5 +1,20 @@
 {
     "Modified: {{time}} ago": "Modified: {{time}} ago",
-    "Create a new schedule": "Create a new schedule",
-    "My schedules": "My schedules"
+    "Details": "Details",
+    "My schedules": "My schedules",
+    "Basic": "Basic",
+    "Name": "Name",
+    "School year start date": "School year start date",
+    "School year end date": "School year end date",
+    "Advanced": "Advanced",
+    "School hour": "School hour",
+    "School days": "School days",
+    "Create": "Create",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Sunday": "Sunday"
 }
