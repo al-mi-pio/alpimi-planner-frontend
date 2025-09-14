@@ -1,4 +1,9 @@
-import { createSchedule } from '@/shared/constants/routes';
+import { TFunction } from 'i18next';
+
+import { ScheduleForm } from '@/features/schedules/types';
+import { createSchedule, schedules } from '@/shared/constants/routes';
+import { weekDays } from '@/shared/constants/time';
+import { capitalize } from '@/shared/utils/string';
 
 export const schedulesDashboardHeader = {
     header: 'Schedule browser',
@@ -9,3 +14,25 @@ export const schedulesDashboardHeader = {
         },
     ],
 };
+
+export const createScheduleDashboardHeader = {
+    header: 'Create new',
+    navigation: [
+        {
+            label: 'Create new',
+            route: createSchedule,
+        },
+    ],
+    backRoute: schedules,
+};
+
+export const getDefaultScheduleForm = (t: TFunction): ScheduleForm => ({
+    name: '',
+    schoolHour: 45,
+    schoolYearStart: '',
+    schoolYearEnd: '',
+    schoolDays: weekDays.slice(1, -1).map((day) => ({
+        label: t(capitalize(day)),
+        value: day,
+    })),
+});
