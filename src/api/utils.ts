@@ -1,6 +1,6 @@
 import { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 
-import { ErrorResponse } from '@/api/types';
+import { ErrorMessage, ErrorResponse } from '@/api/types';
 import i18n from '@/i18n';
 
 export const parseAxiosResponse = <T>({ data, status }: AxiosResponse<T>) => ({
@@ -26,3 +26,10 @@ export const catchApiErrors = (error: ErrorResponse | AxiosError) => {
     if ('response' in error && error.response) throw error.response.data;
     throw error;
 };
+
+export const getErrorsState = (errors: ErrorMessage[]) =>
+    errors.reduce(
+        (prev, curr) =>
+            curr.field ? { ...prev, [curr.field]: curr.message } : prev,
+        {}
+    );
