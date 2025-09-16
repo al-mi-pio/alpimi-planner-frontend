@@ -20,8 +20,13 @@ export const InputStyles = css<{ $error?: boolean }>`
     ${(props) =>
         props.$error
             ? `outline: 2px solid ${props.theme.colors.error};
-                   color: ${props.theme.colors.error};`
+                   input, & {color: ${props.theme.colors.error};}`
             : ''};
+
+    & > input::-webkit-outer-spin-button,
+    & > input::-webkit-inner-spin-button {
+        display: none;
+    }
 `;
 
 export const StyledInput = styled.input<{ $error?: boolean }>`

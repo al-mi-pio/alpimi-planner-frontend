@@ -1,36 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledNumber = styled.div`
-    & input {
-        width: 5em;
-    }
+export const SpinButtons = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
-    & {
-        position: relative;
-        width: min-content;
-    }
-
-    &:after,
-    &:before {
-        position: absolute;
-        right: 5px;
-        width: 2em;
-        height: 1.4em;
-        font-size: 12px;
-        pointer-events: none;
-        padding-left: 4px;
-        color: ${({ theme }) => theme.colors.secondaryText};
-        background: ${({ theme }) => theme.colors.primaryAccent};
-    }
-
-    &:after {
-        content: '\\25B2';
-        margin-top: 10px;
-    }
-
-    &:before {
-        content: '\\25BC';
-        margin-bottom: -8px;
-        bottom: 1em;
-    }
+export const SpinButton = styled.div`
+    color: ${({ theme }) => theme.colors.secondaryText};
+    font-size: 11px;
+    line-height: 11px;
+    user-select: none;
+    cursor: pointer;
 `;
