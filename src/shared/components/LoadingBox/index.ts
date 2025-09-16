@@ -1,3 +1,1 @@
-import LoadingBox from '@/shared/components/LoadingBox/LoadingBox';
-
-export default LoadingBox;
+export { default } from '@/shared/components/LoadingBox/LoadingBox';

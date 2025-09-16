@@ -1,3 +1,1 @@
-import Link from '@/shared/components/Link/Link';
-
-export default Link;
+export { default } from '@/shared/components/Link/Link';

@@ -1,3 +1,1 @@
-import Number from '@/shared/components/Number/Number';
-
-export default Number;
+export { default } from '@/shared/components/Number/Number';

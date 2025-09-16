@@ -1,3 +1,1 @@
-import Select from '@/shared/components/Select/Select';
-
-export default Select;
+export { default } from '@/shared/components/Select/Select';

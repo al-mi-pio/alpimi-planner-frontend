@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import Dashboard from '@/features/dashboard/template';
 import { createScheduleDashboardHeader } from '@/features/schedules/constants';
-import CreateSchedulePage from '@/features/schedules/pages/create/index';
+import CreateSchedulePage from '@/features/schedules/pages/create';
 import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {

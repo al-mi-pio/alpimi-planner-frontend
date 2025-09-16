@@ -1,3 +1,1 @@
-import Date from '@/shared/components/Date/Date';
-
-export default Date;
+export { default } from '@/shared/components/Date/Date';
