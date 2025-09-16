@@ -26,7 +26,7 @@ export interface TableProps extends ComponentPropsWithRef<'table'> {
 /**
  * A UI component used to display two-dimensional data
  */
-export const Table = ({
+const Table = ({
     columns,
     data,
     selectedItem,
@@ -70,3 +70,5 @@ export const Table = ({
         </StyledTable>
     );
 };
+
+export default Table;

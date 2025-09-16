@@ -1,3 +1,1 @@
-import H from '@/shared/components/H/H';
-
-export default H;
+export { default } from '@/shared/components/H/H';

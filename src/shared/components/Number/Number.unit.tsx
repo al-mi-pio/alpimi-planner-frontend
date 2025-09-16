@@ -1,3 +1,5 @@
+import { act } from 'react';
+
 import { userEvent } from '@storybook/test';
 import { afterEach, describe, expect, vi, test } from 'vitest';
 
@@ -10,11 +12,9 @@ describe('Number', () => {
     });
 
     test('Render correct labels', () => {
-        render(
-            <Number label="Test label" error="Test error" defaultValue="3" />
-        );
+        render(<Number label="Test label" error="Test error" value="3" />);
 
-        screen.getByRole('spinbutton', { name: 'Test label Test error' });
+        screen.getByRole('spinbutton', { name: 'Test label ▲ ▼ Test error' });
         expect(screen.getByRole('spinbutton')).toHaveProperty('value', '3');
     });
 
@@ -28,6 +28,19 @@ describe('Number', () => {
         await user.type(input, '123');
 
         expect(mockOnChange).toBeCalledTimes(3);
+    });
+
+    test('Change value when input provided', async () => {
+        const user = userEvent.setup();
+
+        render(<Number />);
+
+        const input = screen.getByRole('spinbutton');
+
+        await act(async () => {
+            await user.type(input, '123');
+        });
+
         expect(screen.getByRole('spinbutton')).toHaveProperty('value', '123');
     });
 

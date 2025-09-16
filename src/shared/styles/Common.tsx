@@ -20,12 +20,44 @@ export const InputStyles = css<{ $error?: boolean }>`
     ${(props) =>
         props.$error
             ? `outline: 2px solid ${props.theme.colors.error};
-                   color: ${props.theme.colors.error};`
+                   input, & {color: ${props.theme.colors.error};}`
             : ''};
+
+    & > input::-webkit-outer-spin-button,
+    & > input::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    & > input[type='number'] {
+        appearance: textfield;
+    }
 `;
 
 export const StyledInput = styled.input<{ $error?: boolean }>`
     ${InputStyles}
+`;
+
+export const InnerInput = styled.input`
+    font-size: ${fontSizes.small};
+    line-height: ${lineHeights.small};
+    background-color: transparent;
+    border: none;
+    padding: 0 0 0 1px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const InputWrapper = styled.div<{ $error?: boolean }>`
+    ${InputStyles}
+
+    &:has(input:focus-visible) {
+        ${FocusStyle}
+    }
+    display: flex;
+    gap: ${sizes.smallXL};
 `;
 
 export const ButtonStyles = (appearance?: Appearance) => css`
@@ -43,7 +75,16 @@ export const ButtonStyles = (appearance?: Appearance) => css`
                   `border-color: ${props.theme.colors.success};`};
     }
 
-    &:hover {
+    &:disabled {
+        ${({ theme }) =>
+            appearance === 'secondary'
+                ? `> p {color: color-mix(in srgb, ${theme.colors.primaryText} 50%, black 50%);}` +
+                  `border-color: color-mix(in srgb, ${theme.colors.primaryText} 50%, black 50%);`
+                : `background-color: color-mix(in srgb, ${theme.colors.success} 50%, black 50%);` +
+                  `border-color: color-mix(in srgb, ${theme.colors.success} 20%, black 80%);`};
+    }
+
+    &:hover:not(:disabled) {
         cursor: pointer;
         background-color: ${(props) =>
             appearance === 'secondary'
@@ -51,7 +92,11 @@ export const ButtonStyles = (appearance?: Appearance) => css`
                 : `color-mix(in srgb, ${props.theme.colors.success} 80%, black 20%)`};
     }
 
-    &:active {
+    &:hover:disabled {
+        cursor: not-allowed;
+    }
+
+    &:active:not([disabled]) {
         background-color: ${(props) =>
             appearance === 'secondary'
                 ? `color(from ${props.theme.colors.primaryText} srgb r g b / 0.3)`

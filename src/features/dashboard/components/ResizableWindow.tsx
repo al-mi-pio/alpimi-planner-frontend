@@ -6,7 +6,7 @@ import {
     Tab,
     Tabs,
     Wrapper,
-} from '@/features/dashboard/pages/editor/styles/ResizableWindow.style';
+} from '@/features/dashboard/styles/ResizableWindow.style';
 
 export interface Tab {
     id: string;

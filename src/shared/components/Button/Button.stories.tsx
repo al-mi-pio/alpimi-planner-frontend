@@ -22,3 +22,10 @@ export const Default: StoryObj<typeof Button> = {
         onClick: fn(),
     },
 };
+
+export const Disabled: StoryObj<typeof Button> = {
+    args: {
+        ...Default.args,
+        disabled: true,
+    },
+};

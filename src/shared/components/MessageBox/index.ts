@@ -1,3 +1,1 @@
-import MessageBox from '@/shared/components/MessageBox/MessageBox';
-
-export default MessageBox;
+export { default } from '@/shared/components/MessageBox/MessageBox';

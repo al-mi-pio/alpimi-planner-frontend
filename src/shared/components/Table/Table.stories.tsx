@@ -4,7 +4,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import P from '@/shared/components/P';
-import { Table, TableProps } from '@/shared/components/Table/Table';
+import Table from '@/shared/components/Table';
+import { TableProps } from '@/shared/components/Table/Table';
 import { TableColumn } from '@/shared/components/Table/types';
 import { warningIconRenderFn } from '@/shared/utils/table';
 

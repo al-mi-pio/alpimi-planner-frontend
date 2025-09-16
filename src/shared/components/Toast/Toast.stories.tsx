@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { toast } from 'react-toastify';
 
 import Button from '@/shared/components/Button';
-import Toast from '@/shared/components/Toast/index';
+import Toast from '@/shared/components/Toast';
 import { StoryWrapper } from '@/shared/styles/Stories';
 
 const CustomToast = ({ content }: { content: string }) => {
