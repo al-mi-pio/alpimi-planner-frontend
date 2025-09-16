@@ -4,10 +4,7 @@ import {
     SpinButton,
     SpinButtons,
 } from '@/shared/components/Number/Number.style';
-import {
-    SearchInput,
-    StyledSearch,
-} from '@/shared/components/Search/Search.style';
+import { InnerInput, InputWrapper } from '@/shared/styles/Common';
 import { Label, ErrorDescription } from '@/shared/styles/Strings';
 import { InputProps } from '@/shared/types/inputs';
 
@@ -25,8 +22,8 @@ const Number = ({ label, error, ...defaultProps }: InputProps) => {
     return (
         <label>
             {label && <Label>{label}</Label>}
-            <StyledSearch $error={!!error}>
-                <SearchInput
+            <InputWrapper $error={!!error}>
+                <InnerInput
                     aria-invalid={!!error}
                     aria-describedby={error ? errorDescriptionId : undefined}
                     type="number"
@@ -83,7 +80,7 @@ const Number = ({ label, error, ...defaultProps }: InputProps) => {
                         &#9660;
                     </SpinButton>
                 </SpinButtons>
-            </StyledSearch>
+            </InputWrapper>
 
             {error && (
                 <ErrorDescription role="alert" id={errorDescriptionId}>

@@ -33,6 +33,29 @@ export const StyledInput = styled.input<{ $error?: boolean }>`
     ${InputStyles}
 `;
 
+export const InnerInput = styled.input`
+    font-size: ${fontSizes.small};
+    line-height: ${lineHeights.small};
+    background-color: transparent;
+    border: none;
+    padding: 0 0 0 1px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const InputWrapper = styled.div<{ $error?: boolean }>`
+    ${InputStyles}
+
+    &:has(input:focus-visible) {
+        ${FocusStyle}
+    }
+    display: flex;
+    gap: ${sizes.smallXL};
+`;
+
 export const ButtonStyles = (appearance?: Appearance) => css`
     & {
         min-width: ${sizes.large3Xl};
