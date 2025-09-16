@@ -43,7 +43,16 @@ export const ButtonStyles = (appearance?: Appearance) => css`
                   `border-color: ${props.theme.colors.success};`};
     }
 
-    &:hover {
+    &:disabled {
+        ${({ theme }) =>
+            appearance === 'secondary'
+                ? `> p {color: color-mix(in srgb, ${theme.colors.primaryText} 50%, black 50%);}` +
+                  `border-color: color-mix(in srgb, ${theme.colors.primaryText} 50%, black 50%);`
+                : `background-color: color-mix(in srgb, ${theme.colors.success} 50%, black 50%);` +
+                  `border-color: color-mix(in srgb, ${theme.colors.success} 20%, black 80%);`};
+    }
+
+    &:hover:not(:disabled) {
         cursor: pointer;
         background-color: ${(props) =>
             appearance === 'secondary'
@@ -51,7 +60,11 @@ export const ButtonStyles = (appearance?: Appearance) => css`
                 : `color-mix(in srgb, ${props.theme.colors.success} 80%, black 20%)`};
     }
 
-    &:active {
+    &:hover:disabled {
+        cursor: not-allowed;
+    }
+
+    &:active:not([disabled]) {
         background-color: ${(props) =>
             appearance === 'secondary'
                 ? `color(from ${props.theme.colors.primaryText} srgb r g b / 0.3)`
