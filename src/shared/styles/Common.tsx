@@ -27,6 +27,10 @@ export const InputStyles = css<{ $error?: boolean }>`
     & > input::-webkit-inner-spin-button {
         display: none;
     }
+
+    & > input[type='number'] {
+        appearance: textfield;
+    }
 `;
 
 export const StyledInput = styled.input<{ $error?: boolean }>`
