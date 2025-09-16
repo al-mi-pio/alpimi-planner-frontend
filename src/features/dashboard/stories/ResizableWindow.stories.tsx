@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {
     ResizableWindow,
     ResizableWindowProps,
-} from '@/features/dashboard/pages/editor/components/ResizableWindow';
+} from '@/features/dashboard/components/ResizableWindow';
 import P from '@/shared/components/P';
 
 const Wrapper = styled.div`
@@ -54,7 +54,7 @@ const CustomResizableWindow = ({ tabs, children }: ResizableWindowProps) => (
 );
 
 export default {
-    title: 'Features/Dashboard/Pages/Editor/Components/ResizableWindow',
+    title: 'Features/Dashboard/Components/ResizableWindow',
     component: CustomResizableWindow,
     parameters: {
         docs: {
