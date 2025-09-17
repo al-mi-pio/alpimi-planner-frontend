@@ -7,7 +7,7 @@ import type { DefaultError } from '@tanstack/query-core';
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from '@/api/types';
-import { login } from '@/shared/constants/routes';
+import { tokenExpirationUrl } from '@/shared/constants/routes';
 
 export const useMutateData = <
     TData = unknown,
@@ -27,17 +27,7 @@ export const useMutateData = <
         const result = error as ErrorResponse | AxiosError;
         if (result)
             if ('errors' in result) {
-                if (result.status === 401)
-                    navigate({
-                        pathname: login,
-                        search:
-                            '?redirect=' +
-                            encodeURIComponent(
-                                location.search
-                                    ? location.pathname + '?' + location.search
-                                    : location.pathname
-                            ),
-                    });
+                if (result.status === 401) navigate(tokenExpirationUrl);
             } else toast.error(t(result.message));
 
         if (mutationOptions.onError)
