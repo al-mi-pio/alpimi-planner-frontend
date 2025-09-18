@@ -1,19 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import styled from 'styled-components';
-
 import P from '@/shared/components/P';
 import Table from '@/shared/components/Table';
 import { TableProps } from '@/shared/components/Table/Table';
 import { TableColumn } from '@/shared/components/Table/types';
+import { StoryWrapper } from '@/shared/styles/Stories';
 import { warningIconRenderFn } from '@/shared/utils/table';
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-`;
 
 const data = [
     {
@@ -61,7 +54,7 @@ const CustomTable = (props: TableProps) => {
     const [selectedItem, setSelectedItem] = useState<string | undefined>();
 
     return (
-        <Wrapper>
+        <StoryWrapper>
             <Table
                 selectedItem={selectedItem}
                 onSelectItem={setSelectedItem}
@@ -69,7 +62,7 @@ const CustomTable = (props: TableProps) => {
                 {...props}
             />
             <P>{`Current selected item id: ${selectedItem}`}</P>
-        </Wrapper>
+        </StoryWrapper>
     );
 };
 
