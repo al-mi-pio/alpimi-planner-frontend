@@ -4,6 +4,7 @@
     "Search": "Search",
     "Close": "Close",
     "Network Error": "Network Error",
+    "Trying to reconnect...": "Trying to reconnect...",
     "Storybook is not setup for mocking": "Storybook is not setup for mocking",
     "{{count}} h": "{{count}} h",
     "{{count}} wk": "{{count}} wk",
