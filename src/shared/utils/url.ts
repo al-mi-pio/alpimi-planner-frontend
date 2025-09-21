@@ -6,7 +6,7 @@ export const tokenExpirationUrl = () => ({
         '?redirect=' +
         encodeURIComponent(
             location.search
-                ? location.pathname + '?' + location.search
+                ? location.pathname + location.search
                 : location.pathname
         ),
 });
