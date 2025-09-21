@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from '@/api/types';
-import { login } from '@/shared/constants/routes';
+import { tokenExpirationUrl } from '@/shared/utils/url';
 
 export const useGetData = <T = object,>(
     queryOptions: UndefinedInitialDataOptions<T>
@@ -22,18 +22,10 @@ export const useGetData = <T = object,>(
             if (result === 404)
                 toast.error(t('Storybook is not setup for mocking'));
             else if ('errors' in result)
-                if (result.status === 401)
-                    navigate({
-                        pathname: login,
-                        search:
-                            '?redirect=' +
-                            encodeURIComponent(
-                                location.search
-                                    ? location.pathname + '?' + location.search
-                                    : location.pathname
-                            ),
-                    });
-                else toast.error(result.errors[0].message);
+                if (result.status === 401) {
+                    localStorage.removeItem('accessToken');
+                    navigate(tokenExpirationUrl());
+                } else toast.error(result.errors[0].message);
             else toast.error(t(result.message));
     }, [queryState.error]);
 

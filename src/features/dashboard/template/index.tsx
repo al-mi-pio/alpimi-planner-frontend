@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { TokenRefreshProvider } from '@/features/auth/providers/TokenRefreshProvider';
 import {
     DashboardHeader,
     DashboardHeaderProps,
@@ -16,12 +17,12 @@ interface DashboardProps {
 }
 
 const Dashboard = ({ headerProps, children }: DashboardProps) => (
-    <>
+    <TokenRefreshProvider>
         <DashboardBodyStyles />
         <DashboardHeader navigation={[]} {...headerProps} />
         {!!children && <Content>{children}</Content>}
         <Toast />
-    </>
+    </TokenRefreshProvider>
 );
 
 export default Dashboard;

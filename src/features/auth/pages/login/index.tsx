@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'react-toastify';
@@ -16,12 +16,16 @@ import Link from '@/shared/components/Link';
 import LoadingBox from '@/shared/components/LoadingBox';
 import MessageBox from '@/shared/components/MessageBox';
 import Text from '@/shared/components/Text';
-import { resetPassword, schedules } from '@/shared/constants/routes';
+import {
+    login as loginUrl,
+    resetPassword,
+    schedules,
+} from '@/shared/constants/routes';
 import { MessageType } from '@/shared/types';
 
 const LoginPage = () => {
     const { t } = useTranslation('auth');
-    const [params] = useSearchParams();
+    const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
     const [message, setMessage] = useState(
         params.has('redirect') ? t('Session expired, please sign in again') : ''
@@ -46,6 +50,13 @@ const LoginPage = () => {
         onError,
         onSuccess,
     });
+
+    useEffect(() => {
+        if (params.get('redirect') === loginUrl) setParams({});
+
+        if (localStorage.getItem('accessToken'))
+            navigate(params.get('redirect') ?? schedules);
+    }, []);
 
     return (
         <LoadingBox loading={isPending}>
