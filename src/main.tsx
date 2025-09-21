@@ -9,6 +9,7 @@ import './i18n';
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
 import Dashboard from '@/features/dashboard/template';
+import Page404 from '@/features/main/pages/404';
 import {
     createScheduleDashboardHeader,
     schedulesDashboardHeader,
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
     },
     {
         path: '*',
-        element: 'Error 404',
+        element: <Page404 />,
     },
 ]);
 
