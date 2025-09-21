@@ -1,20 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import { ReactNode, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
 import { AxiosError } from 'axios';
 
 import { authRefresh } from '@/api/services/authService';
 import { ErrorResponse } from '@/api/types';
+import { ReconnectModal } from '@/features/main/components/ReconnectModal';
 import LoadingBox from '@/shared/components/LoadingBox';
-import Modal from '@/shared/components/Modal';
 import { tokenRefreshFrequency } from '@/shared/constants/configuration';
 import { tokenExpirationUrl } from '@/shared/utils/url';
 
 export const TokenRefreshProvider = ({ children }: { children: ReactNode }) => {
     const navigate = useNavigate();
-    const { t } = useTranslation('general');
+
     const { isPending, error, data, failureCount, failureReason } = useQuery({
         queryKey: ['token'],
         queryFn: authRefresh,
@@ -42,9 +41,7 @@ export const TokenRefreshProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <LoadingBox loading={isPending}>
-            <Modal open={!!failureCount} title={t('Network Error')}>
-                {t('Trying to reconnect...')}
-            </Modal>
+            {!!failureCount && <ReconnectModal />}
             {children}
         </LoadingBox>
     );
