@@ -7,7 +7,7 @@ import type { DefaultError } from '@tanstack/query-core';
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from '@/api/types';
-import { tokenExpirationUrl } from '@/shared/constants/routes';
+import { tokenExpirationUrl } from '@/shared/utils/url';
 
 export const useMutateData = <
     TData = unknown,
@@ -27,7 +27,10 @@ export const useMutateData = <
         const result = error as ErrorResponse | AxiosError;
         if (result)
             if ('errors' in result) {
-                if (result.status === 401) navigate(tokenExpirationUrl);
+                if (result.status === 401) {
+                    localStorage.removeItem('accessToken');
+                    navigate(tokenExpirationUrl());
+                }
             } else toast.error(t(result.message));
 
         if (mutationOptions.onError)

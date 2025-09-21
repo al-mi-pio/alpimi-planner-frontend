@@ -15,14 +15,3 @@ export const scheduleData = (scheduleName: string) =>
 
 export const studentView = (userUrl: string, scheduleName: string) =>
     `/schedules/${userUrl}/${scheduleName}`;
-
-export const tokenExpirationUrl = {
-    pathname: login,
-    search:
-        '?redirect=' +
-        encodeURIComponent(
-            location.search
-                ? location.pathname + '?' + location.search
-                : location.pathname
-        ),
-};
