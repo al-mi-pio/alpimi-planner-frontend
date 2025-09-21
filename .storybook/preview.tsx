@@ -4,8 +4,11 @@ import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter } from 'react-router';
 
+import { http, HttpResponse } from 'msw';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { ThemeProvider } from 'styled-components';
 
+import { authRefreshUrl } from '@/api/services/authService';
 import i18n from '@/i18n';
 import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
@@ -15,6 +18,10 @@ import {
     lightColors,
     lightTheme,
 } from '@/shared/constants/colors';
+
+initialize({
+    onUnhandledRequest: 'bypass',
+});
 
 const queryClient = new QueryClient();
 
@@ -62,8 +69,20 @@ const preview: Preview = {
             ],
             default: 'dark',
         },
+        msw: {
+            handlers: {
+                auth: [
+                    http.get(authRefreshUrl, () => {
+                        return HttpResponse.json({
+                            content: '123',
+                        });
+                    }),
+                ],
+            },
+        },
     },
     tags: ['autodocs'],
+    loaders: [mswLoader],
     decorators: [
         (Story, context) => {
             const theme = context.parameters.theme || context.globals.theme;
