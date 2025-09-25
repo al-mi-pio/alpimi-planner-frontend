@@ -40,9 +40,13 @@ export const User = styled.div`
     align-items: center;
     padding-right: 5%;
 
-    & svg {
-        width: 40px;
-        height: 40px;
+    & > div > button {
+        width: 45px;
+        height: 45px;
+        > svg {
+            max-width: 35px;
+            max-height: 35px;
+        }
     }
 `;
 

@@ -52,7 +52,7 @@ const LoginPage = () => {
     });
 
     useEffect(() => {
-        if (params.get('redirect') === loginUrl) setParams({});
+        if (params.get('redirect')?.startsWith(loginUrl)) setParams({});
 
         if (localStorage.getItem('accessToken'))
             navigate(params.get('redirect') ?? schedules);
