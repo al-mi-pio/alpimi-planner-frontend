@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { ComponentPropsWithRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -12,8 +13,10 @@ import {
     Wrapper,
 } from '@/features/dashboard/styles/DashboardHeader.style';
 import { NavButton } from '@/features/dashboard/types';
+import Dropdown, { DropdownItem } from '@/shared/components/Dropdown';
 import H from '@/shared/components/H';
 import Link from '@/shared/components/Link';
+import { login } from '@/shared/constants/routes';
 import Arrowhead from '@/shared/icons/Arrowhead';
 import UserCircle from '@/shared/icons/UserCircle';
 
@@ -33,6 +36,7 @@ export const DashboardHeader = ({
     navigation,
     ...defaultProps
 }: DashboardHeaderProps) => {
+    const queryClient = useQueryClient();
     const navigate = useNavigate();
     const { t } = useTranslation('dashboard');
 
@@ -67,8 +71,20 @@ export const DashboardHeader = ({
             </Header>
 
             <User>
-                {/*TODO: User dropdown*/}
-                <UserCircle />
+                <Dropdown
+                    label={<UserCircle />}
+                    aria-label={t('User dropdown button')}
+                >
+                    <DropdownItem
+                        onClick={() => {
+                            queryClient.clear();
+                            localStorage.removeItem('accessToken');
+                            navigate(login);
+                        }}
+                    >
+                        {'Logout'}
+                    </DropdownItem>
+                </Dropdown>
             </User>
         </Wrapper>
     );
