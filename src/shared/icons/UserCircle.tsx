@@ -8,7 +8,7 @@ const UserCircle = ({ secondary }: { secondary?: boolean }) => (
         y="0px"
         width="50"
         height="50"
-        viewBox="-5 -5 60 60"
+        viewBox="-7 -5 60 60"
     >
         <path
             fill="currentColor"
