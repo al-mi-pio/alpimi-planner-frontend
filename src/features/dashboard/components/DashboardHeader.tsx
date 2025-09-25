@@ -73,7 +73,7 @@ export const DashboardHeader = ({
             <User>
                 <Dropdown
                     label={<UserCircle />}
-                    aria-label={t('User dropdown button')}
+                    buttonLabel={t('User dropdown button')}
                 >
                     <DropdownItem
                         onClick={() => {
