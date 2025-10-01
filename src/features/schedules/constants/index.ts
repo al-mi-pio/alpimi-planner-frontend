@@ -1,7 +1,13 @@
 import { TFunction } from 'i18next';
 
 import { ScheduleForm } from '@/features/schedules/types';
-import { createSchedule, schedules } from '@/shared/constants/routes';
+import {
+    createSchedule,
+    editSchedule,
+    scheduleData,
+    schedules,
+    viewSchedule,
+} from '@/shared/constants/routes';
 import { weekDays } from '@/shared/constants/time';
 import { capitalize } from '@/shared/utils/string';
 
@@ -14,6 +20,25 @@ export const schedulesDashboardHeader = {
         },
     ],
 };
+
+export const editorDashboardHeader = (scheduleName: string) => ({
+    header: scheduleName,
+    navigation: [
+        {
+            label: 'Edit',
+            route: editSchedule(scheduleName),
+        },
+        {
+            label: 'Data',
+            route: scheduleData(scheduleName),
+        },
+        {
+            label: 'View',
+            route: viewSchedule(scheduleName),
+        },
+    ],
+    backRoute: schedules,
+});
 
 export const createScheduleDashboardHeader = {
     header: 'Creating new schedule',
