@@ -37,7 +37,7 @@ const Dropdown = ({
     const buttonRef = useRef<HTMLButtonElement>(null);
     const contentRef = useRef<HTMLUListElement>(null);
 
-    const handleClick = () => {
+    const setPosition = () => {
         if (!open) {
             const contentHeight = contentRef.current?.clientHeight ?? 0;
             const contentWidth = contentRef.current?.clientWidth ?? 0;
@@ -62,6 +62,10 @@ const Dropdown = ({
             setDropdownTop(topPosition);
             setDropdownLeft(leftPosition);
         }
+    };
+
+    const handleClick = () => {
+        setPosition();
         setOpen((prev) => !prev);
     };
 
@@ -77,6 +81,7 @@ const Dropdown = ({
             }
         };
 
+        setPosition();
         document.addEventListener('click', handler);
 
         return () => {
