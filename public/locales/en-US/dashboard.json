@@ -4,5 +4,8 @@
     "Creating new schedule": "Creating new schedule",
     "Add new": "Add new",
     "User dropdown button": "User dropdown button",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "Classroom: {{classroom.name}}": "Classroom: {{classroom.name}}",
+    "Teacher: {{teacher.name}}": "Teacher: {{teacher.name}}",
+    "Group: {{group.name}}": "Group: {{group.name}}"
 }

@@ -4,5 +4,8 @@
     "Creating new schedule": "Tworzenie nowego planu",
     "Add new": "Dodaj nowy",
     "User dropdown button": "Przycisk menu rozsuwanego użytkownika",
-    "Logout": "Wyloguj"
+    "Logout": "Wyloguj",
+    "Classroom: {{classroom.name}}": "Sala: {{classroom.name}}",
+    "Teacher: {{teacher.name}}": "Nauczyciel: {{teacher.name}}",
+    "Group: {{group.name}}": "Grupa: {{group.name}}"
 }
