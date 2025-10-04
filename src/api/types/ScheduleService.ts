@@ -1,9 +1,9 @@
-import { ApiGetAllService, ApiPostService } from '@/api/types';
+import { ApiGetAllService, ApiPostService, Entity } from '@/api/types';
 
-export interface Schedule {
+export type Schedule = Entity<{
     name: string;
     modifyDate: string;
-}
+}>;
 
 export interface CreateScheduleDTO {
     name: string;
