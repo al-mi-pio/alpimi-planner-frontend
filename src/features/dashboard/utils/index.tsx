@@ -1,10 +1,10 @@
-import { LessonBlockProperty } from '@/features/dashboard/components/LessonBlock';
+import { Status } from '@/features/dashboard/types';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import WarningSign from '@/shared/icons/WarningSign';
 
-export const renderWarningIcon = ({ status }: LessonBlockProperty) =>
-    status === 'warning' ? (
+export const renderWarningIcon = (status: Status) =>
+    status === Status.Warning ? (
         <WarningSign />
-    ) : status === 'error' ? (
+    ) : status === Status.Error ? (
         <ErrorSign />
     ) : null;
