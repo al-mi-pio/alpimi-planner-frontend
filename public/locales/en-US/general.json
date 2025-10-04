@@ -6,6 +6,8 @@
     "Network Error": "Network Error",
     "Trying to reconnect...": "Trying to reconnect...",
     "Storybook is not setup for mocking": "Storybook is not setup for mocking",
+    "This page doesn't exist": "This page doesn't exist",
+    "Go back": "Go back",
     "{{count}} h": "{{count}} h",
     "{{count}} wk": "{{count}} wk",
     "{{count}} wk_other": "{{count}} wks",

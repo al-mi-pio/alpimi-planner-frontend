@@ -3,9 +3,14 @@
     "Schedule browser": "Przegląd planów",
     "Creating new schedule": "Tworzenie nowego planu",
     "Add new": "Dodaj nowy",
+    "Edit": "Edytuj",
+    "Data": "Dane",
+    "View": "Widok",
     "User dropdown button": "Przycisk menu rozsuwanego użytkownika",
     "Logout": "Wyloguj",
+    "None": "Brak",
     "Classroom: {{classroom.name}}": "Sala: {{classroom.name}}",
-    "Teacher: {{teacher.name}}": "Nauczyciel: {{teacher.name}}",
-    "Group: {{group.name}}": "Grupa: {{group.name}}"
+    "Teacher: {{lesson.teacher.name}}": "Nauczyciel: {{lesson.teacher.name}}",
+    "Group: {{subgroups}}": "Grupy: {{subgroups}}",
+    "Group: {{subgroups}}_one": "Grupa: {{subgroups}}"
 }

@@ -3,9 +3,14 @@
     "Schedule browser": "Schedule browser",
     "Creating new schedule": "Creating new schedule",
     "Add new": "Add new",
+    "Edit": "Edit",
+    "Data": "Data",
+    "View": "View",
     "User dropdown button": "User dropdown button",
     "Logout": "Logout",
+    "None": "None",
     "Classroom: {{classroom.name}}": "Classroom: {{classroom.name}}",
-    "Teacher: {{teacher.name}}": "Teacher: {{teacher.name}}",
-    "Group: {{group.name}}": "Group: {{group.name}}"
+    "Teacher: {{lesson.teacher.name}}": "Teacher: {{lesson.teacher.name}}",
+    "Group: {{subgroups}}": "Group: {{subgroups}}",
+    "Group: {{subgroups}}_other": "Groups: {{subgroups}}"
 }
