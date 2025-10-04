@@ -56,7 +56,7 @@ export const getDefaultScheduleForm = (t: TFunction): ScheduleForm => ({
     schoolHour: 45,
     schoolYearStart: '',
     schoolYearEnd: '',
-    schoolDays: weekDays.slice(1, -1).map((day) => ({
+    schoolDays: weekDays.slice(0, -2).map((day) => ({
         label: t(capitalize(day)),
         value: day,
     })),
