@@ -54,7 +54,9 @@ export const DashboardHeader = ({
                 <ButtonGroup>
                     {navigation.map(({ label, route }) => (
                         <StyledButton
-                            $selected={window.location.pathname === route}
+                            $selected={
+                                window.location.pathname === encodeURI(route)
+                            }
                             key={t(label)}
                             appearance="secondary"
                             label={t(label)}
@@ -82,7 +84,7 @@ export const DashboardHeader = ({
                             navigate(login);
                         }}
                     >
-                        {'Logout'}
+                        {t('Logout')}
                     </DropdownItem>
                 </Dropdown>
             </User>
