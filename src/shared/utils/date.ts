@@ -24,3 +24,11 @@ export const dateDifference = (date: string, newerDate?: string) => {
         count: Math.round(diff / 31_536_000_000),
     });
 };
+
+export const addMinutesToTime = (time: string, minutes: number) => {
+    const ms = minutes * 60 * 1000;
+    const date = new Date(ms + Date.parse(`1970-01-01T${time}:00Z`));
+    const [hours, min] = [date.getUTCHours(), date.getUTCMinutes()];
+
+    return `${hours < 10 ? '0' + hours : hours}:${min < 10 ? '0' + min : min}`;
+};
