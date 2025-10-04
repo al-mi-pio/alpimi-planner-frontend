@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { LessonBlock } from '@/features/dashboard/components/LessonBlock';
+import { Status } from '@/features/dashboard/types';
+import { getMockLessonBlockProps } from '@/features/dashboard/utils/mocks';
 
 export default {
     title: 'Features/Dashboard/Components/LessonBlock',
@@ -8,43 +10,16 @@ export default {
 } satisfies Meta<typeof LessonBlock>;
 
 export const Default: StoryObj<typeof LessonBlock> = {
-    args: {
-        lesson: {
-            name: 'Example lesson',
-            color: 30,
-        },
-        classroom: {
-            name: 'Class 001',
-            status: 'normal',
-        },
-        teacher: {
-            name: 'John',
-            status: 'normal',
-        },
-        group: {
-            name: 'G01',
-            status: 'normal',
-        },
-    },
+    args: getMockLessonBlockProps(0),
 };
 
 export const Warnings: StoryObj<typeof LessonBlock> = {
     args: {
-        lesson: {
-            name: 'Example lesson long name',
-            color: 30,
-        },
-        classroom: {
-            name: 'Class 001 the second',
-            status: 'normal',
-        },
-        teacher: {
-            name: 'John Paul II',
-            status: 'warning',
-        },
-        group: {
-            name: 'G01 G03-23a',
-            status: 'error',
+        ...getMockLessonBlockProps(0),
+        statuses: {
+            classroom: Status.Normal,
+            teacher: Status.Warning,
+            subgroups: Status.Error,
         },
     },
 };

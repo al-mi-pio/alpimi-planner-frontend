@@ -1,20 +1,28 @@
 import styled from 'styled-components';
 
 import { sizes } from '@/shared/constants/dimensions';
+import { FocusStyle } from '@/shared/styles/Common';
 
-export const Wrapper = styled.div`
-    width: 190px;
+export const Wrapper = styled.div<{ $hovered: boolean }>`
+    ${({ $hovered }) => ($hovered ? FocusStyle : '')};
+    min-width: 190px;
     height: 110px;
     display: flex;
     flex-direction: column;
     border-radius: ${sizes.smallXL};
     overflow: hidden;
+    cursor: grab;
 
     & p {
         color: ${({ theme }) => theme.colors.secondaryText};
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        transition: 100ms ease-out;
     }
 `;
 
