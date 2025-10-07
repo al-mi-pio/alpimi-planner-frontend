@@ -65,7 +65,11 @@ export default [
             'prettier/prettier': 'error',
             'import-x/default': 'off',
             'import-x/no-named-as-default': 'off',
-            'import-x/extensions': 'error',
+            'import-x/extensions': [
+                'error',
+                'ignorePackages',
+                { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' },
+            ],
             // 'react-compiler/react-compiler': 'error',
         },
     },
