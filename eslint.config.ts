@@ -39,11 +39,7 @@ export default [
             'import-x/resolver-next': [
                 createTypeScriptImportResolver({
                     alwaysTryTypes: true,
-                    project: [
-                        'tsconfig.app.json',
-                        'tsconfig.node.json',
-                        'tsconfig.json',
-                    ],
+                    project: ['./tsconfig.app.json', './tsconfig.node.json'],
                 }),
             ],
         },
