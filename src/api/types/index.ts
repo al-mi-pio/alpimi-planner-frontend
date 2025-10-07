@@ -71,3 +71,23 @@ export type ApiGetService<T> = (
 export type ApiPatchService<T> = (
     config?: AxiosRequestConfig
 ) => Promise<PatchResponse<T>>;
+
+export enum EntityType {
+    Availability = 'availability',
+    Classroom = 'classroom',
+    ClassroomType = 'classroomType',
+    Collision = 'collision',
+    CollisionType = 'collisionType',
+    DayOff = 'dayOff',
+    Group = 'group',
+    LessonBlock = 'lessonBlock',
+    LessonPeriod = 'lessonPeriod',
+    Lesson = 'lesson',
+    LessonType = 'lessonType',
+    Schedule = 'schedule',
+    ScheduleSettings = 'scheduleSettings',
+    Student = 'student',
+    Subgroup = 'subgroup',
+    Teacher = 'teacher',
+    User = 'user',
+}
