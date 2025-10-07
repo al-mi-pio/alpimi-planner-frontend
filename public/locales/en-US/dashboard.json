@@ -9,8 +9,8 @@
     "User dropdown button": "User dropdown button",
     "Logout": "Logout",
     "None": "None",
-    "Classroom: {{classroom.name}}": "Classroom: {{classroom.name}}",
-    "Teacher: {{lesson.teacher.name}}": "Teacher: {{lesson.teacher.name}}",
-    "Group: {{subgroups}}": "Group: {{subgroups}}",
-    "Group: {{subgroups}}_other": "Groups: {{subgroups}}"
+    "Classroom": "Classroom:",
+    "Teacher": "Teacher:",
+    "Group": "Group:",
+    "Group_other": "Groups:"
 }

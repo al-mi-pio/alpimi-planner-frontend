@@ -9,8 +9,8 @@
     "User dropdown button": "Przycisk menu rozsuwanego użytkownika",
     "Logout": "Wyloguj",
     "None": "Brak",
-    "Classroom: {{classroom.name}}": "Sala: {{classroom.name}}",
-    "Teacher: {{lesson.teacher.name}}": "Nauczyciel: {{lesson.teacher.name}}",
-    "Group: {{subgroups}}": "Grupy: {{subgroups}}",
-    "Group: {{subgroups}}_one": "Grupa: {{subgroups}}"
+    "Classroom": "Sala:",
+    "Teacher": "Nauczyciel:",
+    "Group": "Grupy:",
+    "Group_one": "Grupa:"
 }
