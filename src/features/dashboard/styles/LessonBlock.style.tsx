@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import { sizes } from '@/shared/constants/dimensions';
+import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 import { FocusStyle } from '@/shared/styles/Common';
 
 export const Wrapper = styled.div<{ $hovered: boolean }>`
     ${({ $hovered }) => ($hovered ? FocusStyle : '')};
     min-width: 190px;
+    max-width: 190px;
     height: 110px;
     display: flex;
     flex-direction: column;
@@ -13,10 +14,11 @@ export const Wrapper = styled.div<{ $hovered: boolean }>`
     overflow: hidden;
     cursor: grab;
 
-    & p {
+    & p,
+    & button {
         color: ${({ theme }) => theme.colors.secondaryText};
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: ${fontSizes.small};
+        line-height: ${lineHeights.small};
         white-space: nowrap;
     }
 
@@ -41,16 +43,41 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 ${sizes.smallXL};
+    padding: 6px ${sizes.smallXL};
 `;
 
 export const Row = styled.div`
+    flex: 1;
     display: inline-flex;
     gap: 2px;
+    overflow: auto;
+    align-items: center;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`;
+
+export const Clickable = styled.button`
+    padding: 0 ${sizes.smallXXL};
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    background: none;
 
     & > svg {
         min-width: 19px;
         max-width: 19px;
         height: 19px;
+    }
+
+    &:has(~ button)::after {
+        content: ',';
+    }
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.elementBackground}40;
     }
 `;

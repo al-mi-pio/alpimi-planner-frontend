@@ -6,7 +6,10 @@ export const getMockLessonBlockProps = (id: number) =>
         statuses: {
             classroom: Status.Normal,
             teacher: Status.Normal,
-            subgroups: Status.Normal,
+            subgroups: {
+                '1-0-0-0-0': Status.Normal,
+                '2-0-0-0-0': Status.Normal,
+            },
         },
         data: {
             id: `0-0-0-0-${id}`,
@@ -16,11 +19,14 @@ export const getMockLessonBlockProps = (id: number) =>
                     color: 40,
                 },
                 teacher: {
-                    name: 'John',
-                    surname: 'Paul',
+                    name: 'Jack',
+                    surname: 'Parsley',
                 },
-                subgroups: [{ name: 'G01' }],
+                subgroups: [
+                    { id: '1-0-0-0-0', name: 'G01' },
+                    { id: '2-0-0-0-0', name: 'G02' },
+                ],
             },
-            classroom: { name: 'Class 001' },
+            classroom: { name: 'Class D' },
         },
     }) as unknown as LessonBlockProps;

@@ -7,13 +7,19 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { EntityType } from '@/api/types';
 import { LessonBlock as LessonBlockType } from '@/api/types/LessonBlockService';
-import { HoveredBlockIdContext } from '@/features/dashboard/contexts';
 import {
+    HoveredBlockIdContext,
+    LessonBlockFiltersContext,
+} from '@/features/dashboard/contexts';
+import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
+import {
+    Clickable,
     Content,
+    Row,
     Title,
     Wrapper,
-    Row,
 } from '@/features/dashboard/styles/LessonBlock.style';
 import { Statuses } from '@/features/dashboard/types';
 import { renderWarningIcon } from '@/features/dashboard/utils';
@@ -36,6 +42,8 @@ export const LessonBlock = ({
     const { t } = useTranslation('dashboard');
     const ref = useRef<HTMLDivElement>(null);
     const hoveredBlockId = use(HoveredBlockIdContext);
+    const [, setLessonBlockFilters] = use(LessonBlockFiltersContext);
+    const { setSelectedEntity } = usePropertiesWindow();
 
     const handleDragstart = (e: DragEvent) => {
         e.dataTransfer?.setData('text/plain', (e.target as HTMLDivElement).id);
@@ -60,27 +68,79 @@ export const LessonBlock = ({
 
             <Content>
                 <Row>
-                    {renderWarningIcon(statuses.classroom)}
-                    <P>{t('Classroom: {{classroom.name}}', data)}</P>
+                    <P>{t('Classroom')}</P>
+
+                    <Clickable
+                        onClick={() =>
+                            setSelectedEntity({
+                                id: data.classroom.id,
+                                entity: EntityType.Classroom,
+                            })
+                        }
+                        onDoubleClick={() =>
+                            setLessonBlockFilters((prev) => ({
+                                ...prev,
+                                entityId: data.classroom.id,
+                            }))
+                        }
+                    >
+                        {renderWarningIcon(statuses.classroom)}
+                        {data.classroom.name}
+                    </Clickable>
                 </Row>
 
                 <Row>
-                    {renderWarningIcon(statuses.teacher)}
-                    <P>{t('Teacher: {{lesson.teacher.name}}', data)}</P>
+                    <P>{t('Teacher')}</P>
+
+                    <Clickable
+                        onClick={() =>
+                            setSelectedEntity({
+                                id: data.lesson.teacher.id,
+                                entity: EntityType.Teacher,
+                            })
+                        }
+                        onDoubleClick={() =>
+                            setLessonBlockFilters((prev) => ({
+                                ...prev,
+                                entityId: data.lesson.teacher.id,
+                            }))
+                        }
+                    >
+                        {renderWarningIcon(statuses.teacher)}
+                        {`${data.lesson.teacher.name} ${data.lesson.teacher.surname}`}
+                    </Clickable>
                 </Row>
 
                 <Row>
-                    {renderWarningIcon(statuses.subgroups)}
                     <P>
-                        {t('Group: {{subgroups}}', {
+                        {t('Group', {
                             count: data.lesson.subgroups.length,
-                            subgroups: data.lesson.subgroups.length
-                                ? data.lesson.subgroups
-                                      .map((subgroup) => subgroup.name)
-                                      .join(', ')
-                                : t('None'),
                         })}
                     </P>
+                    {data.lesson.subgroups.length
+                        ? data.lesson.subgroups.map((subgroup) => (
+                              <Clickable
+                                  key={subgroup.id}
+                                  onClick={() =>
+                                      setSelectedEntity({
+                                          id: subgroup.id,
+                                          entity: EntityType.Subgroup,
+                                      })
+                                  }
+                                  onDoubleClick={() =>
+                                      setLessonBlockFilters((prev) => ({
+                                          ...prev,
+                                          entityId: subgroup.id,
+                                      }))
+                                  }
+                              >
+                                  {renderWarningIcon(
+                                      statuses.subgroups[subgroup.id]
+                                  )}
+                                  {subgroup.name}
+                              </Clickable>
+                          ))
+                        : t('None')}
                 </Row>
             </Content>
         </Wrapper>

@@ -28,10 +28,7 @@ export const LessonBlockFolder = ({
     const handleClick = () => {
         setOpen((prev) =>
             Object.fromEntries(
-                Object.keys(prev).map((key) => [
-                    key,
-                    key === weekDayIndex && !prev[weekDayIndex],
-                ])
+                Object.keys(prev).map((key) => [key, key === weekDayIndex])
             )
         );
     };
