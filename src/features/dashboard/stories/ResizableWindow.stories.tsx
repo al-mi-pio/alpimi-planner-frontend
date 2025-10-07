@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import {
     ResizableWindow,
-    ResizableWindowProps,
+    type ResizableWindowProps,
 } from '@/features/dashboard/components/ResizableWindow';
 import P from '@/shared/components/P';
 

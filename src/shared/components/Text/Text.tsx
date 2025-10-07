@@ -1,6 +1,6 @@
-import { ComponentPropsWithRef, useId } from 'react';
+import { type ComponentPropsWithRef, useId } from 'react';
 
-import { TextTypes } from '@/shared/components/Text/types';
+import type { TextTypes } from '@/shared/components/Text/types';
 import { StyledInput } from '@/shared/styles/Common';
 import { ErrorDescription, Label } from '@/shared/styles/Strings';
 

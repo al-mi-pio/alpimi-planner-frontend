@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 import P from '@/shared/components/P';
 import Table from '@/shared/components/Table';
-import { TableProps } from '@/shared/components/Table/Table';
-import { TableColumn } from '@/shared/components/Table/types';
+import type { TableProps } from '@/shared/components/Table/Table';
+import type { TableColumn } from '@/shared/components/Table/types';
 import { StoryWrapper } from '@/shared/styles/Stories';
 import { warningIconRenderFn } from '@/shared/utils/table';
 

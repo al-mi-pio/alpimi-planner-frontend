@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { act, ChangeEvent } from 'react';
+import { act, type ChangeEvent } from 'react';
 
 import { describe, expect, vi, test, beforeEach, afterAll } from 'vitest';
 

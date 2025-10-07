@@ -1,6 +1,6 @@
-import { ComponentPropsWithRef, use, useRef } from 'react';
+import { type ComponentPropsWithRef, use, useRef } from 'react';
 
-import { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
+import type { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
 import { OpenFoldersContext } from '@/features/dashboard/contexts';
 import {
     Folder,

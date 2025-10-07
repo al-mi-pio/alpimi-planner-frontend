@@ -6,7 +6,7 @@ import {
 } from '@/shared/components/Checkbox/Checkbox.style';
 import P from '@/shared/components/P';
 import { ErrorDescription } from '@/shared/styles/Strings';
-import { InputProps } from '@/shared/types/inputs';
+import type { InputProps } from '@/shared/types/inputs';
 
 /**
  * A UI component which accepts user boolean input

@@ -1,6 +1,6 @@
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
-import { Appearance } from '@/shared/components/Button/types';
+import type { Appearance } from '@/shared/components/Button/types';
 import H from '@/shared/components/H';
 import { StyledButton } from '@/shared/styles/Common';
 

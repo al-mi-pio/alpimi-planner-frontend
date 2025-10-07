@@ -1,11 +1,11 @@
-import { UseMutateFunction } from '@tanstack/react-query';
-import { ChangeEvent, useEffect, useState } from 'react';
+import type { UseMutateFunction } from '@tanstack/react-query';
+import { type ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ErrorsState } from '@/api/types';
-import { CreateScheduleDTO } from '@/api/types/ScheduleService';
+import type { ErrorsState } from '@/api/types';
+import type { CreateScheduleDTO } from '@/api/types/ScheduleService';
 import { getDefaultScheduleForm } from '@/features/schedules/constants';
-import { ScheduleForm } from '@/features/schedules/types';
+import type { ScheduleForm } from '@/features/schedules/types';
 import { scheduleFormToDTO } from '@/features/schedules/utils';
 
 export interface useScheduleFormProps {

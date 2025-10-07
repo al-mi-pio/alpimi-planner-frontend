@@ -1,8 +1,8 @@
-import { ComponentPropsWithRef, DragEvent, useState } from 'react';
+import { type ComponentPropsWithRef, type DragEvent, useState } from 'react';
 
 import {
     LessonBlock,
-    LessonBlockProps,
+    type LessonBlockProps,
 } from '@/features/dashboard/components/LessonBlock';
 import { LessonBlockFolder } from '@/features/dashboard/components/LessonBlockFolder';
 import { StyledCell } from '@/features/dashboard/styles/Timetable.style';

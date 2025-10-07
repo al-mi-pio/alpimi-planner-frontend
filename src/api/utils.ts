@@ -1,6 +1,6 @@
-import { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
+import { type AxiosResponse, type AxiosRequestConfig, AxiosError } from 'axios';
 
-import { ErrorMessage, ErrorResponse } from '@/api/types';
+import type { ErrorMessage, ErrorResponse } from '@/api/types';
 import i18n from '@/i18n';
 
 export const parseAxiosResponse = <T>({ data, status }: AxiosResponse<T>) => ({

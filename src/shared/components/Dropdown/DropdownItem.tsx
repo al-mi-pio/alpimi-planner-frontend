@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
 import { StyledItem } from '@/shared/components/Dropdown/Dropdown.style';
 

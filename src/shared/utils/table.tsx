@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { CellValue } from '@/shared/components/Table/types';
+import type { CellValue } from '@/shared/components/Table/types';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import WarningSign from '@/shared/icons/WarningSign';
 import { IconWrapper } from '@/shared/styles/Table';

@@ -1,4 +1,4 @@
-import { ScheduleForm } from '@/features/schedules/types';
+import type { ScheduleForm } from '@/features/schedules/types';
 import { weekDays } from '@/shared/constants/time';
 
 export const schoolDaysToDTO = (schoolDays: string) => {

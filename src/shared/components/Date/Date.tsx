@@ -2,7 +2,7 @@ import { useId } from 'react';
 
 import { StyledInput } from '@/shared/styles/Common';
 import { Label, ErrorDescription } from '@/shared/styles/Strings';
-import { InputProps } from '@/shared/types/inputs';
+import type { InputProps } from '@/shared/types/inputs';
 
 /**
  * A UI component which accepts user date input

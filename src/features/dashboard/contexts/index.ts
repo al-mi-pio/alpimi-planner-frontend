@@ -1,7 +1,10 @@
-import { createContext, Dispatch, SetStateAction } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 import { defaultLessonBlockFilters } from '@/features/dashboard/constants';
-import { LessonBlockFilters, SelectedEntity } from '@/features/dashboard/types';
+import type {
+    LessonBlockFilters,
+    SelectedEntity,
+} from '@/features/dashboard/types';
 
 export const OpenFoldersContext = createContext<
     [

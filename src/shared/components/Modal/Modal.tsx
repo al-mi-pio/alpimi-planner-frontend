@@ -1,4 +1,9 @@
-import { ComponentPropsWithRef, ReactNode, useEffect, useRef } from 'react';
+import {
+    type ComponentPropsWithRef,
+    type ReactNode,
+    useEffect,
+    useRef,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import Close from '@/shared/components/Close';

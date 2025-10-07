@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ScheduleGetAll, SchedulePost } from '@/api/types/ScheduleService';
+import type { ScheduleGetAll, SchedulePost } from '@/api/types/ScheduleService';
 import {
     catchApiErrors,
     getDefaultConfig,

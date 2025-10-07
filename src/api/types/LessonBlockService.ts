@@ -1,6 +1,6 @@
-import { Entity, Id } from '@/api/types';
-import { Classroom } from '@/api/types/ClassroomService';
-import { Lesson } from '@/api/types/LessonService';
+import type { Entity, Id } from '@/api/types';
+import type { Classroom } from '@/api/types/ClassroomService';
+import type { Lesson } from '@/api/types/LessonService';
 
 export type LessonBlock = Entity<{
     lessonDate: string;

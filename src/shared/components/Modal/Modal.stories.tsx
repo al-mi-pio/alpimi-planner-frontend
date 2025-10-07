@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import Button from '@/shared/components/Button';
-import Modal, { ModalProps } from '@/shared/components/Modal/Modal';
+import Modal, { type ModalProps } from '@/shared/components/Modal/Modal';
 import P from '@/shared/components/P';
 import { StoryWrapper } from '@/shared/styles/Stories';
 

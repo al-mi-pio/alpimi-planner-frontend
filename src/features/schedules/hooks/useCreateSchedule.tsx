@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 
 import { schedulePost } from '@/api/services/scheduleService';
-import { ErrorMessage, ErrorResponse, ErrorsState } from '@/api/types';
-import { CreateScheduleDTO } from '@/api/types/ScheduleService';
+import type { ErrorMessage, ErrorResponse, ErrorsState } from '@/api/types';
+import type { CreateScheduleDTO } from '@/api/types/ScheduleService';
 import { getErrorsState } from '@/api/utils';
 import { useMutateData } from '@/shared/hooks/useMutateData';
 

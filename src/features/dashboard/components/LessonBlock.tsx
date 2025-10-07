@@ -1,6 +1,6 @@
 import {
-    ComponentPropsWithRef,
-    DragEvent,
+    type ComponentPropsWithRef,
+    type DragEvent,
     use,
     useEffect,
     useRef,
@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { EntityType } from '@/api/types';
-import { LessonBlock as LessonBlockType } from '@/api/types/LessonBlockService';
+import type { LessonBlock as LessonBlockType } from '@/api/types/LessonBlockService';
 import {
     HoveredBlockIdContext,
     LessonBlockFiltersContext,
@@ -21,7 +21,7 @@ import {
     Title,
     Wrapper,
 } from '@/features/dashboard/styles/LessonBlock.style';
-import { Statuses } from '@/features/dashboard/types';
+import type { Statuses } from '@/features/dashboard/types';
 import { renderWarningIcon } from '@/features/dashboard/utils';
 import P from '@/shared/components/P';
 

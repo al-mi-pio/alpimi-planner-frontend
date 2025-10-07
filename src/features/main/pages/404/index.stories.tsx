@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import Page404 from '@/features/main/pages/404';
 import { PageStoryStyles } from '@/shared/styles/Stories';

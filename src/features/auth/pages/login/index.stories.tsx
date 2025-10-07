@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';

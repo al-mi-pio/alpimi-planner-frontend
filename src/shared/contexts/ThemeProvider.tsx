@@ -1,9 +1,9 @@
-import { ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import { darkTheme, lightTheme } from '@/shared/constants/colors';
-import { Theme, ThemeContext } from '@/shared/contexts/ThemeContext';
+import { type Theme, ThemeContext } from '@/shared/contexts/ThemeContext';
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setThemeState] = useState<Theme>(

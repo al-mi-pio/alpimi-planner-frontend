@@ -1,8 +1,8 @@
-import { ComponentPropsWithRef, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { LessonPeriod } from '@/api/types/LessonPeriodService';
-import { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
+import type { LessonPeriod } from '@/api/types/LessonPeriodService';
+import type { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
 import { TimetableCell } from '@/features/dashboard/components/TimetableCell';
 import {
     HoveredBlockIdContext,

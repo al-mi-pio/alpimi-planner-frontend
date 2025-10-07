@@ -1,4 +1,7 @@
-import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
+import {
+    type UndefinedInitialDataOptions,
+    useQuery,
+} from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
@@ -6,7 +9,7 @@ import { toast } from 'react-toastify';
 
 import { AxiosError } from 'axios';
 
-import { ErrorResponse } from '@/api/types';
+import type { ErrorResponse } from '@/api/types';
 import { tokenExpirationUrl } from '@/shared/utils/url';
 
 export const useGetData = <T = object,>(

@@ -1,4 +1,4 @@
-import { LessonBlockFilters } from '@/features/dashboard/types';
+import type { LessonBlockFilters } from '@/features/dashboard/types';
 
 export const defaultLessonBlockFilters: LessonBlockFilters = {
     // TODO: getScheduleSettings().schoolYearStart()

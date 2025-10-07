@@ -1,6 +1,6 @@
-import { TFunction } from 'i18next';
+import type { TFunction } from 'i18next';
 
-import { ScheduleForm } from '@/features/schedules/types';
+import type { ScheduleForm } from '@/features/schedules/types';
 import {
     createSchedule,
     editSchedule,

@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { TokenRefreshProvider } from '@/features/auth/providers/TokenRefreshProvider';
 import {
     DashboardHeader,
-    DashboardHeaderProps,
+    type DashboardHeaderProps,
 } from '@/features/dashboard/components/DashboardHeader';
 import {
     Content,

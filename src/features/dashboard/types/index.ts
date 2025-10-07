@@ -1,4 +1,4 @@
-import { EntityType, Id } from '@/api/types';
+import { EntityType, type Id } from '@/api/types';
 
 export interface NavButton {
     label: string;

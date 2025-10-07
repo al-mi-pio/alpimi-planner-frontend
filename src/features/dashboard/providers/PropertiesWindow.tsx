@@ -1,7 +1,7 @@
-import { ReactElement, useState } from 'react';
+import { type ReactElement, useState } from 'react';
 
 import { PropertiesWindowContext } from '@/features/dashboard/contexts';
-import { SelectedEntity } from '@/features/dashboard/types';
+import type { SelectedEntity } from '@/features/dashboard/types';
 
 export const PropertiesWindowProvider = ({
     children,

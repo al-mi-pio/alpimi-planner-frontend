@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import type { DefaultTheme } from 'styled-components';
 
 export const getMessageBoxColors = (theme: DefaultTheme) => ({
     success: theme.colors.success,

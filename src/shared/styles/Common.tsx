@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Appearance } from '@/shared/components/Button/types';
+import type { Appearance } from '@/shared/components/Button/types';
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 
 export const FocusStyle = css`

@@ -1,4 +1,4 @@
-import { ApiGetAllService, ApiPostService, Entity } from '@/api/types';
+import type { ApiGetAllService, ApiPostService, Entity } from '@/api/types';
 
 export type Schedule = Entity<{
     name: string;

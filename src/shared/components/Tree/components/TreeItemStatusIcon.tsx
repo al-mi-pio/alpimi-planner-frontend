@@ -3,7 +3,10 @@ import {
     StatusIconsWrapper,
     WarningInChildrenIcon,
 } from '@/shared/components/Tree/styles/TreeItemStatusIcon.style';
-import { CollisionType, TreeItemStatus } from '@/shared/components/Tree/types';
+import {
+    CollisionType,
+    type TreeItemStatus,
+} from '@/shared/components/Tree/types';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import WarningSign from '@/shared/icons/WarningSign';
 

@@ -1,4 +1,4 @@
-import { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
+import type { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
 import { Status } from '@/features/dashboard/types';
 
 export const getMockLessonBlockProps = (id: number) =>

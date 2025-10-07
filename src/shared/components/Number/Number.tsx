@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useId, useState } from 'react';
+import { type ChangeEvent, useEffect, useId, useState } from 'react';
 
 import {
     SpinButton,
@@ -6,7 +6,7 @@ import {
 } from '@/shared/components/Number/Number.style';
 import { InnerInput, InputWrapper } from '@/shared/styles/Common';
 import { Label, ErrorDescription } from '@/shared/styles/Strings';
-import { InputProps } from '@/shared/types/inputs';
+import type { InputProps } from '@/shared/types/inputs';
 
 /**
  * A UI component which accepts user numeric input

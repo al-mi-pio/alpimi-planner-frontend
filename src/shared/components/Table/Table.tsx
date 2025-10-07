@@ -1,7 +1,7 @@
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
 import { Row, StyledTable } from '@/shared/components/Table/Table.style';
-import { CellValue, TableColumn } from '@/shared/components/Table/types';
+import type { CellValue, TableColumn } from '@/shared/components/Table/types';
 import { defaultFormatter } from '@/shared/utils/table';
 
 export interface TableProps extends ComponentPropsWithRef<'table'> {

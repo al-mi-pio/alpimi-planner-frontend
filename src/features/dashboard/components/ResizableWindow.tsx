@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, useState } from 'react';
+import { type ComponentPropsWithRef, type ReactNode, useState } from 'react';
 
 import {
     Content,
