@@ -18,11 +18,7 @@ export interface CloseProps
 const Close = (props: CloseProps) => {
     const { t } = useTranslation();
 
-    return (
-        <StyledButton {...props} aria-label={t('Close')}>
-            <X />
-        </StyledButton>
-    );
+    return <StyledButton {...props} aria-label={t('Close')} icon={<X />} />;
 };
 
 export default Close;

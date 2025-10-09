@@ -107,3 +107,23 @@ export const ButtonStyles = (appearance?: Appearance) => css`
 export const StyledButton = styled.button<{ $appearance?: Appearance }>`
     ${({ $appearance }) => ButtonStyles($appearance)}
 `;
+
+export const IconButton = styled.button`
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: ${sizes.smallXL};
+    padding: 2px;
+    line-height: 0;
+    max-height: fit-content;
+    max-width: fit-content;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.secondaryText};
+    }
+
+    & svg {
+        max-width: calc(${sizes.regular} - ${sizes.smallXL});
+        max-height: calc(${sizes.regular} - ${sizes.smallXL});
+    }
+`;

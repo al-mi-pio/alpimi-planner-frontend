@@ -7,7 +7,6 @@ import {
 } from 'react';
 
 import Button from '@/shared/components/Button';
-import { StyledButton } from '@/shared/components/Close/Close.style';
 import { DropdownMenu } from '@/shared/components/Dropdown/Dropdown.style';
 
 export interface DropdownProps extends ComponentPropsWithRef<'ul'> {
@@ -91,22 +90,14 @@ const Dropdown = ({
 
     return (
         <div ref={dropdownRef} style={{ position: 'relative' }}>
-            {typeof label === 'string' ? (
-                <Button
-                    ref={buttonRef}
-                    label={label}
-                    appearance="secondary"
-                    onClick={handleClick}
-                />
-            ) : (
-                <StyledButton
-                    ref={buttonRef}
-                    aria-label={buttonLabel}
-                    onClick={handleClick}
-                >
-                    {label}
-                </StyledButton>
-            )}
+            <Button
+                ref={buttonRef}
+                label={typeof label === 'string' ? label : undefined}
+                icon={typeof label === 'string' ? undefined : label}
+                appearance="secondary"
+                aria-label={buttonLabel}
+                onClick={handleClick}
+            />
 
             <DropdownMenu
                 {...defaultProps}

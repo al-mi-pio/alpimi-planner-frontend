@@ -1,8 +1,8 @@
-import type { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 import type { Appearance } from '@/shared/components/Button/types';
 import H from '@/shared/components/H';
-import { StyledButton } from '@/shared/styles/Common';
+import { IconButton, StyledButton } from '@/shared/styles/Common';
 
 export interface ButtonProps
     extends Omit<ComponentPropsWithRef<'button'>, 'children'> {
@@ -15,6 +15,11 @@ export interface ButtonProps
      * Text label that describes the button
      */
     label?: string;
+
+    /**
+     * Icon that describes the button
+     */
+    icon?: ReactNode;
 }
 
 /**
@@ -22,12 +27,16 @@ export interface ButtonProps
  */
 const Button = ({
     appearance = 'primary',
+    icon,
     label,
     ...defaultProps
-}: ButtonProps) => (
-    <StyledButton $appearance={appearance} {...defaultProps}>
-        <H level={4}>{label}</H>
-    </StyledButton>
-);
+}: ButtonProps) =>
+    label ? (
+        <StyledButton $appearance={appearance} {...defaultProps}>
+            <H level={4}>{label}</H>
+        </StyledButton>
+    ) : (
+        <IconButton {...defaultProps}>{icon}</IconButton>
+    );
 
 export default Button;

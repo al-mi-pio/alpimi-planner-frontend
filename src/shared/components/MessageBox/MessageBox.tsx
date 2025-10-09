@@ -3,7 +3,10 @@ import type { ComponentPropsWithRef } from 'react';
 import { useTheme } from 'styled-components';
 
 import Close from '@/shared/components/Close';
-import { StyledMessageBox } from '@/shared/components/MessageBox/MessageBox.style';
+import {
+    ButtonWrapper,
+    StyledMessageBox,
+} from '@/shared/components/MessageBox/MessageBox.style';
 import { getMessageBoxColors } from '@/shared/components/MessageBox/utils';
 import P from '@/shared/components/P';
 import { MessageType } from '@/shared/types';
@@ -39,10 +42,12 @@ const MessageBox = ({
         <StyledMessageBox $type={type} {...defaultProps}>
             {typeof children === 'string' ? <P>{children}</P> : children}
             {!noClosing && (
-                <Close
-                    $color={getMessageBoxColors(theme)[type]}
-                    onClick={onClose}
-                />
+                <ButtonWrapper>
+                    <Close
+                        $color={getMessageBoxColors(theme)[type]}
+                        onClick={onClose}
+                    />
+                </ButtonWrapper>
             )}
         </StyledMessageBox>
     );
