@@ -23,6 +23,10 @@ import { StoryWrapper } from '@/shared/styles/Stories';
 
 const Wrapper = styled.div<{ $secondary: boolean }>`
     padding: 1em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 890px;
     background-color: ${(props) =>
         props.$secondary
             ? props.theme.colors.primaryAccent
@@ -54,7 +58,7 @@ export default {
                         <LeftArrow secondary={secondary} />
                         <RightArrow secondary={secondary} />
                         <X secondary={secondary} />
-                        <br />
+
                         <WarningSign secondary={secondary} weight={0} />
                         <WarningSign secondary={secondary} weight={0.25} />
                         <WarningSign secondary={secondary} weight={0.5} />

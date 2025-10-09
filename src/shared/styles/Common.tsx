@@ -118,12 +118,15 @@ export const IconButton = styled.button`
     max-height: fit-content;
     max-width: fit-content;
 
-    &:hover {
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    &:hover:not(:disabled) {
         background-color: ${({ theme }) => theme.colors.secondaryText};
     }
 
-    & svg {
-        max-width: calc(${sizes.regular} - ${sizes.smallXL});
-        max-height: calc(${sizes.regular} - ${sizes.smallXL});
+    &:hover:disabled {
+        cursor: not-allowed;
     }
 `;
