@@ -4,7 +4,10 @@ import { Loading } from '@/features/main/components/Loading';
 import { sizes } from '@/shared/constants/dimensions';
 
 export const Wrapper = styled.div`
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 1400px;
+    height: 650px;
     padding: ${sizes.small} ${sizes.regular};
     background-color: ${({ theme }) => theme.colors.sectionBackground};
 `;
@@ -24,6 +27,7 @@ export const Navigation = styled.div`
 
 export const Scrollable = styled.div`
     padding: ${sizes.small} ${sizes.regular};
+    flex: 1;
     overflow: auto;
 `;
 

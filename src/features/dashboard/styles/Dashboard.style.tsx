@@ -1,7 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { sizes } from '@/shared/constants/dimensions';
-
 export const DashboardBodyStyles = createGlobalStyle`
     html,
     body {
@@ -25,8 +23,6 @@ export const DashboardBodyStyles = createGlobalStyle`
 `;
 
 export const Content = styled.div`
-    margin: 0 ${sizes.smallXL};
-    padding: 0 ${sizes.smallXL};
     flex: 1;
     overflow-y: auto;
 `;
