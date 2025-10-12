@@ -65,10 +65,13 @@ export type ApiGetAllService<T> = (
 ) => Promise<GetAllResponse<T>>;
 
 export type ApiGetService<T> = (
+    id: Id,
     config?: AxiosRequestConfig
 ) => Promise<GetResponse<T>>;
 
 export type ApiPatchService<T> = (
+    id: Id,
+    data: T,
     config?: AxiosRequestConfig
 ) => Promise<PatchResponse<T>>;
 
