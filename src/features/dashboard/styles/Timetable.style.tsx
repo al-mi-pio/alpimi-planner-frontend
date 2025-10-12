@@ -61,9 +61,7 @@ export const HeaderCellTop = styled.div<{ $disabled?: boolean }>`
     border-right: 2px solid ${({ theme }) => theme.colors.primaryAccent};
     margin: -1px;
     ${({ $disabled, theme }) =>
-        $disabled
-            ? `background-color: ${theme.colors.primaryAccent}; color: ${theme.colors.secondaryText}`
-            : ''};
+        $disabled ? `background-color: ${theme.colors.error}90` : ''};
 `;
 
 export const StyledCell = styled.div<{
@@ -78,7 +76,7 @@ export const StyledCell = styled.div<{
     border: 2px solid ${({ theme }) => theme.colors.primaryAccent};
     margin: -1px;
     ${({ $disabled, theme }) =>
-        $disabled ? `background-color: ${theme.colors.primaryAccent}` : ''};
+        $disabled ? `background-color: ${theme.colors.error}40` : ''};
     ${({ $isDraggedOver, theme }) =>
         $isDraggedOver && `background-color: ${theme.colors.highlight}50;`};
 `;
