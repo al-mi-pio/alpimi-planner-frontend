@@ -27,8 +27,35 @@ export const dateDifference = (date: string, newerDate?: string) => {
 
 export const addMinutesToTime = (time: string, minutes: number) => {
     const ms = minutes * 60 * 1000;
-    const date = new Date(ms + Date.parse(`1970-01-01T${time}:00Z`));
+    const date = new Date(ms + Date.parse(`1970-01-01T${time}Z`));
     const [hours, min] = [date.getUTCHours(), date.getUTCMinutes()];
 
     return `${hours < 10 ? '0' + hours : hours}:${min < 10 ? '0' + min : min}`;
 };
+
+export const getAdjustedDay = (stringDate: string) => {
+    const day = new Date(stringDate).getUTCDay();
+    return day ? day - 1 : 6;
+};
+
+export const getFirstDayOfWeek = (stringDate: string) => {
+    const day = getAdjustedDay(stringDate);
+
+    const date = new Date(Date.parse(stringDate) - 1000 * 60 * 60 * 24 * day);
+
+    return date.toISOString().slice(0, 10);
+};
+
+export const addDaysToDate = (stringDate: string, days: number) => {
+    const date = new Date(1000 * 60 * 60 * 24 * days + Date.parse(stringDate));
+
+    return date.toISOString().slice(0, 10);
+};
+
+export const isBetweenDates = (
+    date: string,
+    startDate: string,
+    endDate: string
+) =>
+    Date.parse(date) >= Date.parse(startDate) &&
+    Date.parse(date) <= Date.parse(endDate);
