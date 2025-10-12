@@ -24,6 +24,7 @@ export const Warnings: StoryObj<typeof LessonBlock> = {
         ...getMockLessonBlockProps(0),
 
         statuses: {
+            lessonBlock: Status.Error,
             classroom: Status.Error,
             teacher: Status.Warning,
             subgroups: {

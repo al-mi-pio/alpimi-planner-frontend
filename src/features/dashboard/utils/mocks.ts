@@ -4,6 +4,7 @@ import { Status } from '@/features/dashboard/types';
 export const getMockLessonBlockProps = (id: number) =>
     ({
         statuses: {
+            lessonBlock: Status.Normal,
             classroom: Status.Normal,
             teacher: Status.Normal,
             subgroups: {

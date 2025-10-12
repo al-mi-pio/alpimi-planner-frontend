@@ -7,11 +7,12 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { getTeacherName } from '@/api/services/teacherService';
 import { EntityType } from '@/api/types';
 import type { LessonBlock as LessonBlockType } from '@/api/types/LessonBlockService';
 import {
     HoveredBlockIdContext,
-    LessonBlockFiltersContext,
+    CurrentTimetableFiltersContext,
 } from '@/features/dashboard/contexts';
 import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
 import {
@@ -42,7 +43,7 @@ export const LessonBlock = ({
     const { t } = useTranslation('dashboard');
     const ref = useRef<HTMLDivElement>(null);
     const hoveredBlockId = use(HoveredBlockIdContext);
-    const [, setLessonBlockFilters] = use(LessonBlockFiltersContext);
+    const [, setCurrentTimetableFilters] = use(CurrentTimetableFiltersContext);
     const { setSelectedEntity } = usePropertiesWindow();
 
     const handleDragstart = (e: DragEvent) => {
@@ -63,6 +64,7 @@ export const LessonBlock = ({
             onDragStart={handleDragstart}
         >
             <Title $color={data.lesson.lessonType.color}>
+                {renderWarningIcon(statuses.lessonBlock)}
                 <P bold>{data.lesson.name}</P>
             </Title>
 
@@ -78,10 +80,14 @@ export const LessonBlock = ({
                             })
                         }
                         onDoubleClick={() =>
-                            setLessonBlockFilters((prev) => ({
-                                ...prev,
-                                entityId: data.classroom.id,
-                            }))
+                            setCurrentTimetableFilters(
+                                (prev) =>
+                                    prev && {
+                                        ...prev,
+                                        entityName: data.classroom.name,
+                                        entityId: data.classroom.id,
+                                    }
+                            )
                         }
                     >
                         {renderWarningIcon(statuses.classroom)}
@@ -100,14 +106,20 @@ export const LessonBlock = ({
                             })
                         }
                         onDoubleClick={() =>
-                            setLessonBlockFilters((prev) => ({
-                                ...prev,
-                                entityId: data.lesson.teacher.id,
-                            }))
+                            setCurrentTimetableFilters(
+                                (prev) =>
+                                    prev && {
+                                        ...prev,
+                                        entityName: getTeacherName(
+                                            data.lesson.teacher
+                                        ),
+                                        entityId: data.lesson.teacher.id,
+                                    }
+                            )
                         }
                     >
                         {renderWarningIcon(statuses.teacher)}
-                        {`${data.lesson.teacher.name} ${data.lesson.teacher.surname}`}
+                        {getTeacherName(data.lesson.teacher)}
                     </Clickable>
                 </Row>
 
@@ -128,10 +140,14 @@ export const LessonBlock = ({
                                       })
                                   }
                                   onDoubleClick={() =>
-                                      setLessonBlockFilters((prev) => ({
-                                          ...prev,
-                                          entityId: subgroup.id,
-                                      }))
+                                      setCurrentTimetableFilters(
+                                          (prev) =>
+                                              prev && {
+                                                  ...prev,
+                                                  entityName: subgroup.name,
+                                                  entityId: subgroup.id,
+                                              }
+                                      )
                                   }
                               >
                                   {renderWarningIcon(

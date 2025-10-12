@@ -14,6 +14,12 @@ export const Wrapper = styled.div<{ $hovered: boolean }>`
     overflow: hidden;
     cursor: grab;
 
+    & svg {
+        min-width: 19px;
+        max-width: 19px;
+        height: 19px;
+    }
+
     & p,
     & button {
         color: ${({ theme }) => theme.colors.secondaryText};
@@ -35,6 +41,11 @@ export const Title = styled.div<{ $color: number }>`
     align-items: center;
     padding: 0 ${sizes.smallXL};
     border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryText};
+
+    & > p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 `;
 
 export const Content = styled.div`
@@ -66,12 +77,6 @@ export const Clickable = styled.button`
     display: inline-flex;
     align-items: center;
     background: none;
-
-    & > svg {
-        min-width: 19px;
-        max-width: 19px;
-        height: 19px;
-    }
 
     &:has(~ button)::after {
         content: ',';

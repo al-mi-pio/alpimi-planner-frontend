@@ -12,6 +12,7 @@ export enum Status {
 }
 
 export interface Statuses {
+    lessonBlock: Status;
     classroom: Status;
     teacher: Status;
     subgroups: Record<Id, Status>;
@@ -22,7 +23,9 @@ export interface SelectedEntity {
     entity: EntityType;
 }
 
-export interface LessonBlockFilters {
-    entityId?: Id;
+export interface CurrentTimetableFilters {
+    entityId: Id;
+    entityName: string;
     fromDate: string;
+    toDate: string;
 }
