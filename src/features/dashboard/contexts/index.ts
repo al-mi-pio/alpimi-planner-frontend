@@ -1,8 +1,7 @@
 import { createContext, type Dispatch, type SetStateAction } from 'react';
 
-import { defaultLessonBlockFilters } from '@/features/dashboard/constants';
 import type {
-    LessonBlockFilters,
+    CurrentTimetableFilters,
     SelectedEntity,
 } from '@/features/dashboard/types';
 
@@ -23,6 +22,9 @@ export const HoveredBlockIdContext = createContext<string | null>(null);
 export const PropertiesWindowContext = createContext<
     [SelectedEntity | null, Dispatch<SetStateAction<SelectedEntity | null>>]
 >([null, () => null]);
-export const LessonBlockFiltersContext = createContext<
-    [LessonBlockFilters, Dispatch<SetStateAction<LessonBlockFilters>>]
->([defaultLessonBlockFilters, () => {}]);
+export const CurrentTimetableFiltersContext = createContext<
+    [
+        CurrentTimetableFilters | null,
+        Dispatch<SetStateAction<CurrentTimetableFilters | null>>,
+    ]
+>([null, () => {}]);
