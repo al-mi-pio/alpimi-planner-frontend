@@ -1,4 +1,4 @@
-import type { Entity, Id } from '@/api/types';
+import type { ApiGetAllService, Entity, Id } from '@/api/types';
 import type { Classroom } from '@/api/types/ClassroomService';
 import type { Lesson } from '@/api/types/LessonService';
 
@@ -10,3 +10,5 @@ export type LessonBlock = Entity<{
     classroom: Classroom;
     clusterId: Id;
 }>;
+
+export type LessonBlockGetAll = ApiGetAllService<LessonBlock>;
