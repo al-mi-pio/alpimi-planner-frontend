@@ -9,6 +9,7 @@ import { StyledCell } from '@/features/dashboard/styles/Timetable.style';
 
 export interface TimetableCellProps extends ComponentPropsWithRef<'div'> {
     id: string;
+    disabled?: string;
     lessonBlockProps: LessonBlockProps[];
 }
 
@@ -17,15 +18,20 @@ export interface TimetableCellProps extends ComponentPropsWithRef<'div'> {
  */
 export const TimetableCell = ({
     lessonBlockProps,
+    disabled,
     ...props
 }: TimetableCellProps) => {
     const [isDraggedOver, setIsDraggedOver] = useState(false);
     const handleDragover = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        setIsDraggedOver(true);
+        if (!disabled) {
+            e.preventDefault();
+            setIsDraggedOver(true);
+        }
     };
     const handleDragleave = () => {
-        setIsDraggedOver(false);
+        if (!disabled) {
+            setIsDraggedOver(false);
+        }
     };
 
     const handleDrop = (e: DragEvent<HTMLDivElement>) => {
@@ -43,6 +49,7 @@ export const TimetableCell = ({
             onDrop={handleDrop}
             onDragLeave={handleDragleave}
             $isDraggedOver={isDraggedOver}
+            $disabled={!!disabled}
         >
             {lessonBlockProps.length === 1 && (
                 <LessonBlock {...lessonBlockProps[0]} />
