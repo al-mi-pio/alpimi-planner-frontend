@@ -8,7 +8,22 @@ export const parseAxiosResponse = <T>({ data, status }: AxiosResponse<T>) => ({
     status,
 });
 
-export const getDefaultConfig = (config?: AxiosRequestConfig) => {
+export const getDefaultGetAllConfig = (
+    config?: AxiosRequestConfig
+): AxiosRequestConfig => {
+    const defaultConfig = getDefaultConfig(config);
+    return {
+        ...defaultConfig,
+        params: {
+            perPage: 100000,
+            ...defaultConfig.params,
+        },
+    };
+};
+
+export const getDefaultConfig = (
+    config?: AxiosRequestConfig
+): AxiosRequestConfig => {
     const accessToken = localStorage.getItem('accessToken');
 
     return {
