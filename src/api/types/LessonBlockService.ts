@@ -7,7 +7,7 @@ export type LessonBlock = Entity<{
     lessonStart: number;
     lessonEnd: number;
     lesson: Lesson;
-    classroom: Classroom;
+    classroom: Classroom | null;
     clusterId: Id;
 }>;
 

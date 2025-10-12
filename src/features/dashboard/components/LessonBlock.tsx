@@ -72,27 +72,34 @@ export const LessonBlock = ({
                 <Row>
                     <P>{t('Classroom')}</P>
 
-                    <Clickable
-                        onClick={() =>
-                            setSelectedEntity({
-                                id: data.classroom.id,
-                                entity: EntityType.Classroom,
-                            })
-                        }
-                        onDoubleClick={() =>
-                            setCurrentTimetableFilters(
-                                (prev) =>
-                                    prev && {
-                                        ...prev,
-                                        entityName: data.classroom.name,
-                                        entityId: data.classroom.id,
+                    {data.classroom ? (
+                        <Clickable
+                            onClick={() =>
+                                setSelectedEntity(
+                                    data.classroom && {
+                                        id: data.classroom.id,
+                                        entity: EntityType.Classroom,
                                     }
-                            )
-                        }
-                    >
-                        {renderWarningIcon(statuses.classroom)}
-                        {data.classroom.name}
-                    </Clickable>
+                                )
+                            }
+                            onDoubleClick={() =>
+                                setCurrentTimetableFilters(
+                                    (prev) =>
+                                        prev &&
+                                        data.classroom && {
+                                            ...prev,
+                                            entityName: data.classroom.name,
+                                            entityId: data.classroom.id,
+                                        }
+                                )
+                            }
+                        >
+                            {renderWarningIcon(statuses.classroom)}
+                            {data.classroom.name}
+                        </Clickable>
+                    ) : (
+                        <P>{t('None')}</P>
+                    )}
                 </Row>
 
                 <Row>
