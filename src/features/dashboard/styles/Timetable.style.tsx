@@ -1,10 +1,32 @@
 import styled from 'styled-components';
 
+import { Loading } from '@/features/main/components/Loading';
 import { sizes } from '@/shared/constants/dimensions';
 
-export const Wrapper = styled.div``;
-export const Navigation = styled.div``;
-export const Scrollable = styled.div``;
+export const Wrapper = styled.div`
+    width: fit-content;
+    padding: ${sizes.small} ${sizes.regular};
+    background-color: ${({ theme }) => theme.colors.sectionBackground};
+`;
+
+export const Navigation = styled.div`
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+    & > div > p {
+        width: 600px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+`;
+
+export const Scrollable = styled.div`
+    padding: ${sizes.small} ${sizes.regular};
+    overflow: auto;
+`;
+
 export const Table = styled.div`
     display: inline-flex;
     flex-direction: column;
@@ -27,16 +49,23 @@ export const HeaderCellLeft = styled.div`
     margin: -1px;
 `;
 
-export const HeaderCellTop = styled.div`
+export const HeaderCellTop = styled.div<{ $disabled?: boolean }>`
     min-width: 210px;
     text-align: center;
     color: ${({ theme }) => theme.colors.primaryText};
     border-left: 2px solid ${({ theme }) => theme.colors.primaryAccent};
     border-right: 2px solid ${({ theme }) => theme.colors.primaryAccent};
     margin: -1px;
+    ${({ $disabled, theme }) =>
+        $disabled
+            ? `background-color: ${theme.colors.primaryAccent}; color: ${theme.colors.secondaryText}`
+            : ''};
 `;
 
-export const StyledCell = styled.div<{ $isDraggedOver: boolean }>`
+export const StyledCell = styled.div<{
+    $isDraggedOver: boolean;
+    $disabled: boolean;
+}>`
     min-width: 210px;
     min-height: 120px;
     display: flex;
@@ -44,6 +73,12 @@ export const StyledCell = styled.div<{ $isDraggedOver: boolean }>`
     justify-content: center;
     border: 2px solid ${({ theme }) => theme.colors.primaryAccent};
     margin: -1px;
+    ${({ $disabled, theme }) =>
+        $disabled ? `background-color: ${theme.colors.primaryAccent}` : ''};
     ${({ $isDraggedOver, theme }) =>
         $isDraggedOver && `background-color: ${theme.colors.highlight}50;`};
+`;
+
+export const StyledLoading = styled(Loading)`
+    background-color: ${({ theme }) => theme.colors.sectionBackground};
 `;

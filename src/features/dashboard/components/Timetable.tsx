@@ -1,11 +1,14 @@
-import { type ComponentPropsWithRef, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, use, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { DayOff } from '@/api/types/DayOffService';
 import type { LessonPeriod } from '@/api/types/LessonPeriodService';
+import type { ScheduleSettings } from '@/api/types/ScheduleSettingsService';
 import type { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
 import { TimetableCell } from '@/features/dashboard/components/TimetableCell';
 import {
     HoveredBlockIdContext,
+    CurrentTimetableFiltersContext,
     OpenFoldersContext,
 } from '@/features/dashboard/contexts';
 import {
@@ -17,16 +20,27 @@ import {
     HeaderCellLeft,
     HeaderCellTop,
 } from '@/features/dashboard/styles/Timetable.style';
-import { WeekDay, weekDays as allWeekDays } from '@/shared/constants/time';
-import { addMinutesToTime } from '@/shared/utils/date';
+import { weekDaysFromSchoolDays } from '@/features/dashboard/utils';
+import Button from '@/shared/components/Button';
+import H from '@/shared/components/H';
+import P from '@/shared/components/P';
+import { weekDays as allWeekDays } from '@/shared/constants/time';
+import LeftArrow from '@/shared/icons/LeftArrow';
+import RightArrow from '@/shared/icons/RightArrow';
+import {
+    addDaysToDate,
+    addMinutesToTime,
+    getFirstDayOfWeek,
+    isBetweenDates,
+} from '@/shared/utils/date';
 import { capitalize } from '@/shared/utils/string';
 
 export interface TimetableProps
     extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
-    weekDays: WeekDay[];
     lessonPeriods: LessonPeriod[];
-    schoolHour: number;
+    scheduleSettings: ScheduleSettings;
     lessonBlocks: LessonBlocks;
+    dayOffs: DayOff[];
 }
 
 export type LessonBlocks = Record<string, LessonBlockProps[]>;
@@ -35,18 +49,32 @@ export type LessonBlocks = Record<string, LessonBlockProps[]>;
  * Timetable component
  */
 export const Timetable = ({
-    weekDays,
     lessonPeriods,
-    schoolHour,
+    scheduleSettings,
     lessonBlocks,
+    dayOffs,
 }: TimetableProps) => {
     const { t } = useTranslation('schedules');
+    const weekDays = weekDaysFromSchoolDays(scheduleSettings.schoolDays);
     const openFoldersState = useState(
         Object.fromEntries(
             weekDays.map((weekDay) => [allWeekDays.indexOf(weekDay), false])
         )
     );
     const [hoveredBlockId, setHoveredBlockId] = useState<string | null>(null);
+    const [currentTimetableFilters, setCurrentTimetableFilters] = use(
+        CurrentTimetableFiltersContext
+    );
+
+    const moveTimetableWeek = (weeks: number) =>
+        setCurrentTimetableFilters(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    fromDate: addDaysToDate(prev.fromDate, weeks * 7),
+                    toDate: addDaysToDate(prev.toDate, weeks * 7),
+                }
+        );
 
     useEffect(() => {
         const handler = (e: MouseEvent) => {
@@ -81,7 +109,41 @@ export const Timetable = ({
 
     return (
         <Wrapper>
-            <Navigation></Navigation>
+            <Navigation>
+                {currentTimetableFilters && (
+                    <>
+                        <Button
+                            icon={<LeftArrow />}
+                            disabled={
+                                getFirstDayOfWeek(
+                                    scheduleSettings.schoolYearStart
+                                ) === currentTimetableFilters.fromDate
+                            }
+                            onClick={() => moveTimetableWeek(-1)}
+                        />
+                        <div>
+                            <H level={3}>
+                                {currentTimetableFilters.entityName}
+                            </H>
+                            <P
+                                bold={false}
+                            >{`${(isBetweenDates(currentTimetableFilters.fromDate, currentTimetableFilters.fromDate, scheduleSettings.schoolYearStart) ? scheduleSettings.schoolYearStart : currentTimetableFilters.fromDate).replaceAll('-', '.')} - ${(isBetweenDates(currentTimetableFilters.toDate, scheduleSettings.schoolYearEnd, currentTimetableFilters.toDate) ? scheduleSettings.schoolYearEnd : currentTimetableFilters.toDate).replaceAll('-', '.')}`}</P>
+                        </div>
+                        <Button
+                            icon={<RightArrow />}
+                            disabled={
+                                addDaysToDate(
+                                    getFirstDayOfWeek(
+                                        scheduleSettings.schoolYearEnd
+                                    ),
+                                    6
+                                ) === currentTimetableFilters.toDate
+                            }
+                            onClick={() => moveTimetableWeek(1)}
+                        />
+                    </>
+                )}
+            </Navigation>
 
             <Scrollable>
                 <Table>
@@ -90,29 +152,91 @@ export const Timetable = ({
                             <TimetableRow>
                                 <div style={{ flex: 1 }} />
 
-                                {weekDays.map((weekDay) => (
-                                    <HeaderCellTop key={weekDay}>
-                                        {t(capitalize(weekDay))}
-                                    </HeaderCellTop>
-                                ))}
+                                {currentTimetableFilters &&
+                                    weekDays.map((weekDay) => {
+                                        if (
+                                            !isBetweenDates(
+                                                addDaysToDate(
+                                                    currentTimetableFilters.fromDate,
+                                                    allWeekDays.indexOf(weekDay)
+                                                ),
+                                                scheduleSettings.schoolYearStart,
+                                                scheduleSettings.schoolYearEnd
+                                            )
+                                        )
+                                            return null;
+
+                                        const dayOffName = dayOffs.find(
+                                            (dayOff) =>
+                                                isBetweenDates(
+                                                    addDaysToDate(
+                                                        currentTimetableFilters.fromDate,
+                                                        allWeekDays.indexOf(
+                                                            weekDay
+                                                        )
+                                                    ),
+                                                    dayOff.from,
+                                                    dayOff.to
+                                                )
+                                        )?.name;
+
+                                        return (
+                                            <HeaderCellTop
+                                                key={weekDay}
+                                                $disabled={!!dayOffName}
+                                            >
+                                                {dayOffName ||
+                                                    t(capitalize(weekDay))}
+                                                <br />
+                                                {addDaysToDate(
+                                                    currentTimetableFilters.fromDate,
+                                                    allWeekDays.indexOf(weekDay)
+                                                ).replaceAll('-', '.')}
+                                            </HeaderCellTop>
+                                        );
+                                    })}
                             </TimetableRow>
 
-                            {lessonPeriods.map(({ id, start }, i) => (
-                                <TimetableRow key={id}>
-                                    <HeaderCellLeft>{`${start} - ${addMinutesToTime(start, schoolHour)}`}</HeaderCellLeft>
-                                    {weekDays.map((weekDay) => (
-                                        <TimetableCell
-                                            key={weekDay}
-                                            id={`${i}-${allWeekDays.indexOf(weekDay)}-cell`}
-                                            lessonBlockProps={
-                                                lessonBlocks[
-                                                    `${i}-${allWeekDays.indexOf(weekDay)}-cell`
-                                                ] || []
-                                            }
-                                        />
-                                    ))}
-                                </TimetableRow>
-                            ))}
+                            {currentTimetableFilters &&
+                                lessonPeriods.map(({ id, start }, i) => (
+                                    <TimetableRow key={id}>
+                                        <HeaderCellLeft>{`${start.slice(0, 5)} - ${addMinutesToTime(start, scheduleSettings.schoolHour)}`}</HeaderCellLeft>
+                                        {weekDays.map((weekDay) =>
+                                            isBetweenDates(
+                                                addDaysToDate(
+                                                    currentTimetableFilters.fromDate,
+                                                    allWeekDays.indexOf(weekDay)
+                                                ),
+                                                scheduleSettings.schoolYearStart,
+                                                scheduleSettings.schoolYearEnd
+                                            ) ? (
+                                                <TimetableCell
+                                                    key={weekDay}
+                                                    disabled={
+                                                        dayOffs.find((dayOff) =>
+                                                            isBetweenDates(
+                                                                addDaysToDate(
+                                                                    currentTimetableFilters.fromDate,
+                                                                    allWeekDays.indexOf(
+                                                                        weekDay
+                                                                    )
+                                                                ),
+                                                                dayOff.from,
+                                                                dayOff.to
+                                                            )
+                                                        )?.name
+                                                    }
+                                                    id={`${i}-${allWeekDays.indexOf(weekDay)}-cell`}
+                                                    lessonBlockProps={
+                                                        lessonBlocks[
+                                                            `${i}-${allWeekDays.indexOf(weekDay)}-cell`
+                                                        ] || []
+                                                    }
+                                                />
+                                            ) : null
+                                        )}
+                                    </TimetableRow>
+                                ))}
                         </HoveredBlockIdContext>
                     </OpenFoldersContext.Provider>
                 </Table>

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { getMockLessonBlockProps } from '@/features/dashboard/utils/mocks';
-import { WeekDay } from '@/shared/constants/time';
 
 export default {
     title: 'Features/Dashboard/Components/Timetable',
@@ -11,18 +10,19 @@ export default {
 
 export const Default: StoryObj<typeof Timetable> = {
     args: {
-        weekDays: [
-            WeekDay.monday,
-            WeekDay.tuesday,
-            WeekDay.wednesday,
-            WeekDay.sunday,
-        ],
         lessonPeriods: [
             { id: '0-0-0-0-0', start: '08:00' },
             { id: '0-0-0-0-1', start: '09:00' },
             { id: '0-0-0-0-2', start: '12:30' },
         ],
-        schoolHour: 45,
+        scheduleSettings: {
+            id: '0-1-0-0-0',
+            schoolHour: 45,
+            schoolYearStart: '2025-10-01',
+            schoolYearEnd: '2025-11-10',
+            schoolDays: '1110000',
+            isPublic: true,
+        },
         lessonBlocks: {
             '0-0-cell': [getMockLessonBlockProps(9)],
             '0-1-cell': [
