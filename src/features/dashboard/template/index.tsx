@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { TokenRefreshProvider } from '@/features/auth/providers/TokenRefreshProvider';
+import { UserProvider } from '@/features/auth/providers/UserProvider';
 import {
     DashboardHeader,
     type DashboardHeaderProps,
@@ -18,10 +19,12 @@ interface DashboardProps {
 
 const Dashboard = ({ headerProps, children }: DashboardProps) => (
     <TokenRefreshProvider>
-        <DashboardBodyStyles />
-        <DashboardHeader navigation={[]} {...headerProps} />
-        {!!children && <Content>{children}</Content>}
-        <Toast />
+        <UserProvider>
+            <DashboardBodyStyles />
+            <DashboardHeader navigation={[]} {...headerProps} />
+            {!!children && <Content>{children}</Content>}
+            <Toast />
+        </UserProvider>
     </TokenRefreshProvider>
 );
 
