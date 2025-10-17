@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { use, useEffect, useState } from 'react';
+import { type ReactNode, use, useEffect, useState } from 'react';
+import { Mosaic } from 'react-mosaic-component';
+import 'react-mosaic-component/react-mosaic-component.css';
 import { useLoaderData } from 'react-router-dom';
 
 import { collisionGetAll } from '@/api/services/collisionService';
@@ -10,9 +12,10 @@ import { scheduleGetByName } from '@/api/services/scheduleService';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { UserContext } from '@/features/auth/contexts';
 import { Timetable } from '@/features/dashboard/components/Timetable';
-import { TimetableLoading } from '@/features/dashboard/components/TimetableLoading';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
 import { PropertiesWindowProvider } from '@/features/dashboard/providers/PropertiesWindow';
+import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
+import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import type { CurrentTimetableFilters } from '@/features/dashboard/types';
 import { parseTimetableLessonBlocks } from '@/features/dashboard/utils';
 import { schoolDaysFromDTO } from '@/features/schedules/utils';
@@ -113,32 +116,64 @@ const EditPage = () => {
             });
     }, [scheduleSettings]);
 
+    const windows: { [viewId: string]: ReactNode } = {
+        collisions: <div>collisions</div>,
+        properties: <div>properties</div>,
+        lessons: <div>lessons</div>,
+        tree: <div>tree</div>,
+        timetable: timetableLoading ? (
+            <StyledLoading />
+        ) : (
+            scheduleSettings &&
+            lessonBlocks &&
+            lessonPeriods &&
+            collisions &&
+            dayOffs && (
+                <Timetable
+                    lessonPeriods={lessonPeriods}
+                    scheduleSettings={scheduleSettings}
+                    dayOffs={dayOffs}
+                    lessonBlocks={parseTimetableLessonBlocks(
+                        lessonBlocks,
+                        lessonPeriods,
+                        collisions,
+                        scheduleSettings.schoolDays
+                    )}
+                />
+            )
+        ),
+    };
+
     return (
         <PropertiesWindowProvider>
             <CurrentTimetableFiltersContext.Provider
                 value={[currentTimetableFilters, setCurrentTimetableFilters]}
             >
-                {timetableLoading ? (
-                    <TimetableLoading />
-                ) : (
-                    scheduleSettings &&
-                    lessonBlocks &&
-                    lessonPeriods &&
-                    collisions &&
-                    dayOffs && (
-                        <Timetable
-                            lessonPeriods={lessonPeriods}
-                            scheduleSettings={scheduleSettings}
-                            dayOffs={dayOffs}
-                            lessonBlocks={parseTimetableLessonBlocks(
-                                lessonBlocks,
-                                lessonPeriods,
-                                collisions,
-                                scheduleSettings.schoolDays
-                            )}
-                        />
-                    )
-                )}
+                <EditPageStyle />
+                <Mosaic<string>
+                    resize={{ minimumPaneSizePercentage: 16 }}
+                    renderTile={(id) => windows[id]}
+                    initialValue={{
+                        direction: 'row',
+                        first: {
+                            direction: 'column',
+                            first: {
+                                direction: 'row',
+                                first: 'tree',
+                                second: 'timetable',
+                                splitPercentage: 20,
+                            },
+                            second: 'collisions',
+                            splitPercentage: 80,
+                        },
+                        second: {
+                            direction: 'column',
+                            first: 'properties',
+                            second: 'lessons',
+                        },
+                        splitPercentage: 84,
+                    }}
+                />
             </CurrentTimetableFiltersContext.Provider>
         </PropertiesWindowProvider>
     );
