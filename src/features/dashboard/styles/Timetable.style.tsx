@@ -6,8 +6,8 @@ import { sizes } from '@/shared/constants/dimensions';
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1400px;
-    height: 650px;
+    width: 100%;
+    height: 100%;
     padding: ${sizes.small} ${sizes.regular};
     background-color: ${({ theme }) => theme.colors.sectionBackground};
 `;
@@ -16,9 +16,14 @@ export const Navigation = styled.div`
     display: flex;
     justify-content: space-between;
     text-align: center;
+    width: 100%;
+
+    & > div {
+        width: calc(100% - 130px);
+    }
 
     & > div > p {
-        width: 600px;
+        width: 100%;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
