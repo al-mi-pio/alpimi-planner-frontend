@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
+import type { Id } from '@/api/types';
 import P from '@/shared/components/P';
 import Table from '@/shared/components/Table';
 import type { TableProps } from '@/shared/components/Table/Table';
@@ -51,7 +52,7 @@ const columns: TableColumn[] = [
 ];
 
 const CustomTable = (props: TableProps) => {
-    const [selectedItem, setSelectedItem] = useState<string | undefined>();
+    const [selectedItem, setSelectedItem] = useState<Id | undefined>();
 
     return (
         <StoryWrapper>
