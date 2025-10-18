@@ -5,7 +5,7 @@ import type { Collision } from '@/api/types/CollisionService';
 import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
 import {
     ErrorsCount,
-    NoCollisionsWrapper,
+    CenterMessageWrapper,
     TableWrapper,
 } from '@/features/dashboard/styles/CollisionsTable.style';
 import P from '@/shared/components/P';
@@ -46,9 +46,9 @@ export const CollisionsTable = ({ collisions }: CollisionsTableProps) => {
 
     if (!collisions.length) {
         return (
-            <NoCollisionsWrapper>
+            <CenterMessageWrapper>
                 <P>{t('No collisions')}</P>
-            </NoCollisionsWrapper>
+            </CenterMessageWrapper>
         );
     }
 
