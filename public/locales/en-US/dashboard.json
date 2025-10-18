@@ -14,6 +14,8 @@
     "Group": "Group:",
     "Group_other": "Groups:",
     "No collisions": "No collisions",
+    "No lessons": "No lessons",
+    "No lessons found": "No lessons found",
     "Name": "Name",
     "Description": "Description",
     "Cause": "Cause",
@@ -21,5 +23,6 @@
     "{{count}} Error": "{{count}} Error",
     "{{count}} Error_other": "{{count}} Errors",
     "{{count}} Warning": "{{count}} Warning",
-    "{{count}} Warning_other": "{{count}} Warnings"
+    "{{count}} Warning_other": "{{count}} Warnings",
+    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours"
 }
