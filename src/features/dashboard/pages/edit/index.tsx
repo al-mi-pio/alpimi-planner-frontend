@@ -8,10 +8,12 @@ import { collisionGetAll } from '@/api/services/collisionService';
 import { dayOffGetAll } from '@/api/services/dayOffService';
 import { lessonBlockGetAll } from '@/api/services/lessonBlockService';
 import { lessonPeriodGetAll } from '@/api/services/lessonPeriodService';
+import { lessonGetAll } from '@/api/services/lessonService';
 import { scheduleGetByName } from '@/api/services/scheduleService';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { UserContext } from '@/features/auth/contexts';
 import { CollisionsTable } from '@/features/dashboard/components/CollisionsTable';
+import { Lessons } from '@/features/dashboard/components/Lessons';
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
 import { PropertiesWindowProvider } from '@/features/dashboard/providers/PropertiesWindow';
@@ -77,6 +79,16 @@ const EditPage = () => {
         enabled: !!schedule,
     });
 
+    const { data: lessons, isLoading: isLessonLoading } = useQuery({
+        queryKey: ['lesson'],
+        queryFn: () =>
+            lessonGetAll({
+                params: { id: schedule ? schedule.id : '0-0-0-0-0' },
+            }),
+        select: (data) => data.content,
+        enabled: !!schedule,
+    });
+
     const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useQuery({
         queryKey: [
             'lessonBlock',
@@ -124,7 +136,11 @@ const EditPage = () => {
             collisions && <CollisionsTable collisions={collisions} />
         ),
         properties: <div>properties</div>,
-        lessons: <div>lessons</div>,
+        lessons: isLessonLoading ? (
+            <StyledLoading />
+        ) : (
+            lessons && <Lessons lessons={lessons} />
+        ),
         tree: <div>tree</div>,
         timetable: timetableLoading ? (
             <StyledLoading />
