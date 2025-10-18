@@ -11,6 +11,7 @@ import { lessonPeriodGetAll } from '@/api/services/lessonPeriodService';
 import { scheduleGetByName } from '@/api/services/scheduleService';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { UserContext } from '@/features/auth/contexts';
+import { CollisionsTable } from '@/features/dashboard/components/CollisionsTable';
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
 import { PropertiesWindowProvider } from '@/features/dashboard/providers/PropertiesWindow';
@@ -117,7 +118,11 @@ const EditPage = () => {
     }, [scheduleSettings]);
 
     const windows: { [viewId: string]: ReactNode } = {
-        collisions: <div>collisions</div>,
+        collisions: isCollisionLoading ? (
+            <StyledLoading />
+        ) : (
+            collisions && <CollisionsTable collisions={collisions} />
+        ),
         properties: <div>properties</div>,
         lessons: <div>lessons</div>,
         tree: <div>tree</div>,
