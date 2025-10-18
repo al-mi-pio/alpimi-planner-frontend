@@ -12,5 +12,16 @@
     "Classroom": "Sala:",
     "Teacher": "Nauczyciel:",
     "Group": "Grupy:",
-    "Group_one": "Grupa:"
+    "Group_one": "Grupa:",
+    "No collisions": "Brak kolizji",
+    "Name": "Nazwa",
+    "Description": "Opis",
+    "Cause": "Przyczyna",
+    "Weight": "Waga",
+    "{{count}} Error": "{{count}} Błędów",
+    "{{count}} Error_one": "{{count}} Błąd",
+    "{{count}} Error_few": "{{count}} Błędy",
+    "{{count}} Warning": "{{count}} Ostrzeżeń",
+    "{{count}} Warning_one": "{{count}} Ostrzeżenie",
+    "{{count}} Warning_few": "{{count}} Ostrzeżenia"
 }

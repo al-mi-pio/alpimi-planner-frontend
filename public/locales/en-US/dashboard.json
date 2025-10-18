@@ -12,5 +12,14 @@
     "Classroom": "Classroom:",
     "Teacher": "Teacher:",
     "Group": "Group:",
-    "Group_other": "Groups:"
+    "Group_other": "Groups:",
+    "No collisions": "No collisions",
+    "Name": "Name",
+    "Description": "Description",
+    "Cause": "Cause",
+    "Weight": "Weight",
+    "{{count}} Error": "{{count}} Error",
+    "{{count}} Error_other": "{{count}} Errors",
+    "{{count}} Warning": "{{count}} Warning",
+    "{{count}} Warning_other": "{{count}} Warnings"
 }
