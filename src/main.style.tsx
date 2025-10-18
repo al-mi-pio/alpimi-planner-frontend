@@ -10,7 +10,7 @@ import { FocusStyle } from '@/shared/styles/Common';
 const CommonGlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Inter';
-        src: url('./fonts/Inter.ttf');
+        src: url('/fonts/Inter.ttf');
         font-weight: normal;
         font-style: normal;
     }
