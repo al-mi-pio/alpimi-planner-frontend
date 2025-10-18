@@ -29,3 +29,10 @@ export interface CurrentTimetableFilters {
     fromDate: string;
     toDate: string;
 }
+
+export enum LessonTileStatus {
+    Empty = 'empty',
+    Filled = 'filled',
+    Full = 'full',
+    Overflowing = 'overflowing',
+}

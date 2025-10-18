@@ -4,7 +4,11 @@ import type { LessonBlock } from '@/api/types/LessonBlockService';
 import type { LessonPeriod } from '@/api/types/LessonPeriodService';
 import type { Subgroup } from '@/api/types/SubgroupService';
 import type { LessonBlocks } from '@/features/dashboard/components/Timetable';
-import { Status, type Statuses } from '@/features/dashboard/types';
+import {
+    LessonTileStatus,
+    Status,
+    type Statuses,
+} from '@/features/dashboard/types';
 import { weekDays } from '@/shared/constants/time';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import WarningSign from '@/shared/icons/WarningSign';
@@ -82,3 +86,15 @@ export const parseTimetableLessonBlocks = (
         }),
         {}
     );
+
+export const getLessonTileStatus = (
+    currentHours: number,
+    amountOfHours: number
+) =>
+    currentHours === amountOfHours
+        ? LessonTileStatus.Full
+        : currentHours > amountOfHours
+          ? LessonTileStatus.Overflowing
+          : currentHours > 0
+            ? LessonTileStatus.Filled
+            : LessonTileStatus.Empty;
