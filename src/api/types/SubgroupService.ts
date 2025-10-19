@@ -1,4 +1,4 @@
-import type { Entity } from '@/api/types';
+import type { ApiGetAllService, Entity } from '@/api/types';
 import type { Group } from '@/api/types/GroupService';
 import type { Lesson } from '@/api/types/LessonService';
 
@@ -8,3 +8,5 @@ export type Subgroup = Entity<{
     lessons: Lesson[];
     group: Group;
 }>;
+
+export type SubgroupGetAll = ApiGetAllService<Subgroup>;
