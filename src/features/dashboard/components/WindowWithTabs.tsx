@@ -6,7 +6,7 @@ import {
     Tab,
     Tabs,
     Wrapper,
-} from '@/features/dashboard/styles/ResizableWindow.style';
+} from '@/features/dashboard/styles/WindowWithTabs.style';
 
 export interface Tab {
     id: string;
@@ -14,15 +14,15 @@ export interface Tab {
     content: ReactNode;
 }
 
-export interface ResizableWindowProps extends ComponentPropsWithRef<'div'> {
+export interface WindowWithTabsProps extends ComponentPropsWithRef<'div'> {
     tabs: Tab[];
 }
 
-export const ResizableWindow = ({
+export const WindowWithTabs = ({
     tabs,
     children,
     ...defaultProps
-}: ResizableWindowProps) => {
+}: WindowWithTabsProps) => {
     const [selectedId, setSelectedId] = useState(
         tabs.length ? tabs[0].id : undefined
     );

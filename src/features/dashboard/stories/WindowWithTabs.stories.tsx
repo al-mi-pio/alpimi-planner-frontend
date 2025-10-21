@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import styled from 'styled-components';
 
 import {
-    ResizableWindow,
-    type ResizableWindowProps,
-} from '@/features/dashboard/components/ResizableWindow';
+    WindowWithTabs,
+    type WindowWithTabsProps,
+} from '@/features/dashboard/components/WindowWithTabs';
 import P from '@/shared/components/P';
 
 const Wrapper = styled.div`
@@ -47,44 +47,43 @@ const mockTabs = [
     },
 ];
 
-const CustomResizableWindow = ({ tabs, children }: ResizableWindowProps) => (
+const CustomWindowWithTabs = ({ tabs, children }: WindowWithTabsProps) => (
     <Wrapper>
-        <ResizableWindow tabs={tabs}>{children}</ResizableWindow>
+        <WindowWithTabs tabs={tabs}>{children}</WindowWithTabs>
     </Wrapper>
 );
 
 export default {
-    title: 'Features/Dashboard/Components/ResizableWindow',
-    component: CustomResizableWindow,
+    title: 'Features/Dashboard/Components/WindowWithTabs',
+    component: CustomWindowWithTabs,
     parameters: {
         docs: {
             description: {
-                component:
-                    'A resizable window component with optional tabs handling',
+                component: 'A window component with optional tabs handling',
             },
         },
     },
-} satisfies Meta<typeof ResizableWindow>;
+} satisfies Meta<typeof WindowWithTabs>;
 
-export const ThreeTabs: StoryObj<typeof ResizableWindow> = {
+export const ThreeTabs: StoryObj<typeof WindowWithTabs> = {
     args: {
         tabs: mockTabs,
     },
 };
 
-export const TwoTabs: StoryObj<typeof ResizableWindow> = {
+export const TwoTabs: StoryObj<typeof WindowWithTabs> = {
     args: {
         tabs: [mockTabs[0], mockTabs[1]],
     },
 };
 
-export const OneTab: StoryObj<typeof ResizableWindow> = {
+export const OneTab: StoryObj<typeof WindowWithTabs> = {
     args: {
         tabs: [mockTabs[0]],
     },
 };
 
-export const NoTabs: StoryObj<typeof ResizableWindow> = {
+export const NoTabs: StoryObj<typeof WindowWithTabs> = {
     args: {
         tabs: [],
         children: mockTabs[0].content,
