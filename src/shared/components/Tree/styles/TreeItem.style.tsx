@@ -31,6 +31,7 @@ export const StyledRow = styled.div<{ $indent?: boolean }>`
 export const ItemWrapper = styled.div<{ $isSelected?: boolean }>`
     display: flex;
     align-items: center;
+    user-select: none;
     ${({ $isSelected, theme }) =>
         $isSelected ? `background-color: ${theme.colors.highlight}` : ''}
 `;
