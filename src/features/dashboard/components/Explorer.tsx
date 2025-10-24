@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { groupGetAll } from '@/api/services/groupService';
 import { lessonBlockGetAll } from '@/api/services/lessonBlockService';
 import { subgroupGetAll } from '@/api/services/subgroupService';
+import { getTeacherName, teacherGetAll } from '@/api/services/teacherService';
 import { EntityType, type Id } from '@/api/types';
 import type { Lesson } from '@/api/types/LessonService';
 import type { Schedule } from '@/api/types/ScheduleService';
@@ -18,6 +19,7 @@ import Book from '@/shared/icons/Book';
 import Calendar from '@/shared/icons/Calendar';
 import Clock from '@/shared/icons/Clock';
 import Group from '@/shared/icons/Group';
+import UserCircle from '@/shared/icons/UserCircle';
 import { addDaysToDate, getFirstDayOfWeek } from '@/shared/utils/date';
 import { sortBy } from '@/shared/utils/string';
 
@@ -69,6 +71,18 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
+    const { data: teachers, isLoading: isTeacherLoading } = useQuery({
+        queryKey: ['teacher', schedule?.id],
+        queryFn: () =>
+            teacherGetAll({
+                params: {
+                    scheduleId: schedule ? schedule.id : '0-0-0-0-0',
+                },
+            }),
+        select: (data) => data.content,
+        enabled: !!schedule,
+    });
+
     const onExpanded = (itemName?: string) =>
         setExpandedState((prevState) => ({
             ...prevState,
@@ -93,6 +107,43 @@ export const Explorer = ({
     ) => {
         if (!Object.keys(expandedState).length || !lookupMaps || !groups)
             return null;
+
+        if (type === EntityType.Teacher) {
+            if (!teachers) return null;
+            return (
+                <Tree tabIndex={0}>
+                    {teachers.map((teacher) => (
+                        <TreeItem
+                            key={teacher.id}
+                            icon={<UserCircle />}
+                            label={getTeacherName(teacher)}
+                            isSelected={
+                                selectedEntity
+                                    ? selectedEntity.id === teacher.id
+                                    : undefined
+                            }
+                            onDoubleClick={() =>
+                                setCurrentTimetableFilters(
+                                    (prev) =>
+                                        prev && {
+                                            ...prev,
+                                            entityName: getTeacherName(teacher),
+                                            entityId: teacher.id,
+                                        }
+                                )
+                            }
+                            onSelected={(id) =>
+                                setSelectedEntity({
+                                    entity: EntityType.Teacher,
+                                    id: id ? (id as Id) : '0-0-0-0-0',
+                                })
+                            }
+                            value={teacher.id}
+                        />
+                    ))}
+                </Tree>
+            );
+        }
 
         const {
             subgroupsByGroup,
@@ -361,7 +412,8 @@ export const Explorer = ({
         isLoading ||
         isGroupLoading ||
         isSubgroupLoading ||
-        isLessonBlockLoading
+        isLessonBlockLoading ||
+        isTeacherLoading
     ) {
         return <StyledLoading />;
     }
