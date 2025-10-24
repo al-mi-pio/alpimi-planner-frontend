@@ -7,6 +7,7 @@ import Arrowhead from '@/shared/icons/Arrowhead';
 import Book from '@/shared/icons/Book';
 import Calendar from '@/shared/icons/Calendar';
 import Clock from '@/shared/icons/Clock';
+import Doors from '@/shared/icons/Doors';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import GitHub from '@/shared/icons/GitHub';
 import Group from '@/shared/icons/Group';
@@ -16,6 +17,7 @@ import Plus from '@/shared/icons/Plus';
 import RightArrow from '@/shared/icons/RightArrow';
 import Search from '@/shared/icons/Search';
 import SortDown from '@/shared/icons/SortDown';
+import Tag from '@/shared/icons/Tag';
 import UserCircle from '@/shared/icons/UserCircle';
 import WarningSign from '@/shared/icons/WarningSign';
 import X from '@/shared/icons/X';
@@ -50,6 +52,8 @@ export default {
                         <SortDown secondary={secondary} />
                         <UserCircle secondary={secondary} />
                         <Book secondary={secondary} />
+                        <Doors secondary={secondary} />
+                        <Tag secondary={secondary} />
                         <Search secondary={secondary} />
                         <Arrowhead secondary={secondary} direction="left" />
                         <Arrowhead secondary={secondary} direction="down" />
