@@ -1,7 +1,9 @@
 import type { Id } from '@/api/types';
 import type { Collision } from '@/api/types/CollisionService';
+import type { Group } from '@/api/types/GroupService';
 import type { LessonBlock } from '@/api/types/LessonBlockService';
 import type { LessonPeriod } from '@/api/types/LessonPeriodService';
+import type { Lesson } from '@/api/types/LessonService';
 import type { Subgroup } from '@/api/types/SubgroupService';
 import type { LessonBlocks } from '@/features/dashboard/components/Timetable';
 import {
@@ -98,3 +100,61 @@ export const getLessonTileStatus = (
           : currentHours > 0
             ? LessonTileStatus.Filled
             : LessonTileStatus.Empty;
+
+export const generateTreeLookupMaps = (
+    groups: Group[],
+    subgroups: Subgroup[],
+    lessons: Lesson[],
+    lessonBlocks: LessonBlock[]
+) => {
+    const expandedMap: Record<Id, boolean> = {};
+
+    const subgroupsByGroup: Record<Id, Subgroup[]> = {};
+
+    for (const subgroup of subgroups) {
+        if (!subgroupsByGroup[subgroup.group.id])
+            subgroupsByGroup[subgroup.group.id] = [];
+        subgroupsByGroup[subgroup.group.id].push(subgroup);
+
+        expandedMap[subgroup.id] = false;
+    }
+
+    const lessonById: Record<Id, Lesson> = Object.fromEntries(
+        lessons.map((lesson) => [lesson.id, lesson])
+    );
+    const lessonBlocksByLesson: Record<Id, LessonBlock[]> = {};
+
+    for (const lessonBlock of lessonBlocks) {
+        if (!lessonBlocksByLesson[lessonBlock.lesson.id])
+            lessonBlocksByLesson[lessonBlock.lesson.id] = [];
+        lessonBlocksByLesson[lessonBlock.lesson.id].push(lessonBlock);
+
+        expandedMap[lessonBlock.id] = false;
+    }
+
+    const lessonIdsBySubgroup: Record<Id, Id[]> = {};
+
+    for (const lesson of lessons) {
+        lesson.subgroups.forEach((subgroup) => {
+            if (!lessonIdsBySubgroup[subgroup.id])
+                lessonIdsBySubgroup[subgroup.id] = [];
+            lessonIdsBySubgroup[subgroup.id].push(lesson.id);
+        });
+
+        expandedMap[lesson.id] = false;
+    }
+
+    for (const group of groups) {
+        expandedMap[group.id] = false;
+    }
+
+    return {
+        expandedMap,
+        lookupMaps: {
+            subgroupsByGroup,
+            lessonIdsBySubgroup,
+            lessonById,
+            lessonBlocksByLesson,
+        },
+    };
+};

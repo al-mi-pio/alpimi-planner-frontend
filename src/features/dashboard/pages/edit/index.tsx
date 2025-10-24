@@ -13,6 +13,7 @@ import { scheduleGetByName } from '@/api/services/scheduleService';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { UserContext } from '@/features/auth/contexts';
 import { CollisionsTable } from '@/features/dashboard/components/CollisionsTable';
+import { Explorer } from '@/features/dashboard/components/Explorer';
 import { Lessons } from '@/features/dashboard/components/Lessons';
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
@@ -141,7 +142,13 @@ const EditPage = () => {
         ) : (
             lessons && <Lessons lessons={lessons} />
         ),
-        tree: <div>tree</div>,
+        tree: (
+            <Explorer
+                lessons={lessons}
+                schedule={schedule}
+                isLoading={isLessonLoading}
+            />
+        ),
         timetable: timetableLoading ? (
             <StyledLoading />
         ) : (
