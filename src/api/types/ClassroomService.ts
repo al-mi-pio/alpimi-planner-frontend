@@ -1,4 +1,4 @@
-import type { Entity } from '@/api/types';
+import type { ApiGetAllService, Entity } from '@/api/types';
 import type { ClassroomType } from '@/api/types/ClassroomTypeService';
 
 export type Classroom = Entity<{
@@ -6,3 +6,5 @@ export type Classroom = Entity<{
     capacity: number;
     classroomTypes: ClassroomType[];
 }>;
+
+export type ClassroomGetAll = ApiGetAllService<Classroom>;
