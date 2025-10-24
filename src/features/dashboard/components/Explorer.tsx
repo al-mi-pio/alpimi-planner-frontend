@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { use, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { classroomGetAll } from '@/api/services/classroomService';
 import { groupGetAll } from '@/api/services/groupService';
 import { lessonBlockGetAll } from '@/api/services/lessonBlockService';
 import { subgroupGetAll } from '@/api/services/subgroupService';
@@ -18,7 +19,9 @@ import { Tree, TreeItem } from '@/shared/components/Tree';
 import Book from '@/shared/icons/Book';
 import Calendar from '@/shared/icons/Calendar';
 import Clock from '@/shared/icons/Clock';
+import Doors from '@/shared/icons/Doors';
 import Group from '@/shared/icons/Group';
+import Tag from '@/shared/icons/Tag';
 import UserCircle from '@/shared/icons/UserCircle';
 import { addDaysToDate, getFirstDayOfWeek } from '@/shared/utils/date';
 import { sortBy } from '@/shared/utils/string';
@@ -83,6 +86,18 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
+    const { data: classrooms, isLoading: isClassroomLoading } = useQuery({
+        queryKey: ['classroom', schedule?.id],
+        queryFn: () =>
+            classroomGetAll({
+                params: {
+                    id: schedule ? schedule.id : '0-0-0-0-0',
+                },
+            }),
+        select: (data) => data.content,
+        enabled: !!schedule,
+    });
+
     const onExpanded = (itemName?: string) =>
         setExpandedState((prevState) => ({
             ...prevState,
@@ -117,6 +132,8 @@ export const Explorer = ({
                             key={teacher.id}
                             icon={<UserCircle />}
                             label={getTeacherName(teacher)}
+                            isExpanded={expandedState[teacher.id]}
+                            onExpanded={onExpanded}
                             isSelected={
                                 selectedEntity
                                     ? selectedEntity.id === teacher.id
@@ -140,6 +157,77 @@ export const Explorer = ({
                             }
                             value={teacher.id}
                         />
+                    ))}
+                </Tree>
+            );
+        }
+
+        if (type === EntityType.Classroom) {
+            if (!classrooms) return null;
+            return (
+                <Tree tabIndex={0}>
+                    {classrooms.map((classroom) => (
+                        <TreeItem
+                            key={classroom.id}
+                            icon={<Doors />}
+                            label={classroom.name}
+                            isExpanded={expandedState[classroom.id]}
+                            onExpanded={onExpanded}
+                            isSelected={
+                                selectedEntity
+                                    ? selectedEntity.id === classroom.id
+                                    : undefined
+                            }
+                            onDoubleClick={() =>
+                                setCurrentTimetableFilters(
+                                    (prev) =>
+                                        prev && {
+                                            ...prev,
+                                            entityName: classroom.name,
+                                            entityId: classroom.id,
+                                        }
+                                )
+                            }
+                            onSelected={(id) =>
+                                setSelectedEntity({
+                                    entity: EntityType.Classroom,
+                                    id: id ? (id as Id) : '0-0-0-0-0',
+                                })
+                            }
+                            value={classroom.id}
+                        >
+                            {classroom.classroomTypes.map((classroomType) => (
+                                <TreeItem
+                                    key={classroomType.id}
+                                    icon={<Tag />}
+                                    label={classroomType.name}
+                                    isSelected={
+                                        selectedEntity
+                                            ? selectedEntity.id ===
+                                              classroomType.id
+                                            : undefined
+                                    }
+                                    onDoubleClick={() =>
+                                        setCurrentTimetableFilters(
+                                            (prev) =>
+                                                prev && {
+                                                    ...prev,
+                                                    entityName:
+                                                        classroomType.name,
+                                                    entityId: classroomType.id,
+                                                }
+                                        )
+                                    }
+                                    onSelected={(id) =>
+                                        setSelectedEntity({
+                                            entity: EntityType.ClassroomType,
+                                            id: id ? (id as Id) : '0-0-0-0-0',
+                                        })
+                                    }
+                                    value={classroomType.id}
+                                />
+                            ))}
+                        </TreeItem>
                     ))}
                 </Tree>
             );
@@ -413,7 +501,8 @@ export const Explorer = ({
         isGroupLoading ||
         isSubgroupLoading ||
         isLessonBlockLoading ||
-        isTeacherLoading
+        isTeacherLoading ||
+        isClassroomLoading
     ) {
         return <StyledLoading />;
     }
