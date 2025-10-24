@@ -1,4 +1,4 @@
-import type { ApiGetAllService, Entity } from '@/api/types';
+import type { ApiGetAllService, ApiGetService, Entity } from '@/api/types';
 
 export type Group = Entity<{
     name: string;
@@ -6,3 +6,4 @@ export type Group = Entity<{
 }>;
 
 export type GroupGetAll = ApiGetAllService<Group>;
+export type GroupGet = ApiGetService<Group>;
