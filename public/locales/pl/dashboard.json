@@ -33,5 +33,7 @@
     "{{count}} Warning": "{{count}} Ostrzeżeń",
     "{{count}} Warning_one": "{{count}} Ostrzeżenie",
     "{{count}} Warning_few": "{{count}} Ostrzeżenia",
-    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} Godzin lekcyjnych"
+    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} Godzin lekcyjnych",
+    "Adding lesson periods": "Tworzenie siatki lekcyjnej",
+    "Lesson periods": "Siatka lekcyjna"
 }

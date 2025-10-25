@@ -31,5 +31,7 @@
     "{{count}} Error_other": "{{count}} Errors",
     "{{count}} Warning": "{{count}} Warning",
     "{{count}} Warning_other": "{{count}} Warnings",
-    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours"
+    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours",
+    "Adding lesson periods": "Adding lesson periods",
+    "Lesson periods": "Lesson periods"
 }
