@@ -18,3 +18,9 @@ export const StyledMessageBox = styled.div<{ $type: MessageType }>`
         line-height: ${lineHeights.regular};
     }
 `;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 0 ${sizes.smallXL};
+`;

@@ -1,9 +1,16 @@
-import { ApiGetAllService, ApiPostService } from '@/api/types';
+import type { AxiosRequestConfig } from 'axios';
 
-export interface Schedule {
+import type {
+    ApiGetAllService,
+    ApiPostService,
+    Entity,
+    GetResponse,
+} from '@/api/types';
+
+export type Schedule = Entity<{
     name: string;
     modifyDate: string;
-}
+}>;
 
 export interface CreateScheduleDTO {
     name: string;
@@ -15,3 +22,8 @@ export interface CreateScheduleDTO {
 
 export type ScheduleGetAll = ApiGetAllService<Schedule>;
 export type SchedulePost = ApiPostService<CreateScheduleDTO>;
+export type ScheduleGetByName = (
+    customUrl: string,
+    name: string,
+    config?: AxiosRequestConfig
+) => Promise<GetResponse<Schedule>>;

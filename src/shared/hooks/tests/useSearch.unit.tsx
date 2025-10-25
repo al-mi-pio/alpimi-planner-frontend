@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { act, ChangeEvent } from 'react';
+import { act, type ChangeEvent } from 'react';
 
 import { describe, expect, vi, test, beforeEach, afterAll } from 'vitest';
 
@@ -30,6 +30,7 @@ describe('useSearch', () => {
 
         expect(result.current.filteredData).toStrictEqual(mockColorData);
         expect(result.current.bindSearch).toStrictEqual({
+            id: expect.any(String),
             onChange: expect.any(Function),
             value: '',
         });
@@ -68,6 +69,7 @@ describe('useSearch', () => {
             },
         ]);
         expect(result.current.bindSearch).toStrictEqual({
+            id: expect.any(String),
             onChange: expect.any(Function),
             value: 'ony',
         });
@@ -107,6 +109,7 @@ describe('useSearch', () => {
         });
 
         expect(result.current.bindSearch).toStrictEqual({
+            id: expect.any(String),
             onChange: expect.any(Function),
             value: '8',
         });
@@ -149,6 +152,7 @@ describe('useSearch', () => {
         });
 
         expect(result.current.bindSearch).toStrictEqual({
+            id: expect.any(String),
             onChange: expect.any(Function),
             value: '8',
         });

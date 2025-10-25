@@ -1,4 +1,4 @@
-import { DefaultTheme, keyframes } from 'styled-components';
+import { type DefaultTheme, keyframes } from 'styled-components';
 
 import { sizes } from '@/shared/constants/dimensions';
 

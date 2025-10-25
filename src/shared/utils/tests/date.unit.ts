@@ -9,7 +9,11 @@ import {
 } from 'vitest';
 
 import i18n from '@/shared/test-utils/i18n';
-import { dateDifference } from '@/shared/utils/date';
+import {
+    addDaysToDate,
+    dateDifference,
+    getFirstDayOfWeek,
+} from '@/shared/utils/date';
 
 const mockGetI18n = vi.fn().mockReturnValue(i18n);
 
@@ -126,4 +130,35 @@ describe('dateDifference', () => {
             expect(dateDifference(input)).toBe(expected);
         });
     });
+});
+
+describe('getFirstDayOfWeek', () => {
+    test.for([
+        ['2025-09-01', '2025-09-01'],
+        ['2025-09-01', '2025-09-02'],
+        ['2025-09-01', '2025-09-03'],
+        ['2025-09-01', '2025-09-04'],
+        ['2025-09-01', '2025-09-05'],
+        ['2025-09-01', '2025-09-06'],
+        ['2025-09-01', '2025-09-07'],
+        ['2025-09-08', '2025-09-08'],
+    ])('Return "%s" when date is "%s"', ([expected, input]) => {
+        expect(getFirstDayOfWeek(input)).toBe(expected);
+    });
+});
+
+describe('addDaysToDate', () => {
+    test.each([
+        ['2025-09-03', '2025-09-01', 2],
+        ['2025-09-01', '2025-09-01', 0],
+        ['2025-08-31', '2025-09-01', -1],
+        ['2025-10-11', '2025-09-01', 40],
+        ['2026-01-01', '2025-12-31', 1],
+        ['2025-12-31', '2026-01-01', -1],
+    ])(
+        'Return "%s" when date is "%s" and number is %i',
+        (expected, date, days) => {
+            expect(addDaysToDate(date, days)).toBe(expected);
+        }
+    );
 });

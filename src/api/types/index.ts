@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 
 export type Id = `${string}-${string}-${string}-${string}-${string}`;
 export type SortOrder = 'ASC' | 'DESC';
@@ -65,9 +65,32 @@ export type ApiGetAllService<T> = (
 ) => Promise<GetAllResponse<T>>;
 
 export type ApiGetService<T> = (
+    id: Id,
     config?: AxiosRequestConfig
 ) => Promise<GetResponse<T>>;
 
 export type ApiPatchService<T> = (
+    id: Id,
+    data: T,
     config?: AxiosRequestConfig
 ) => Promise<PatchResponse<T>>;
+
+export enum EntityType {
+    Availability = 'availability',
+    Classroom = 'classroom',
+    ClassroomType = 'classroomType',
+    Collision = 'collision',
+    CollisionType = 'collisionType',
+    DayOff = 'dayOff',
+    Group = 'group',
+    LessonBlock = 'lessonBlock',
+    LessonPeriod = 'lessonPeriod',
+    Lesson = 'lesson',
+    LessonType = 'lessonType',
+    Schedule = 'schedule',
+    ScheduleSettings = 'scheduleSettings',
+    Student = 'student',
+    Subgroup = 'subgroup',
+    Teacher = 'teacher',
+    User = 'user',
+}

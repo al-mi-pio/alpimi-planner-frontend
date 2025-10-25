@@ -14,6 +14,7 @@ export const DropdownMenu = styled.ul<{
     background-color: ${({ theme }) => theme.colors.elementBackground};
     list-style: none;
     padding: 0;
+    z-index: 1;
     margin: ${sizes.smallXL} 0;
     left: ${({ $left }) => ($left ? `${$left}px;` : '0')};
     top: ${({ $top }) => ($top ? `${$top}px;` : '100%')};

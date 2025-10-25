@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import {
     User,
     Wrapper,
 } from '@/features/dashboard/styles/DashboardHeader.style';
-import { NavButton } from '@/features/dashboard/types';
+import type { NavButton } from '@/features/dashboard/types';
 import Dropdown, { DropdownItem } from '@/shared/components/Dropdown';
 import H from '@/shared/components/H';
 import Link from '@/shared/components/Link';
@@ -54,7 +54,9 @@ export const DashboardHeader = ({
                 <ButtonGroup>
                     {navigation.map(({ label, route }) => (
                         <StyledButton
-                            $selected={window.location.pathname === route}
+                            $selected={
+                                window.location.pathname === encodeURI(route)
+                            }
                             key={t(label)}
                             appearance="secondary"
                             label={t(label)}
@@ -82,7 +84,7 @@ export const DashboardHeader = ({
                             navigate(login);
                         }}
                     >
-                        {'Logout'}
+                        {t('Logout')}
                     </DropdownItem>
                 </Dropdown>
             </User>

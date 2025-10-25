@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 
 import { authLogin } from '@/api/services/authService';
-import { ErrorResponse } from '@/api/types';
-import { AuthDTO, AuthResponse } from '@/api/types/AuthService';
+import type { ErrorResponse } from '@/api/types';
+import type { AuthDTO, AuthResponse } from '@/api/types/AuthService';
 import { AuthForm } from '@/features/auth/styles/Auth.style';
 import Button from '@/shared/components/Button';
 import Image from '@/shared/components/Image';

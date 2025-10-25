@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { type ChangeEvent, useEffect, useId, useState } from 'react';
 
 import { useDebounce } from 'use-debounce';
 
@@ -21,6 +21,7 @@ export const useSearch = <T = object,>({
     const [value, setValue] = useState('');
     const [text] = useDebounce(value, debounceDelay);
     const [filteredData, setFilteredData] = useState<T[]>(data);
+    const id = useId();
 
     const onChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
         setValue(value);
@@ -38,6 +39,7 @@ export const useSearch = <T = object,>({
         bindSearch: {
             value,
             onChange,
+            id,
         },
     };
 };

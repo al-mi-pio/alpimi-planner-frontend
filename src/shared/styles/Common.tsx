@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Appearance } from '@/shared/components/Button/types';
+import type { Appearance } from '@/shared/components/Button/types';
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 
 export const FocusStyle = css`
@@ -106,4 +106,27 @@ export const ButtonStyles = (appearance?: Appearance) => css`
 
 export const StyledButton = styled.button<{ $appearance?: Appearance }>`
     ${({ $appearance }) => ButtonStyles($appearance)}
+`;
+
+export const IconButton = styled.button`
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: ${sizes.smallXL};
+    padding: 2px;
+    line-height: 0;
+    max-height: fit-content;
+    max-width: fit-content;
+
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: ${({ theme }) => theme.colors.secondaryText};
+    }
+
+    &:hover:disabled {
+        cursor: not-allowed;
+    }
 `;

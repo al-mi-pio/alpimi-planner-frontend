@@ -1,4 +1,4 @@
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, type UseMutationOptions } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import type { DefaultError } from '@tanstack/query-core';
 import { AxiosError } from 'axios';
 
-import { ErrorResponse } from '@/api/types';
+import type { ErrorResponse } from '@/api/types';
 import { tokenExpirationUrl } from '@/shared/utils/url';
 
 export const useMutateData = <

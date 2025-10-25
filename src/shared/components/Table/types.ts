@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type CellValue = string | number | boolean | object | null | undefined;
 

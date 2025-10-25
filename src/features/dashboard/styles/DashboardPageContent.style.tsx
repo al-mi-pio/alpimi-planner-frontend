@@ -5,6 +5,8 @@ import { sizes } from '@/shared/constants/dimensions';
 
 export const Wrapper = styled.div`
     height: 100%;
+    display: flex;
+    flex-direction: column;
     padding-top: ${sizes.large};
     margin: 0 ${sizes.largeXL};
 `;

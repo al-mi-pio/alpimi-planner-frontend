@@ -1,6 +1,6 @@
 import { StyledH } from '@/shared/components/H/H.style';
-import { HeadingLevel } from '@/shared/components/H/types';
-import { PProps } from '@/shared/components/P/P';
+import type { HeadingLevel } from '@/shared/components/H/types';
+import type { PProps } from '@/shared/components/P/P';
 
 export interface HProps extends PProps {
     /**

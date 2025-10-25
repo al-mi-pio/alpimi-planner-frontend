@@ -10,14 +10,18 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginStorybook from 'eslint-plugin-storybook';
+import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import { configs as tsConfigs } from 'typescript-eslint';
 
 export default [
     { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-    {
-        ignores: ['dist', 'storybook-static', 'node_modules'],
-    },
+    globalIgnores([
+        'dist',
+        'storybook-static',
+        'node_modules',
+        'public/mockServiceWorker.js',
+    ]),
     {
         languageOptions: {
             parser: tsParser,
@@ -39,11 +43,7 @@ export default [
             'import-x/resolver-next': [
                 createTypeScriptImportResolver({
                     alwaysTryTypes: true,
-                    project: [
-                        'tsconfig.app.json',
-                        'tsconfig.node.json',
-                        'tsconfig.json',
-                    ],
+                    project: ['./tsconfig.app.json', './tsconfig.node.json'],
                 }),
             ],
         },
@@ -65,7 +65,11 @@ export default [
             'prettier/prettier': 'error',
             'import-x/default': 'off',
             'import-x/no-named-as-default': 'off',
-            'import-x/extensions': 'error',
+            'import-x/extensions': [
+                'error',
+                'ignorePackages',
+                { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' },
+            ],
             // 'react-compiler/react-compiler': 'error',
         },
     },

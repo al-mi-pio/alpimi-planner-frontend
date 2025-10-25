@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 import P from '@/shared/components/P';
 import { TreeItemStatusIcon } from '@/shared/components/Tree/components/TreeItemStatusIcon';
@@ -7,7 +7,7 @@ import {
     ItemWrapper,
     StyledRow,
 } from '@/shared/components/Tree/styles/TreeItem.style';
-import { TreeItemStatus } from '@/shared/components/Tree/types';
+import type { TreeItemStatus } from '@/shared/components/Tree/types';
 import Arrowhead from '@/shared/icons/Arrowhead';
 
 export interface TreeItemProps extends ComponentPropsWithRef<'div'> {

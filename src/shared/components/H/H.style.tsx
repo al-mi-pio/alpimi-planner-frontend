@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { HeadingLevel } from '@/shared/components/H/types';
+import type { HeadingLevel } from '@/shared/components/H/types';
 import {
     fontSizes,
     lineHeights,

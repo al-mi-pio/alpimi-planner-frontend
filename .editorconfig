@@ -3,10 +3,12 @@ root = true
 [*]
 end_of_line = lf
 charset = utf-8
+insert_final_newline = true
 indent_style = space
 indent_size = 4
 
 [{package.json,package-lock.json}]
+insert_final_newline = false
 indent_size = 2
 
 [.storybook/preview.tsx]

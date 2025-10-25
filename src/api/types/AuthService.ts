@@ -1,4 +1,7 @@
-import { ApiCustomBodyService, ApiCustomBodylessService } from '@/api/types';
+import type {
+    ApiCustomBodyService,
+    ApiCustomBodylessService,
+} from '@/api/types';
 
 export interface AuthDTO {
     login: string;

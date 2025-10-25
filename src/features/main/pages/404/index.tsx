@@ -10,7 +10,7 @@ import H from '@/shared/components/H';
 const Page404 = () => {
     const navigate = useNavigate();
 
-    const { t } = useTranslation('schedules');
+    const { t } = useTranslation();
 
     return (
         <Wrapper>

@@ -1,13 +1,12 @@
 import {
-    ComponentPropsWithRef,
-    ReactNode,
+    type ComponentPropsWithRef,
+    type ReactNode,
     useEffect,
     useRef,
     useState,
 } from 'react';
 
 import Button from '@/shared/components/Button';
-import { StyledButton } from '@/shared/components/Close/Close.style';
 import { DropdownMenu } from '@/shared/components/Dropdown/Dropdown.style';
 
 export interface DropdownProps extends ComponentPropsWithRef<'ul'> {
@@ -37,7 +36,7 @@ const Dropdown = ({
     const buttonRef = useRef<HTMLButtonElement>(null);
     const contentRef = useRef<HTMLUListElement>(null);
 
-    const handleClick = () => {
+    const setPosition = () => {
         if (!open) {
             const contentHeight = contentRef.current?.clientHeight ?? 0;
             const contentWidth = contentRef.current?.clientWidth ?? 0;
@@ -62,6 +61,10 @@ const Dropdown = ({
             setDropdownTop(topPosition);
             setDropdownLeft(leftPosition);
         }
+    };
+
+    const handleClick = () => {
+        setPosition();
         setOpen((prev) => !prev);
     };
 
@@ -77,6 +80,7 @@ const Dropdown = ({
             }
         };
 
+        setPosition();
         document.addEventListener('click', handler);
 
         return () => {
@@ -86,22 +90,14 @@ const Dropdown = ({
 
     return (
         <div ref={dropdownRef} style={{ position: 'relative' }}>
-            {typeof label === 'string' ? (
-                <Button
-                    ref={buttonRef}
-                    label={label}
-                    appearance="secondary"
-                    onClick={handleClick}
-                />
-            ) : (
-                <StyledButton
-                    ref={buttonRef}
-                    aria-label={buttonLabel}
-                    onClick={handleClick}
-                >
-                    {label}
-                </StyledButton>
-            )}
+            <Button
+                ref={buttonRef}
+                label={typeof label === 'string' ? label : undefined}
+                icon={typeof label === 'string' ? undefined : label}
+                appearance="secondary"
+                aria-label={buttonLabel}
+                onClick={handleClick}
+            />
 
             <DropdownMenu
                 {...defaultProps}

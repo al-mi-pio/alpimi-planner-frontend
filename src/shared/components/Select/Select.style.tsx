@@ -1,6 +1,6 @@
 import ReactSelect from 'react-select';
 
-import { StyledComponent } from '@storybook/theming';
+import type { StyledComponent } from '@storybook/theming';
 import styled from 'styled-components';
 
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';

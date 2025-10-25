@@ -1,6 +1,6 @@
-import { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
+import { type AxiosResponse, type AxiosRequestConfig, AxiosError } from 'axios';
 
-import { ErrorMessage, ErrorResponse } from '@/api/types';
+import type { ErrorMessage, ErrorResponse } from '@/api/types';
 import i18n from '@/i18n';
 
 export const parseAxiosResponse = <T>({ data, status }: AxiosResponse<T>) => ({
@@ -8,7 +8,22 @@ export const parseAxiosResponse = <T>({ data, status }: AxiosResponse<T>) => ({
     status,
 });
 
-export const getDefaultConfig = (config?: AxiosRequestConfig) => {
+export const getDefaultGetAllConfig = (
+    config?: AxiosRequestConfig
+): AxiosRequestConfig => {
+    const defaultConfig = getDefaultConfig(config);
+    return {
+        ...defaultConfig,
+        params: {
+            perPage: 100000,
+            ...defaultConfig.params,
+        },
+    };
+};
+
+export const getDefaultConfig = (
+    config?: AxiosRequestConfig
+): AxiosRequestConfig => {
     const accessToken = localStorage.getItem('accessToken');
 
     return {

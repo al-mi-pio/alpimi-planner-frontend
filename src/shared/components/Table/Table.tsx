@@ -1,7 +1,8 @@
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
+import type { Id } from '@/api/types';
 import { Row, StyledTable } from '@/shared/components/Table/Table.style';
-import { CellValue, TableColumn } from '@/shared/components/Table/types';
+import type { CellValue, TableColumn } from '@/shared/components/Table/types';
 import { defaultFormatter } from '@/shared/utils/table';
 
 export interface TableProps extends ComponentPropsWithRef<'table'> {
@@ -16,11 +17,11 @@ export interface TableProps extends ComponentPropsWithRef<'table'> {
     /**
      * A value used to select and deselect an item
      */
-    selectedItem?: string;
+    selectedItem?: Id;
     /**
      * An event that runs on selecting an item
      */
-    onSelectItem?: (value?: string) => void;
+    onSelectItem?: (value?: Id) => void;
 }
 
 /**
@@ -50,7 +51,7 @@ const Table = ({
                     <Row
                         key={i}
                         onClick={() =>
-                            onSelectItem && onSelectItem(String(row.id))
+                            onSelectItem && onSelectItem(row.id as Id)
                         }
                         tabIndex={0}
                         className={

@@ -1,9 +1,9 @@
-import { ComponentPropsWithRef, useId } from 'react';
+import { type ComponentPropsWithRef, useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactSelect from 'react-select';
 
 import { StyledSelect } from '@/shared/components/Select/Select.style';
-import { SelectOption } from '@/shared/components/Select/types';
+import type { SelectOption } from '@/shared/components/Select/types';
 import { Label, ErrorDescription } from '@/shared/styles/Strings';
 
 export interface SelectProps extends ComponentPropsWithRef<ReactSelect> {

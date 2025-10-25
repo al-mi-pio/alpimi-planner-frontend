@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import Link from '@/shared/components/Link';
 import GitHub from '@/shared/icons/GitHub';

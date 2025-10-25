@@ -5,9 +5,6 @@ import { sizes } from '@/shared/constants/dimensions';
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${({ theme }) => theme.colors.primaryBackground};
-    border: 2px solid ${({ theme }) => theme.colors.elementBackground};
-    resize: both;
     overflow: hidden;
     min-height: min-content;
     height: 100%;

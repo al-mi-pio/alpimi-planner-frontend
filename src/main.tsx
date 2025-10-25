@@ -2,16 +2,19 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import { useLoaderData } from 'react-router-dom';
 
 import App from './App';
 import './i18n';
 
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
+import EditPage from '@/features/dashboard/pages/edit';
 import Dashboard from '@/features/dashboard/template';
 import Page404 from '@/features/main/pages/404';
 import {
     createScheduleDashboardHeader,
+    editorDashboardHeader,
     schedulesDashboardHeader,
 } from '@/features/schedules/constants';
 import CreateSchedulePage from '@/features/schedules/pages/create';
@@ -20,13 +23,20 @@ import { GlobalStyle } from '@/main.style';
 import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
 import {
     createSchedule,
+    editSchedule,
     landingPage,
     login,
     schedules,
 } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+});
 const router = createBrowserRouter([
     {
         path: landingPage,
@@ -55,6 +65,18 @@ const router = createBrowserRouter([
                 <CreateSchedulePage />
             </Dashboard>
         ),
+    },
+    {
+        path: editSchedule(':scheduleName'),
+        loader: ({ params }) => ({ scheduleName: params.scheduleName }),
+        Component: () => {
+            const { scheduleName } = useLoaderData();
+            return (
+                <Dashboard headerProps={editorDashboardHeader(scheduleName)}>
+                    <EditPage />
+                </Dashboard>
+            );
+        },
     },
     {
         path: '*',

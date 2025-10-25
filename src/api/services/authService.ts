@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-import { AuthLogin, AuthRefresh, AuthResponse } from '@/api/types/AuthService';
+import type {
+    AuthLogin,
+    AuthRefresh,
+    AuthResponse,
+} from '@/api/types/AuthService';
 import {
     catchApiErrors,
     getDefaultConfig,

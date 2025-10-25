@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
 import { StyledP } from '@/shared/components/P/P.style';
 

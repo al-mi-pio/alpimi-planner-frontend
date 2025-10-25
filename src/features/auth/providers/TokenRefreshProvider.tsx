@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { ReactNode, useEffect } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 import { AxiosError } from 'axios';
 
 import { authRefresh } from '@/api/services/authService';
-import { ErrorResponse } from '@/api/types';
+import type { ErrorResponse } from '@/api/types';
 import { ReconnectModal } from '@/features/main/components/ReconnectModal';
 import LoadingBox from '@/shared/components/LoadingBox';
 import { tokenRefreshFrequency } from '@/shared/constants/configuration';

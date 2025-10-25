@@ -1,4 +1,8 @@
-import { Bounce, ToastContainer, ToastContainerProps } from 'react-toastify';
+import {
+    Bounce,
+    ToastContainer,
+    type ToastContainerProps,
+} from 'react-toastify';
 
 const Toast = (props: ToastContainerProps) => (
     <ToastContainer

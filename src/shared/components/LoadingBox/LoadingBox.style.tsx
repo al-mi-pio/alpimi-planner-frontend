@@ -4,8 +4,12 @@ import { blink } from '@/shared/components/LoadingBox/constants';
 import { sizes } from '@/shared/constants/dimensions';
 
 export const EnabledBox = styled.fieldset`
+    display: flex;
+    flex-direction: column;
     border: none;
     padding: 0;
+    width: 100%;
+    height: 100%;
 `;
 
 export const DisabledBox = styled(EnabledBox)`
