@@ -16,6 +16,8 @@ export const CreateScheduleForm = styled(LoadingBox)`
 export const FormContent = styled.div`
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: ${sizes.regular};
 `;
 
 export const FormSection = styled.div`
