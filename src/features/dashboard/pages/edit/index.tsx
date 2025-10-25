@@ -1,43 +1,37 @@
 import { useQuery } from '@tanstack/react-query';
-import { type ReactNode, use, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { Mosaic } from 'react-mosaic-component';
 import 'react-mosaic-component/react-mosaic-component.css';
-import { useLoaderData } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { collisionGetAll } from '@/api/services/collisionService';
 import { dayOffGetAll } from '@/api/services/dayOffService';
 import { lessonBlockGetAll } from '@/api/services/lessonBlockService';
-import { lessonPeriodGetAll } from '@/api/services/lessonPeriodService';
 import { lessonGetAll } from '@/api/services/lessonService';
-import { scheduleGetByName } from '@/api/services/scheduleService';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
-import { UserContext } from '@/features/auth/contexts';
 import { CollisionsTable } from '@/features/dashboard/components/CollisionsTable';
 import { Explorer } from '@/features/dashboard/components/Explorer';
 import { Lessons } from '@/features/dashboard/components/Lessons';
 import { Properties } from '@/features/dashboard/components/Properties';
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
+import { useSchedulePeriods } from '@/features/dashboard/hooks/useSchedulePeriods';
 import { PropertiesWindowProvider } from '@/features/dashboard/providers/PropertiesWindow';
 import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import type { CurrentTimetableFilters } from '@/features/dashboard/types';
 import { parseTimetableLessonBlocks } from '@/features/dashboard/utils';
 import { schoolDaysFromDTO } from '@/features/schedules/utils';
+import { initialScheduleSetup } from '@/shared/constants/routes';
 import { addDaysToDate, getFirstDayOfWeek } from '@/shared/utils/date';
 
 const EditPage = () => {
     const [currentTimetableFilters, setCurrentTimetableFilters] =
         useState<CurrentTimetableFilters | null>(null);
-    const { customURL } = use(UserContext);
-    const { scheduleName } = useLoaderData();
+    const navigate = useNavigate();
 
-    const { data: schedule, isLoading: isScheduleLoading } = useQuery({
-        queryKey: ['schedule', customURL, scheduleName],
-        queryFn: () => scheduleGetByName(customURL, scheduleName),
-        select: (data) => data.content,
-        enabled: !!customURL,
-    });
+    const { schedule, lessonPeriods, isSchedulePeriodLoading } =
+        useSchedulePeriods();
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
         useQuery({
@@ -48,7 +42,7 @@ const EditPage = () => {
                 ...data.content,
                 schoolDays: schoolDaysFromDTO(data.content.schoolDays),
             }),
-            enabled: !!schedule,
+            enabled: !!lessonPeriods && !!lessonPeriods.length,
         });
 
     const { data: dayOffs, isLoading: isdayOffLoading } = useQuery({
@@ -58,17 +52,7 @@ const EditPage = () => {
                 params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
             }),
         select: (data) => data.content,
-        enabled: !!schedule,
-    });
-
-    const { data: lessonPeriods, isLoading: isLessonPeriodLoading } = useQuery({
-        queryKey: ['lessonPeriod'],
-        queryFn: () =>
-            lessonPeriodGetAll({
-                params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
-            }),
-        select: (data) => data.content,
-        enabled: !!schedule,
+        enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
     const { data: collisions, isLoading: isCollisionLoading } = useQuery({
@@ -78,7 +62,7 @@ const EditPage = () => {
                 params: { id: schedule ? schedule.id : '0-0-0-0-0' },
             }),
         select: (data) => data.content,
-        enabled: !!schedule,
+        enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
     const { data: lessons, isLoading: isLessonLoading } = useQuery({
@@ -88,7 +72,7 @@ const EditPage = () => {
                 params: { id: schedule ? schedule.id : '0-0-0-0-0' },
             }),
         select: (data) => data.content,
-        enabled: !!schedule,
+        enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
     const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useQuery({
@@ -107,15 +91,17 @@ const EditPage = () => {
                 },
             }),
         select: (data) => data.content,
-        enabled: !!currentTimetableFilters,
+        enabled:
+            !!currentTimetableFilters &&
+            !!lessonPeriods &&
+            !!lessonPeriods.length,
     });
 
     const timetableLoading =
+        isSchedulePeriodLoading ||
         isScheduleSettingsLoading ||
         isLessonBlockLoading ||
-        isLessonPeriodLoading ||
         isCollisionLoading ||
-        isScheduleLoading ||
         isdayOffLoading;
 
     useEffect(() => {
@@ -172,6 +158,15 @@ const EditPage = () => {
             )
         ),
     };
+
+    useEffect(() => {
+        if (schedule && lessonPeriods && !lessonPeriods.length) {
+            navigate(initialScheduleSetup(schedule.name));
+        }
+    }, [lessonPeriods]);
+
+    if (isSchedulePeriodLoading) return <StyledLoading />;
+    if (!lessonPeriods || !lessonPeriods.length) return null;
 
     return (
         <PropertiesWindowProvider>
