@@ -199,6 +199,7 @@ const EditPage = () => {
                             direction: 'column',
                             first: 'properties',
                             second: 'lessons',
+                            splitPercentage: 35,
                         },
                         splitPercentage: 84,
                     }}
