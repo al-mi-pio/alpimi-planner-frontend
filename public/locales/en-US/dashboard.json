@@ -25,6 +25,7 @@
     "Description": "Description",
     "Cause": "Cause",
     "Weight": "Weight",
+    "Lesson block": "Lesson block",
     "{{count}} Error": "{{count}} Error",
     "{{count}} Error_other": "{{count}} Errors",
     "{{count}} Warning": "{{count}} Warning",

@@ -25,6 +25,7 @@
     "Description": "Opis",
     "Cause": "Przyczyna",
     "Weight": "Waga",
+    "Lesson block": "Blok lekcyjny",
     "{{count}} Error": "{{count}} Błędów",
     "{{count}} Error_one": "{{count}} Błąd",
     "{{count}} Error_few": "{{count}} Błędy",
