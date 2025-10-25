@@ -10,11 +10,13 @@ import './i18n';
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
 import EditPage from '@/features/dashboard/pages/edit';
+import InitialSetupPage from '@/features/dashboard/pages/initialSetup';
 import Dashboard from '@/features/dashboard/template';
 import Page404 from '@/features/main/pages/404';
 import {
     createScheduleDashboardHeader,
     editorDashboardHeader,
+    initialSetupDashboardHeader,
     schedulesDashboardHeader,
 } from '@/features/schedules/constants';
 import CreateSchedulePage from '@/features/schedules/pages/create';
@@ -24,6 +26,7 @@ import { GlobalToastStyles } from '@/shared/components/Toast/Toast.style';
 import {
     createSchedule,
     editSchedule,
+    initialScheduleSetup,
     landingPage,
     login,
     schedules,
@@ -74,6 +77,20 @@ const router = createBrowserRouter([
             return (
                 <Dashboard headerProps={editorDashboardHeader(scheduleName)}>
                     <EditPage />
+                </Dashboard>
+            );
+        },
+    },
+    {
+        path: initialScheduleSetup(':scheduleName'),
+        loader: ({ params }) => ({ scheduleName: params.scheduleName }),
+        Component: () => {
+            const { scheduleName } = useLoaderData();
+            return (
+                <Dashboard
+                    headerProps={initialSetupDashboardHeader(scheduleName)}
+                >
+                    <InitialSetupPage />
                 </Dashboard>
             );
         },
