@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 
 import styled from 'styled-components';
 
@@ -39,8 +40,8 @@ export default {
     title: 'Shared/Icons',
     render: () => (
         <StoryWrapper>
-            {[undefined, true].map((secondary) => (
-                <>
+            {[undefined, true].map((secondary, i) => (
+                <Fragment key={i}>
                     <H level={2}>{secondary ? 'Secondary' : 'Default'}</H>
                     <Wrapper $secondary={!!secondary}>
                         <Calendar secondary={secondary} />
@@ -70,7 +71,7 @@ export default {
                         <WarningSign secondary={secondary} />
                         <ErrorSign />
                     </Wrapper>
-                </>
+                </Fragment>
             ))}
         </StoryWrapper>
     ),

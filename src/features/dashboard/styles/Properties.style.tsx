@@ -12,6 +12,7 @@ export const StyledProperties = styled.div`
     flex-direction: column;
     padding: ${sizes.smallXL};
     gap: ${sizes.smallXL};
+    overflow-y: auto;
 `;
 
 export const Bold = styled.span`

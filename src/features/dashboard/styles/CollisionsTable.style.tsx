@@ -9,6 +9,7 @@ export const CenterMessageWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 ${sizes.small};
     & > p {
         font-size: ${fontSizes.regular};
         line-height: ${lineHeights.regular};
