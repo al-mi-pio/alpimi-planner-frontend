@@ -31,6 +31,9 @@ export const Label = styled(P)`
     width: 150px;
     padding: 0 8px;
     text-align: center;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
 `;
 export const Line = styled.div<{ $filled: boolean }>`
     height: 4px;
