@@ -10,14 +10,18 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginStorybook from 'eslint-plugin-storybook';
+import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import { configs as tsConfigs } from 'typescript-eslint';
 
 export default [
     { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-    {
-        ignores: ['dist', 'storybook-static', 'node_modules'],
-    },
+    globalIgnores([
+        'dist',
+        'storybook-static',
+        'node_modules',
+        'public/mockServiceWorker.js',
+    ]),
     {
         languageOptions: {
             parser: tsParser,
