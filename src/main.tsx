@@ -30,7 +30,13 @@ import {
 } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+});
 const router = createBrowserRouter([
     {
         path: landingPage,
