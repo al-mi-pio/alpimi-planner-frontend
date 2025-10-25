@@ -15,6 +15,7 @@ import { UserContext } from '@/features/auth/contexts';
 import { CollisionsTable } from '@/features/dashboard/components/CollisionsTable';
 import { Explorer } from '@/features/dashboard/components/Explorer';
 import { Lessons } from '@/features/dashboard/components/Lessons';
+import { Properties } from '@/features/dashboard/components/Properties';
 import { Timetable } from '@/features/dashboard/components/Timetable';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
 import { PropertiesWindowProvider } from '@/features/dashboard/providers/PropertiesWindow';
@@ -136,7 +137,7 @@ const EditPage = () => {
         ) : (
             collisions && <CollisionsTable collisions={collisions} />
         ),
-        properties: <div>properties</div>,
+        properties: <Properties />,
         lessons: isLessonLoading ? (
             <StyledLoading />
         ) : (
