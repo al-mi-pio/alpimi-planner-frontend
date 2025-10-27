@@ -19,6 +19,7 @@ import RightArrow from '@/shared/icons/RightArrow';
 import Search from '@/shared/icons/Search';
 import SortDown from '@/shared/icons/SortDown';
 import Tag from '@/shared/icons/Tag';
+import Trash from '@/shared/icons/Trash';
 import UserCircle from '@/shared/icons/UserCircle';
 import WarningSign from '@/shared/icons/WarningSign';
 import X from '@/shared/icons/X';
@@ -49,13 +50,14 @@ export default {
                         <GitHub secondary={secondary} />
                         <Group secondary={secondary} />
                         <LinkedIn secondary={secondary} />
-                        <Plus secondary={secondary} />
                         <SortDown secondary={secondary} />
                         <UserCircle secondary={secondary} />
                         <Book secondary={secondary} />
                         <Doors secondary={secondary} />
+                        <Trash secondary={secondary} />
                         <Tag secondary={secondary} />
                         <Search secondary={secondary} />
+                        <Plus secondary={secondary} />
                         <Arrowhead secondary={secondary} direction="left" />
                         <Arrowhead secondary={secondary} direction="down" />
                         <Arrowhead secondary={secondary} direction="up" />
