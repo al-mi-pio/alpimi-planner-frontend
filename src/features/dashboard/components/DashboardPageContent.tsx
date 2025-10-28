@@ -17,9 +17,10 @@ export interface DashboardPageContentProps
 export const DashboardPageContent = ({
     children,
     title,
+    ...defaultProps
 }: DashboardPageContentProps) => {
     return (
-        <Wrapper>
+        <Wrapper {...defaultProps}>
             <Title level={2} bold>
                 {title}
             </Title>

@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { DashboardPageContent } from '@/features/dashboard/components/DashboardPageContent';
 import { ScheduleBlock } from '@/features/schedules/components/ScheduleBlock';
 import { useScheduleData } from '@/features/schedules/hooks/useScheduleData';
-import { ScheduleList } from '@/features/schedules/pages/list/index.style';
+import {
+    ScheduleList,
+    StyledDashboardPageContent,
+} from '@/features/schedules/pages/list/index.style';
 import Search from '@/shared/components/Search';
 
 const SchedulesPage = () => {
@@ -12,7 +14,7 @@ const SchedulesPage = () => {
     const { schedules, isPending, bindSearch } = useScheduleData();
 
     return (
-        <DashboardPageContent title={t('My schedules')}>
+        <StyledDashboardPageContent title={t('My schedules')}>
             <Search {...bindSearch} disabled={isPending} />
             <ScheduleList loading={isPending}>
                 {!!schedules.length &&
@@ -25,7 +27,7 @@ const SchedulesPage = () => {
                     ))}
                 <ScheduleBlock />
             </ScheduleList>
-        </DashboardPageContent>
+        </StyledDashboardPageContent>
     );
 };
 
