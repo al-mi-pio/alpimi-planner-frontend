@@ -35,5 +35,10 @@
     "{{count}} Warning_few": "{{count}} Ostrzeżenia",
     "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} Godzin lekcyjnych",
     "Adding lesson periods": "Tworzenie siatki lekcyjnej",
-    "Lesson periods": "Siatka lekcyjna"
+    "Lesson periods": "Siatka lekcyjna",
+    "Lesson {{count}}": "Lekcja {{count}}:",
+    "from": "od",
+    "to": "do",
+    "Provide time in HHMM format": "Wprowadź czas w formacie GG:MM",
+    "Finish": "Zakończ"
 }

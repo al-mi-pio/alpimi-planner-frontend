@@ -33,5 +33,10 @@
     "{{count}} Warning_other": "{{count}} Warnings",
     "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours",
     "Adding lesson periods": "Adding lesson periods",
-    "Lesson periods": "Lesson periods"
+    "Lesson periods": "Lesson periods",
+    "Lesson {{count}}": "Lesson {{count}}:",
+    "from": "from",
+    "to": "to",
+    "Provide time in HHMM format": "Provide time in HH:MM format",
+    "Finish": "Finish"
 }
