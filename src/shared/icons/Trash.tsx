@@ -8,7 +8,7 @@ const Trash = ({ secondary }: { secondary?: boolean }) => (
         y="0px"
         width="50"
         height="50"
-        viewBox="0 0 30 30"
+        viewBox="-5 -5 40 40"
     >
         <path
             fill="currentColor"

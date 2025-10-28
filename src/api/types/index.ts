@@ -35,6 +35,8 @@ export interface GetResponse<T> extends ServiceResponse {
 
 export type PatchResponse<T> = GetResponse<T>;
 
+export type DeleteResponse = Omit<ServiceResponse, 'timestamp'>;
+
 export interface ErrorMessage {
     field?: string;
     message: string;
@@ -74,6 +76,11 @@ export type ApiPatchService<T> = (
     data: T,
     config?: AxiosRequestConfig
 ) => Promise<PatchResponse<T>>;
+
+export type ApiDeleteService = (
+    id: Id,
+    config?: AxiosRequestConfig
+) => Promise<DeleteResponse>;
 
 export enum EntityType {
     Availability = 'availability',
