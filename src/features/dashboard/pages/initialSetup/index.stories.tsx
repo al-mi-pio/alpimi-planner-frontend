@@ -12,7 +12,7 @@ export default {
     render: () => {
         const queryClient = useQueryClient();
 
-        queryClient.setQueryData(['lessonPeriod'], {
+        queryClient.setQueryData(['lessonPeriod', '0-0-0-0-2'], {
             content: [],
         });
 

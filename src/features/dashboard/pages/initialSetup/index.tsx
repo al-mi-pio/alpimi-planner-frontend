@@ -62,7 +62,7 @@ const InitialSetupPage = () => {
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
         useQuery({
-            queryKey: ['scheduleSettings'],
+            queryKey: ['scheduleSettings', schedule?.id],
             queryFn: () =>
                 scheduleSettingsGet(schedule ? schedule.id : '0-0-0-0-0'),
             select: (data) => data.content,

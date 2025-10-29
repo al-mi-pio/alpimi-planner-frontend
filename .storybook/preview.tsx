@@ -127,7 +127,7 @@ const preview: Preview = {
                     },
                 ],
             });
-            queryClient.setQueryData(['lessonPeriod'], {
+            queryClient.setQueryData(['lessonPeriod', '0-0-0-0-2'], {
                 content: [
                     {
                         id: '0-0-1-0-0',
@@ -135,16 +135,16 @@ const preview: Preview = {
                     },
                 ],
             });
-            queryClient.setQueryData(['lesson'], {
+            queryClient.setQueryData(['lesson', '0-0-0-0-2'], {
                 content: [],
             });
-            queryClient.setQueryData(['group'], {
+            queryClient.setQueryData(['group', '0-0-0-0-2'], {
                 content: [],
             });
-            queryClient.setQueryData(['subgroup'], {
+            queryClient.setQueryData(['subgroup', '0-0-0-0-2'], {
                 content: [],
             });
-            queryClient.setQueryData(['collision'], {
+            queryClient.setQueryData(['collision', '0-0-0-0-2'], {
                 content: [],
             });
             queryClient.setQueryData(
@@ -159,13 +159,13 @@ const preview: Preview = {
             queryClient.setQueryData(['teacher', '0-0-0-0-2'], {
                 content: [],
             });
-            queryClient.setQueryData(['dayOff'], {
+            queryClient.setQueryData(['dayOff', '0-0-0-0-2'], {
                 content: [],
             });
             queryClient.setQueryData(['classroom', '0-0-0-0-2'], {
                 content: [],
             });
-            queryClient.setQueryData(['scheduleSettings'], {
+            queryClient.setQueryData(['scheduleSettings', '0-0-0-0-2'], {
                 content: {
                     id: '0-0-0-0-3',
                     schoolHour: 45,
@@ -183,6 +183,7 @@ const preview: Preview = {
                         loader: ({ params }) => ({
                             scheduleName: params.scheduleName,
                         }),
+                        hydrateFallbackElement: <></>,
                         element: (
                             <Suspense
                                 fallback={<div>loading translations...</div>}
