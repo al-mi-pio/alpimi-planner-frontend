@@ -119,6 +119,14 @@ const preview: Preview = {
                     },
                 }
             );
+            queryClient.setQueryData(['schedule'], {
+                content: [
+                    {
+                        id: '0-0-0-0-2',
+                        name: 'mockScheduleName',
+                    },
+                ],
+            });
             queryClient.setQueryData(['lessonPeriod'], {
                 content: [
                     {
