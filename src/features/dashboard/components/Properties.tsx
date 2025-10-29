@@ -2,8 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import { getTeacherName } from '@/api/services/teacherService';
+import type { GetResponse } from '@/api/types';
+import type { Teacher } from '@/api/types/TeacherService';
 import { MAP_ENTITY_METHOD } from '@/features/dashboard/constants';
 import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
+import { CenterMessageWrapper } from '@/features/dashboard/styles/CollisionsTable.style';
 import {
     Bold,
     Heading,
@@ -14,15 +17,26 @@ import P from '@/shared/components/P';
 
 export const Properties = () => {
     const { selectedEntity } = usePropertiesWindow();
-    if (!selectedEntity) return null;
-    const { id, entity } = selectedEntity;
     const { t } = useTranslation('fields');
-
     const { data, isLoading } = useQuery({
-        queryKey: [entity, id],
-        queryFn: MAP_ENTITY_METHOD[entity](id),
+        queryKey: [selectedEntity?.entity, selectedEntity?.id],
+        queryFn: selectedEntity
+            ? MAP_ENTITY_METHOD[selectedEntity.entity](selectedEntity.id)
+            : () => ({}) as Promise<GetResponse<Teacher>>,
         select: (data) => data.content,
+        enabled: !!selectedEntity,
     });
+
+    if (!selectedEntity)
+        return (
+            <CenterMessageWrapper>
+                <P>
+                    {t("Select anything to show it's properties here", {
+                        ns: 'dashboard',
+                    })}
+                </P>
+            </CenterMessageWrapper>
+        );
 
     if (isLoading) return <StyledLoading />;
     if (!data) return null;

@@ -18,6 +18,7 @@
     "Teacher": "Teacher:",
     "Group": "Group:",
     "Group_other": "Groups:",
+    "Select anything to show it's properties here": "Select anything to show it's properties here",
     "No collisions": "No collisions",
     "No lessons": "No lessons",
     "No lessons found": "No lessons found",
@@ -30,5 +31,12 @@
     "{{count}} Error_other": "{{count}} Errors",
     "{{count}} Warning": "{{count}} Warning",
     "{{count}} Warning_other": "{{count}} Warnings",
-    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours"
+    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} School hours",
+    "Adding lesson periods": "Adding lesson periods",
+    "Lesson periods": "Lesson periods",
+    "Lesson {{count}}": "Lesson {{count}}:",
+    "from": "from",
+    "to": "to",
+    "Provide time in HHMM format": "Provide time in HH:MM format",
+    "Finish": "Finish"
 }

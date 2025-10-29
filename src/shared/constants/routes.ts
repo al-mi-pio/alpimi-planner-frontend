@@ -13,5 +13,8 @@ export const viewSchedule = (scheduleName: string) =>
 export const scheduleData = (scheduleName: string) =>
     `${editSchedule(scheduleName)}/data`;
 
+export const initialScheduleSetup = (scheduleName: string) =>
+    `${editSchedule(scheduleName)}/initialSetup`;
+
 export const studentView = (userUrl: string, scheduleName: string) =>
     `/schedules/${userUrl}/${scheduleName}`;

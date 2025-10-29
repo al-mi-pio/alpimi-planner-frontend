@@ -18,10 +18,6 @@ export const Content = styled.div`
     flex-direction: column;
     gap: ${sizes.regular};
     border-radius: ${sizes.smallXL};
-
-    & > div:first-child {
-        width: 350px;
-    }
 `;
 
 export const Title = styled(H)`

@@ -16,5 +16,8 @@
     "Thursday": "Czwartek",
     "Friday": "Piątek",
     "Saturday": "Sobota",
-    "Sunday": "Niedziela"
+    "Sunday": "Niedziela",
+    "Create new schedule": "Stwórz nowy plan",
+    "Add lesson periods": "Dodaj siatkę lekcyjną",
+    "Import or add data": "Zaimportuj lub wprowadź dane"
 }

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
 import { DashboardPageContent } from '@/features/dashboard/components/DashboardPageContent';
+import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
 import { useCreateSchedule } from '@/features/schedules/hooks/useCreateSchedule';
 import { useScheduleForm } from '@/features/schedules/hooks/useScheduleForm';
 import {
@@ -33,42 +34,44 @@ const CreateSchedulePage = () => {
         <DashboardPageContent title={t('Details')}>
             <CreateScheduleForm loading={isPending}>
                 <FormContent>
-                    <FormSection>
-                        <H level={3}>{t('Basic')}</H>
+                    <CreateScheduleMultiStep />
+                    <FormContent>
+                        <FormSection>
+                            <H level={3}>{t('Basic')}</H>
 
-                        <Text label={t('Name')} {...binders.name} />
+                            <Text label={t('Name')} {...binders.name} />
 
-                        <Date
-                            label={t('School year start date')}
-                            {...binders.schoolYearStart}
-                        />
+                            <Date
+                                label={t('School year start date')}
+                                {...binders.schoolYearStart}
+                            />
 
-                        <Date
-                            label={t('School year end date')}
-                            {...binders.schoolYearEnd}
-                        />
-                    </FormSection>
+                            <Date
+                                label={t('School year end date')}
+                                {...binders.schoolYearEnd}
+                            />
+                        </FormSection>
 
-                    <FormSection>
-                        <H level={3}>{t('Advanced')}</H>
+                        <FormSection>
+                            <H level={3}>{t('Advanced')}</H>
 
-                        <Number
-                            label={t('School hour')}
-                            {...binders.schoolHour}
-                        />
+                            <Number
+                                label={t('School hour')}
+                                {...binders.schoolHour}
+                            />
 
-                        <Select
-                            label={t('School days')}
-                            isMulti
-                            options={weekDays.map((day) => ({
-                                label: t(capitalize(day)),
-                                value: day,
-                            }))}
-                            {...binders.schoolDays}
-                        />
-                    </FormSection>
+                            <Select
+                                label={t('School days')}
+                                isMulti
+                                options={weekDays.map((day) => ({
+                                    label: t(capitalize(day)),
+                                    value: day,
+                                }))}
+                                {...binders.schoolDays}
+                            />
+                        </FormSection>
+                    </FormContent>
                 </FormContent>
-
                 <Button
                     label={t('Create')}
                     onClick={submit}

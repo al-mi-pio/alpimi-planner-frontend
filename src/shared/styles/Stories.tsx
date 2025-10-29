@@ -10,4 +10,7 @@ export const PageStoryStyles = createGlobalStyle`
     #storybook-root {
         width: 100%;
     }
+    .mosaic-blueprint-theme{
+        height: 75vh;
+    }
 `;

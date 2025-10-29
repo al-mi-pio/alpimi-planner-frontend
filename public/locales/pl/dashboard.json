@@ -18,6 +18,7 @@
     "Teacher": "Nauczyciel:",
     "Group": "Grupy:",
     "Group_one": "Grupa:",
+    "Select anything to show it's properties here": "Wybierz element aby wyświetlić tutaj jego właściwości",
     "No collisions": "Brak kolizji",
     "No lessons": "Brak zajęć",
     "No lessons found": "Nie znaleziono zajęć",
@@ -32,5 +33,12 @@
     "{{count}} Warning": "{{count}} Ostrzeżeń",
     "{{count}} Warning_one": "{{count}} Ostrzeżenie",
     "{{count}} Warning_few": "{{count}} Ostrzeżenia",
-    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} Godzin lekcyjnych"
+    "{{currentHours}}/{{amountOfHours}} School hours": "{{currentHours}}/{{amountOfHours}} Godzin lekcyjnych",
+    "Adding lesson periods": "Tworzenie siatki lekcyjnej",
+    "Lesson periods": "Siatka lekcyjna",
+    "Lesson {{count}}": "Lekcja {{count}}:",
+    "from": "od",
+    "to": "do",
+    "Provide time in HHMM format": "Wprowadź czas w formacie GG:MM",
+    "Finish": "Zakończ"
 }

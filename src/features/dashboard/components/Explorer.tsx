@@ -43,7 +43,7 @@ export const Explorer = ({
         useState<ReturnType<typeof generateTreeLookupMaps>['lookupMaps']>();
 
     const { data: groups, isLoading: isGroupLoading } = useQuery({
-        queryKey: ['group'],
+        queryKey: ['group', schedule?.id],
         queryFn: () =>
             groupGetAll({
                 params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
@@ -53,7 +53,7 @@ export const Explorer = ({
     });
 
     const { data: subgroups, isLoading: isSubgroupLoading } = useQuery({
-        queryKey: ['subgroup'],
+        queryKey: ['subgroup', schedule?.id],
         queryFn: () =>
             subgroupGetAll({
                 params: { id: schedule ? schedule.id : '0-0-0-0-0' },

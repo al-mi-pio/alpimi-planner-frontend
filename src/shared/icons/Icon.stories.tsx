@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 
 import styled from 'styled-components';
 
@@ -18,6 +19,7 @@ import RightArrow from '@/shared/icons/RightArrow';
 import Search from '@/shared/icons/Search';
 import SortDown from '@/shared/icons/SortDown';
 import Tag from '@/shared/icons/Tag';
+import Trash from '@/shared/icons/Trash';
 import UserCircle from '@/shared/icons/UserCircle';
 import WarningSign from '@/shared/icons/WarningSign';
 import X from '@/shared/icons/X';
@@ -39,8 +41,8 @@ export default {
     title: 'Shared/Icons',
     render: () => (
         <StoryWrapper>
-            {[undefined, true].map((secondary) => (
-                <>
+            {[undefined, true].map((secondary, i) => (
+                <Fragment key={i}>
                     <H level={2}>{secondary ? 'Secondary' : 'Default'}</H>
                     <Wrapper $secondary={!!secondary}>
                         <Calendar secondary={secondary} />
@@ -48,13 +50,14 @@ export default {
                         <GitHub secondary={secondary} />
                         <Group secondary={secondary} />
                         <LinkedIn secondary={secondary} />
-                        <Plus secondary={secondary} />
                         <SortDown secondary={secondary} />
                         <UserCircle secondary={secondary} />
                         <Book secondary={secondary} />
                         <Doors secondary={secondary} />
+                        <Trash secondary={secondary} />
                         <Tag secondary={secondary} />
                         <Search secondary={secondary} />
+                        <Plus secondary={secondary} />
                         <Arrowhead secondary={secondary} direction="left" />
                         <Arrowhead secondary={secondary} direction="down" />
                         <Arrowhead secondary={secondary} direction="up" />
@@ -70,7 +73,7 @@ export default {
                         <WarningSign secondary={secondary} />
                         <ErrorSign />
                     </Wrapper>
-                </>
+                </Fragment>
             ))}
         </StoryWrapper>
     ),

@@ -4,6 +4,7 @@ import type { ScheduleForm } from '@/features/schedules/types';
 import {
     createSchedule,
     editSchedule,
+    initialScheduleSetup,
     scheduleData,
     schedules,
     viewSchedule,
@@ -35,6 +36,17 @@ export const editorDashboardHeader = (scheduleName: string) => ({
         {
             label: 'View',
             route: viewSchedule(scheduleName),
+        },
+    ],
+    backRoute: schedules,
+});
+
+export const initialSetupDashboardHeader = (scheduleName: string) => ({
+    header: 'Adding lesson periods',
+    navigation: [
+        {
+            label: 'Add new',
+            route: initialScheduleSetup(scheduleName),
         },
     ],
     backRoute: schedules,

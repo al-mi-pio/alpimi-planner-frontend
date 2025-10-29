@@ -16,5 +16,8 @@
     "Thursday": "Thursday",
     "Friday": "Friday",
     "Saturday": "Saturday",
-    "Sunday": "Sunday"
+    "Sunday": "Sunday",
+    "Create new schedule": "Create new schedule",
+    "Add lesson periods": "Add lesson periods",
+    "Import or add data": "Import or add data"
 }
