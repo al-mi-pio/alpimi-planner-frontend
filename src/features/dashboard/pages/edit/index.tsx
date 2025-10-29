@@ -35,7 +35,7 @@ const EditPage = () => {
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
         useQuery({
-            queryKey: ['scheduleSettings'],
+            queryKey: ['scheduleSettings', schedule?.id],
             queryFn: () =>
                 scheduleSettingsGet(schedule ? schedule.id : '0-0-0-0-0'),
             select: (data) => ({
@@ -46,7 +46,7 @@ const EditPage = () => {
         });
 
     const { data: dayOffs, isLoading: isdayOffLoading } = useQuery({
-        queryKey: ['dayOff'],
+        queryKey: ['dayOff', schedule?.id],
         queryFn: () =>
             dayOffGetAll({
                 params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
@@ -56,7 +56,7 @@ const EditPage = () => {
     });
 
     const { data: collisions, isLoading: isCollisionLoading } = useQuery({
-        queryKey: ['collision'],
+        queryKey: ['collision', schedule?.id],
         queryFn: () =>
             collisionGetAll({
                 params: { id: schedule ? schedule.id : '0-0-0-0-0' },
@@ -66,7 +66,7 @@ const EditPage = () => {
     });
 
     const { data: lessons, isLoading: isLessonLoading } = useQuery({
-        queryKey: ['lesson'],
+        queryKey: ['lesson', schedule?.id],
         queryFn: () =>
             lessonGetAll({
                 params: { id: schedule ? schedule.id : '0-0-0-0-0' },

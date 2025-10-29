@@ -28,7 +28,7 @@ export const useSchedulePeriods = () => {
     });
 
     const { data: lessonPeriods, isLoading: isLessonPeriodLoading } = useQuery({
-        queryKey: ['lessonPeriod'],
+        queryKey: ['lessonPeriod', schedule?.id],
         queryFn: () =>
             lessonPeriodGetAll({
                 params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
