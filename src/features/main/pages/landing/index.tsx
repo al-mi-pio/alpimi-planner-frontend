@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
 
+import { Authors } from '@/features/main/components/Authors';
 import { Hero } from '@/features/main/components/Hero';
 import { MainHeader } from '@/features/main/components/MainHeader';
 import {
@@ -10,8 +10,6 @@ import {
 import { login } from '@/shared/constants/routes';
 
 const LandingPage = () => {
-    const navigate = useNavigate();
-
     const { t } = useTranslation('main');
 
     return (
@@ -24,6 +22,7 @@ const LandingPage = () => {
                 alt="Alpimi Planner screenshot"
                 width="1300px"
             />
+            <Authors />
         </StyledWrapper>
     );
 };
