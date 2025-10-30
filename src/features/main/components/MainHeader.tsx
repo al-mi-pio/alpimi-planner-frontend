@@ -1,5 +1,6 @@
 import { type ComponentPropsWithRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 import { Header, Nav, NavLink } from '@/features/main/styles/MainHeader.style';
 import Button from '@/shared/components/Button';
@@ -19,7 +20,8 @@ export const MainHeader = ({
     buttonLabel,
     ...defaultProps
 }: MainHeaderProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('main');
+    const navigate = useNavigate();
     return (
         <Header {...defaultProps}>
             <Image
@@ -32,7 +34,11 @@ export const MainHeader = ({
                 <NavLink href={'#'}>{t('About us')}</NavLink>
                 <NavLink href={'#'}>{t('Contact')}</NavLink>
             </Nav>
-            <Button label={t('Sign in')} appearance="secondary" />
+            <Button
+                label={buttonLabel}
+                onClick={() => navigate(navigateTo)}
+                appearance="secondary"
+            />
         </Header>
     );
 };

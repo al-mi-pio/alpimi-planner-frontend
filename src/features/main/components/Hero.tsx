@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 import type { MainHeaderProps } from '@/features/main/components/MainHeader';
 import {
@@ -19,15 +20,19 @@ export const Hero = ({
     buttonLabel,
     ...defaultProps
 }: HeroProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('main');
+    const navigate = useNavigate();
     return (
         <StyledHero {...defaultProps}>
             <div>
                 <StyledP>
-                    {t('Planuj szybciej, lepiej, mądrzej z ')}
+                    {t('Plan better faster smarter with ')}
                     <Highlight>Alpimi</Highlight>
                 </StyledP>
-                <Button label={t('Check it out')} />
+                <Button
+                    label={buttonLabel}
+                    onClick={() => navigate(navigateTo)}
+                />
             </div>
             <div>
                 <Image
