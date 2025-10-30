@@ -16,7 +16,7 @@ export const Header = styled.header`
 
 export const Nav = styled.nav`
     display: flex;
-    gap: ${sizes.regular};
+    gap: ${sizes.large};
 `;
 
 export const NavLink = styled(Link)`

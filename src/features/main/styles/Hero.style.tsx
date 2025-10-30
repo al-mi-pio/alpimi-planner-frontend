@@ -8,6 +8,7 @@ export const StyledHero = styled.div`
     height: calc(100vh - 85px);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: ${sizes.largeXXL};
 `;
 
