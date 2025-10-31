@@ -9,12 +9,14 @@
     "Front-end software engineer product manager": "Front-end software engineer, product manager",
     "Back-end software engineer UI designer": "Back-end software engineer, UI designer",
     "Back-end software engineer API developer task manager": "Back-end software engineer, API developer, task manager",
-    "Sound interenting": "Sound interenting?",
+    "Sounds interenting": "Sounds interenting?",
     "Contact us": "Contact us",
     "Name": "Name",
     "Email": "Email",
     "Title": "Title",
     "Message": "Message",
     "Send": "Send",
+    "We received your message Please wait for our response": "We received your message! Please wait for our response",
+    "An error occurred while sending the message Please try again later": "An error occurred while sending the message. Please try again later",
     "Copyright": "Copyright © 2024-2025 Alpimi planner. Icons by Icons8"
 }

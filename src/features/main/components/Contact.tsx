@@ -1,13 +1,21 @@
-import { type ComponentPropsWithRef } from 'react';
+import {
+    type ComponentPropsWithRef,
+    type FormEventHandler,
+    useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
+    Layout,
     StyledContact,
     StyledForm,
+    StyledMessage,
     StyledP,
 } from '@/features/main/styles/Contact.style';
 import Button from '@/shared/components/Button';
+import LoadingBox from '@/shared/components/LoadingBox';
 import Text from '@/shared/components/Text';
+import { MessageType } from '@/shared/types';
 
 export type ContactProps = Omit<ComponentPropsWithRef<'div'>, 'children'>;
 
@@ -16,32 +24,100 @@ export type ContactProps = Omit<ComponentPropsWithRef<'div'>, 'children'>;
  */
 export const Contact = (props: ContactProps) => {
     const { t } = useTranslation('main');
+    const [message, setMessage] = useState('');
+
+    const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+        e.preventDefault();
+        const target = e.target as HTMLFormElement;
+        const formData = new FormData(target);
+
+        setMessage('sending');
+        formData.append('access_key', '56e75862-056a-4b5f-a6ea-b610e622f57e');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setMessage(
+                    t('We received your message Please wait for our response')
+                );
+                target.reset();
+            } else {
+                setMessage(
+                    t(
+                        'An error occurred while sending the message Please try again later'
+                    )
+                );
+            }
+        } catch {
+            setMessage(
+                t(
+                    'An error occurred while sending the message Please try again later'
+                )
+            );
+        }
+    };
 
     return (
         <StyledContact {...props}>
-            <div>
-                <StyledP>{t('Sound interenting')}</StyledP>
-                <StyledP>{t('Contact us')}</StyledP>
-            </div>
+            {message && message !== 'sending' && (
+                <StyledMessage
+                    type={
+                        message ===
+                        t(
+                            'We received your message Please wait for our response'
+                        )
+                            ? MessageType.success
+                            : MessageType.error
+                    }
+                    onClose={() => setMessage('')}
+                >
+                    {message}
+                </StyledMessage>
+            )}
+            <Layout>
+                <div>
+                    <StyledP>{t('Sounds interenting')}</StyledP>
+                    <StyledP id="contact">{t('Contact us')}</StyledP>
+                </div>
 
-            <StyledForm>
-                <Text label={t('Name')} error={undefined} required />
-                <Text
-                    label={t('Email')}
-                    error={undefined}
-                    type="email"
-                    required
-                />
-                <Text label={t('Title')} error={undefined} required />
-                <Text
-                    label={t('Message')}
-                    error={undefined}
-                    multiline
-                    rows={10}
-                    required
-                />
-                <Button label={t('Send')} appearance="secondary" />
-            </StyledForm>
+                <LoadingBox loading={message === 'sending'}>
+                    <StyledForm onSubmit={onSubmit}>
+                        <Text
+                            label={t('Name')}
+                            name="name"
+                            autoComplete="name"
+                            error={undefined}
+                            required
+                        />
+                        <Text
+                            label={t('Email')}
+                            name="email"
+                            autoComplete="email"
+                            error={undefined}
+                            type="email"
+                            required
+                        />
+                        <Text
+                            label={t('Message')}
+                            name="message"
+                            error={undefined}
+                            multiline
+                            rows={10}
+                            required
+                        />
+                        <Button
+                            type="submit"
+                            label={t('Send')}
+                            appearance="secondary"
+                        />
+                    </StyledForm>
+                </LoadingBox>
+            </Layout>
         </StyledContact>
     );
 };
