@@ -31,8 +31,8 @@ export const MainHeader = ({
                 width="123px"
             />
             <Nav>
-                <NavLink href={'#'}>{t('About us')}</NavLink>
-                <NavLink href={'#'}>{t('Contact')}</NavLink>
+                <NavLink href={'#about'}>{t('About us')}</NavLink>
+                <NavLink href={'#contact'}>{t('Contact')}</NavLink>
             </Nav>
             <Button
                 label={buttonLabel}

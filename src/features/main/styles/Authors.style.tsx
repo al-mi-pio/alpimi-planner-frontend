@@ -11,6 +11,7 @@ export const StyledP = styled(P)`
     font-size: ${fontSizes.largeXXL};
     line-height: ${lineHeights.largeXXL};
     margin: 0 auto;
+    scroll-margin-block-start: 100px;
 `;
 export const CardWrapper = styled.div`
     display: flex;

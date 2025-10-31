@@ -39,7 +39,7 @@ export const Authors = () => {
     ];
     return (
         <StyledAuthors>
-            <StyledP>{t('Meet the crew')}</StyledP>
+            <StyledP id="about">{t('Meet the crew')}</StyledP>
             <CardWrapper>
                 {cards.map((card, i) => (
                     <AuthorCard key={i} {...card} />
