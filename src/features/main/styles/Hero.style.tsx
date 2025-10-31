@@ -13,6 +13,12 @@ export const StyledHero = styled.div`
     overflow: hidden;
 `;
 
+export const ImageWrapper = styled.div`
+    @media (max-width: 1100px) {
+        display: none;
+    }
+`;
+
 export const StyledP = styled(P)`
     font-size: ${fontSizes.large3Xl};
     line-height: ${lineHeights.large3Xl};

@@ -6,6 +6,7 @@ import {
     StyledHero,
     StyledP,
     Highlight,
+    ImageWrapper,
 } from '@/features/main/styles/Hero.style';
 import Button from '@/shared/components/Button';
 import Image from '@/shared/components/Image';
@@ -34,14 +35,14 @@ export const Hero = ({
                     onClick={() => navigate(navigateTo)}
                 />
             </div>
-            <div>
+            <ImageWrapper>
                 <Image
                     id="boxes-image"
                     src="/images/landing_icon.webp"
                     alt="Alpimi Planner logo"
                     width="430px"
                 />
-            </div>
+            </ImageWrapper>
         </StyledHero>
     );
 };

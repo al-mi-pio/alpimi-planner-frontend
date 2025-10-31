@@ -13,13 +13,22 @@ export const StyledContact = styled.div`
 
 export const Layout = styled.div`
     display: flex;
+    flex-direction: row;
     gap: ${sizes.largeXXL};
+
+    @media (max-width: 1300px) {
+        flex-direction: column;
+    }
 `;
 
 export const StyledP = styled(P)`
     font-size: ${fontSizes.large3Xl};
     line-height: ${lineHeights.large3Xl};
     white-space: nowrap;
+
+    @media (max-width: 1100px) {
+        font-size: 7.3vw;
+    }
 `;
 
 export const StyledForm = styled.form`
@@ -34,7 +43,7 @@ export const StyledForm = styled.form`
 
     & > :first-child,
     & > :nth-child(2) {
-        width: 40%;
+        width: 300px;
     }
 `;
 

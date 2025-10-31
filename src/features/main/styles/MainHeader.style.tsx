@@ -16,7 +16,15 @@ export const Header = styled.header`
 
 export const Nav = styled.nav`
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: ${sizes.large};
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        gap: ${sizes.small};
+        padding: ${sizes.small} 0;
+    }
 `;
 
 export const NavLink = styled(Link)`

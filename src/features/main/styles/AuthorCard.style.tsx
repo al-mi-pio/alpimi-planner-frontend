@@ -12,6 +12,10 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: center;
     gap: ${sizes.smallXL};
+
+    & > p:first-of-type {
+        margin: auto 0;
+    }
 `;
 
 export const ProfilePicture = styled(Image)`

@@ -37,7 +37,8 @@ const LandingPage = () => {
                 id="alpimi-screenshot"
                 src="/images/screenshot.webp"
                 alt="Alpimi Planner screenshot"
-                width="1300px"
+                style={{ maxWidth: '1300px' }}
+                width="70%"
             />
             <Authors />
             <Contact />

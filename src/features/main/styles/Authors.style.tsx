@@ -15,7 +15,14 @@ export const StyledP = styled(P)`
 `;
 export const CardWrapper = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
-    padding: ${sizes.large} ${sizes.large3Xl};
+    padding: ${sizes.large} 0;
+    width: 80%;
+    margin: 0 auto;
     gap: ${sizes.large};
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+    }
 `;
