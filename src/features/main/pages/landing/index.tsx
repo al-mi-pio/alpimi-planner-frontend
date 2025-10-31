@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 
 import { Authors } from '@/features/main/components/Authors';
+import { Contact } from '@/features/main/components/Contact';
 import { Hero } from '@/features/main/components/Hero';
 import { MainHeader } from '@/features/main/components/MainHeader';
 import {
+    Footer,
     Screenshot,
     StyledWrapper,
 } from '@/features/main/styles/LandingPage.style';
+import P from '@/shared/components/P';
 import { login } from '@/shared/constants/routes';
 
 const LandingPage = () => {
@@ -23,6 +26,10 @@ const LandingPage = () => {
                 width="1300px"
             />
             <Authors />
+            <Contact />
+            <Footer>
+                <P>{t('Copyright')}</P>
+            </Footer>
         </StyledWrapper>
     );
 };
