@@ -33,7 +33,8 @@ export const Authors = () => {
             imgUrl: '/images/mikolaj.webp',
             name: 'Mikołaj Szymanowski',
             description: t('Back-end software engineer UI designer'),
-            linkedin: 'https://www.linkedin.com/in/mikolaj-szymanowski',
+            linkedin:
+                'https://www.linkedin.com/in/mikołaj-szymanowski-6821a0397',
             github: 'https://github.com/mikolajszyman',
         },
     ];
