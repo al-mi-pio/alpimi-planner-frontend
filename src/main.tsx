@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useLoaderData } from 'react-router-dom';
 
-import App from './App';
 import './i18n';
 
 import LoginPage from '@/features/auth/pages/login';
@@ -13,6 +12,7 @@ import EditPage from '@/features/dashboard/pages/edit';
 import InitialSetupPage from '@/features/dashboard/pages/initialSetup';
 import Dashboard from '@/features/dashboard/template';
 import Page404 from '@/features/main/pages/404';
+import LandingPage from '@/features/main/pages/landing';
 import {
     createScheduleDashboardHeader,
     editorDashboardHeader,
@@ -43,7 +43,7 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
     {
         path: landingPage,
-        element: <App />,
+        element: <LandingPage />,
     },
     {
         path: login,

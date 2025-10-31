@@ -7,6 +7,7 @@ import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/Schedules Edit',
+    tags: ['!autodocs'],
     component: EditPage,
     render: () => (
         <Dashboard headerProps={editorDashboardHeader('mockScheduleName')}>
@@ -16,4 +17,4 @@ export default {
     ),
 } satisfies Meta<typeof EditPage>;
 
-export const Default: StoryObj<typeof EditPage> = {};
+export const SchedulesEdit: StoryObj<typeof EditPage> = {};

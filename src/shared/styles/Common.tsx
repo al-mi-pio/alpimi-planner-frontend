@@ -37,6 +37,10 @@ export const StyledInput = styled.input<{ $error?: boolean }>`
     ${InputStyles}
 `;
 
+export const StyledTextarea = styled.textarea<{ $error?: boolean }>`
+    ${InputStyles}
+`;
+
 export const InnerInput = styled.input`
     font-size: ${fontSizes.small};
     line-height: ${lineHeights.small};

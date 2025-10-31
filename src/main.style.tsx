@@ -28,6 +28,7 @@ const CommonGlobalStyle = createGlobalStyle`
 
     html, body {
         padding: 0;
+        scroll-behavior: smooth;
     }
 
     input:focus, a:focus p, a:focus, button:focus {

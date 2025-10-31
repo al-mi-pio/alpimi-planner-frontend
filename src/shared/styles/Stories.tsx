@@ -9,8 +9,13 @@ export const StoryWrapper = styled.div`
 export const PageStoryStyles = createGlobalStyle`
     #storybook-root {
         width: 100%;
+        padding: 0 !important;
     }
-    .mosaic-blueprint-theme{
+    body.sb-show-main {
+        display: block !important;
+    }
+
+    .mosaic-blueprint-theme {
         height: 75vh;
     }
 `;

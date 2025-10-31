@@ -7,6 +7,7 @@ import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/Schedules Create',
+    tags: ['!autodocs'],
     component: CreateSchedulePage,
     render: () => (
         <Dashboard headerProps={createScheduleDashboardHeader}>
@@ -16,4 +17,4 @@ export default {
     ),
 } satisfies Meta<typeof CreateSchedulePage>;
 
-export const Default: StoryObj<typeof CreateSchedulePage> = {};
+export const SchedulesCreate: StoryObj<typeof CreateSchedulePage> = {};
