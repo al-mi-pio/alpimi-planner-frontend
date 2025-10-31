@@ -1,15 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import LoginPage from '@/features/auth/pages/login';
+import { AuthBodyStoriesStyles } from '@/features/auth/styles/Auth.style';
 import Auth from '@/features/auth/template';
-import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/Login',
+    tags: ['!autodocs'],
     component: LoginPage,
     render: () => (
         <Auth>
-            <PageStoryStyles />
+            <AuthBodyStoriesStyles />
             <LoginPage />
         </Auth>
     ),

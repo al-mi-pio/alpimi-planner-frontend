@@ -1,14 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { AuthBodyStoriesStyles } from '@/features/auth/styles/Auth.style';
 import Page404 from '@/features/main/pages/404';
-import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/404',
+    tags: ['!autodocs'],
     component: Page404,
     render: () => (
         <>
-            <PageStoryStyles />
+            <AuthBodyStoriesStyles />
             <Page404 />
         </>
     ),

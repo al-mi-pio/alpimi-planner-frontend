@@ -26,6 +26,18 @@ export const AuthBodyStyles = createGlobalStyle`
     }
 `;
 
+export const AuthBodyStoriesStyles = createGlobalStyle`
+    #storybook-root {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        background: ${({ theme }) => `linear-gradient(${theme.colors.elementBackground}, ${theme.colors.primaryBackground}, ${theme.colors.primaryBackground})`};
+    }
+`;
+
 export const CenterBox = styled.div`
     background-color: ${({ theme }) => theme.colors.elementBackground};
     box-shadow: -6px 6px ${({ theme }) => theme.colors.primaryText}80;

@@ -8,6 +8,7 @@ import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/Initial Setup',
+    tags: ['!autodocs'],
     component: InitialSetupPage,
     render: () => {
         const queryClient = useQueryClient();

@@ -7,6 +7,7 @@ import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
     title: 'Pages/Schedules Edit',
+    tags: ['!autodocs'],
     component: EditPage,
     render: () => (
         <Dashboard headerProps={editorDashboardHeader('mockScheduleName')}>
