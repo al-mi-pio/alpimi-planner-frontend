@@ -9,6 +9,7 @@ import { AxiosError } from 'axios';
 import { authLogin } from '@/api/services/authService';
 import type { ErrorResponse } from '@/api/types';
 import type { AuthDTO, AuthResponse } from '@/api/types/AuthService';
+import { useIsSignedIn } from '@/features/auth/hooks/useIsSignedIn';
 import { AuthForm } from '@/features/auth/styles/Auth.style';
 import Button from '@/shared/components/Button';
 import Image from '@/shared/components/Image';
@@ -25,6 +26,7 @@ import { MessageType } from '@/shared/types';
 
 const LoginPage = () => {
     const { t } = useTranslation('auth');
+    const { isSignedIn } = useIsSignedIn();
     const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
     const [message, setMessage] = useState(
@@ -54,9 +56,8 @@ const LoginPage = () => {
     useEffect(() => {
         if (params.get('redirect')?.startsWith(loginUrl)) setParams({});
 
-        if (localStorage.getItem('accessToken'))
-            navigate(params.get('redirect') ?? schedules);
-    }, []);
+        if (isSignedIn) navigate(params.get('redirect') ?? schedules);
+    }, [isSignedIn]);
 
     return (
         <LoadingBox loading={isPending}>
