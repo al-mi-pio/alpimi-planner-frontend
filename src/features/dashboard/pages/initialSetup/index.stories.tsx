@@ -28,4 +28,4 @@ export default {
     },
 } satisfies Meta<typeof InitialSetupPage>;
 
-export const Default: StoryObj<typeof InitialSetupPage> = {};
+export const InitialSetup: StoryObj<typeof InitialSetupPage> = {};

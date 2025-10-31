@@ -16,4 +16,4 @@ export default {
     ),
 } satisfies Meta<typeof LoginPage>;
 
-export const Default: StoryObj<typeof LoginPage> = {};
+export const Login: StoryObj<typeof LoginPage> = {};

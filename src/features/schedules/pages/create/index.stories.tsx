@@ -17,4 +17,4 @@ export default {
     ),
 } satisfies Meta<typeof CreateSchedulePage>;
 
-export const Default: StoryObj<typeof CreateSchedulePage> = {};
+export const SchedulesCreate: StoryObj<typeof CreateSchedulePage> = {};

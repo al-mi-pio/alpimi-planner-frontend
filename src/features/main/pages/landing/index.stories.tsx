@@ -15,4 +15,4 @@ export default {
     ),
 } satisfies Meta<typeof LandingPage>;
 
-export const Default: StoryObj<typeof LandingPage> = {};
+export const Landing: StoryObj<typeof LandingPage> = {};

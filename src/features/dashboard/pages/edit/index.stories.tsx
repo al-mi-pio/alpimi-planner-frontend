@@ -17,4 +17,4 @@ export default {
     ),
 } satisfies Meta<typeof EditPage>;
 
-export const Default: StoryObj<typeof EditPage> = {};
+export const SchedulesEdit: StoryObj<typeof EditPage> = {};

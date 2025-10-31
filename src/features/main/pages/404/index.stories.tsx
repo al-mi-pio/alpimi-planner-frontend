@@ -15,4 +15,4 @@ export default {
     ),
 } satisfies Meta<typeof Page404>;
 
-export const Default: StoryObj<typeof Page404> = {};
+export const _404: StoryObj<typeof Page404> = {};
