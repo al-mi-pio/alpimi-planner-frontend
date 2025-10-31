@@ -18,6 +18,7 @@ export const Layout = styled.div`
 
     @media (max-width: 1300px) {
         flex-direction: column;
+        gap: ${sizes.large};
     }
 `;
 
