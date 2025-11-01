@@ -47,9 +47,14 @@
     "to": "to",
     "Provide time in HHMM format": "Provide time in HH:MM format",
     "Finish": "Finish",
+    "Please wait...": "Please wait...",
     "Import": "Import",
     "or": "or",
     "Export data": "Export data",
     "XML file": "XML file",
-    "Download XML file": "Download XML file"
+    "Download XML file": "Download XML file",
+    "Import result": "Import result",
+    "Row {{rowIndex}}: {{reasons}}": "Row {{rowIndex}}: {{reasons}}",
+    "Successfully imported {{count}} rows of data": "Successfully imported {{count}} rows of data",
+    "Failed to import {{count}} rows": "Failed to import {{count}} rows:"
 }
