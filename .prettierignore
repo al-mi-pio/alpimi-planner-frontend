@@ -7,3 +7,4 @@ dist/
 
 # Ignore other specific files:
 package-lock.json
+public/mockServiceWorker.js
