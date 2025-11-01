@@ -1,3 +1,5 @@
+import type { TFunction } from 'i18next';
+
 import { classroomGet } from '@/api/services/classroomService';
 import { classroomTypeGet } from '@/api/services/classroomTypeService';
 import { groupGet } from '@/api/services/groupService';
@@ -38,3 +40,19 @@ export const MAP_ENTITY_METHOD: Record<
     [EntityType.Subgroup]: (id) => () => subgroupGet(id),
     [EntityType.Teacher]: (id) => () => teacherGet(id),
 };
+
+export const ENTITY_LOCALES_MAP = (t: TFunction) => ({
+    import: t('Data import export'),
+    availability: t('Availability'),
+    classroom: t('Classrooms'),
+    classroomType: t('Classroom types'),
+    collisionType: t('Collision types'),
+    dayOff: t('Days off'),
+    group: t('Groups'),
+    lessonPeriod: t('Lesson periods'),
+    lesson: t('Lessons'),
+    lessonType: t('Lesson types'),
+    student: t('Students'),
+    subgroup: t('Subgroups'),
+    teacher: t('Teachers'),
+});

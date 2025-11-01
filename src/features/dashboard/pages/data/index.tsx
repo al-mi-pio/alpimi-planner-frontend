@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { DataEntityType } from '@/api/types';
 import { ImportWindow } from '@/features/dashboard/components/ImportWindow';
+import { ENTITY_LOCALES_MAP } from '@/features/dashboard/constants';
 import { useSchedulePeriods } from '@/features/dashboard/hooks/useSchedulePeriods';
 import { DataTree } from '@/features/dashboard/styles/DataPage.style';
 import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
@@ -48,29 +49,13 @@ const DataPage = () => {
     )
         return null;
 
-    const LOCALES_MAP = {
-        import: t('Data import export'),
-        availability: t('Availability'),
-        classroom: t('Classrooms'),
-        classroomType: t('Classroom types'),
-        collisionType: t('Collision types'),
-        dayOff: t('Days off'),
-        group: t('Groups'),
-        lessonPeriod: t('Lesson periods'),
-        lesson: t('Lessons'),
-        lessonType: t('Lesson types'),
-        student: t('Students'),
-        subgroup: t('Subgroups'),
-        teacher: t('Teachers'),
-    };
-
     const windows: { [viewId: string]: ReactNode } = {
         entities: (
             <DataTree tabIndex={0}>
                 <TreeItem
                     key="import"
                     icon={<Book />}
-                    label={LOCALES_MAP.import}
+                    label={ENTITY_LOCALES_MAP(t).import}
                     isSelected={selectedEntity === 'import'}
                     onSelected={() => setSelectedEntity('import')}
                     value="import"
@@ -80,7 +65,7 @@ const DataPage = () => {
                     <TreeItem
                         key={entityType}
                         icon={<Book />}
-                        label={LOCALES_MAP[entityType]}
+                        label={ENTITY_LOCALES_MAP(t)[entityType]}
                         isSelected={selectedEntity === entityType}
                         onSelected={(entityType) =>
                             entityType && setSelectedEntity(entityType)
