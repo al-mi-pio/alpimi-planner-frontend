@@ -37,7 +37,7 @@ const Upload = ({
             {label && <Label>{label}</Label>}
 
             <StyledUpload $error={!!error} {...dropzoneProps}>
-                <P>{t('Click or Drag&Drop to upload a file')}</P>
+                <P>{t('Click or DragDrop to upload a file')}</P>
                 <input
                     aria-invalid={!!error}
                     aria-describedby={error ? errorDescriptionId : undefined}

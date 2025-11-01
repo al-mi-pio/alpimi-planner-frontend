@@ -1,5 +1,4 @@
 {
-    "Hello world": "Hello world",
     "No results...": "No results...",
     "Search": "Search",
     "Close": "Close",
@@ -14,5 +13,6 @@
     "{{count}} mo.": "{{count}} mo.",
     "{{count}} mo._other": "{{count}} mos.",
     "{{count}} yr.": "{{count}} yr.",
-    "{{count}} yr._other": "{{count}} yrs."
+    "{{count}} yr._other": "{{count}} yrs.",
+    "Click or DragDrop to upload a file": "Click or Drag&Drop to upload a file"
 }
