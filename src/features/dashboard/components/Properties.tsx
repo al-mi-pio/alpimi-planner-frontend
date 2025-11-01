@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import { getTeacherName } from '@/api/services/teacherService';
@@ -14,11 +13,12 @@ import {
 } from '@/features/dashboard/styles/Properties.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import P from '@/shared/components/P';
+import { useGetData } from '@/shared/hooks/useGetData';
 
 export const Properties = () => {
     const { selectedEntity } = usePropertiesWindow();
     const { t } = useTranslation('fields');
-    const { data, isLoading } = useQuery({
+    const { data, isLoading } = useGetData({
         queryKey: [selectedEntity?.entity, selectedEntity?.id],
         queryFn: selectedEntity
             ? MAP_ENTITY_METHOD[selectedEntity.entity](selectedEntity.id)

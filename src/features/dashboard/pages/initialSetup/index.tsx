@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
@@ -25,6 +24,7 @@ import LoadingBox from '@/shared/components/LoadingBox';
 import MessageBox from '@/shared/components/MessageBox';
 import P from '@/shared/components/P';
 import { editSchedule, scheduleData } from '@/shared/constants/routes';
+import { useGetData } from '@/shared/hooks/useGetData';
 import Plus from '@/shared/icons/Plus';
 import Trash from '@/shared/icons/Trash';
 import { MessageType } from '@/shared/types';
@@ -61,7 +61,7 @@ const InitialSetupPage = () => {
         });
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
-        useQuery({
+        useGetData({
             queryKey: ['scheduleSettings', schedule?.id],
             queryFn: () =>
                 scheduleSettingsGet(schedule ? schedule.id : '0-0-0-0-0'),

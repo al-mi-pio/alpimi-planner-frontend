@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { type ReactNode, useEffect, useState } from 'react';
 import { Mosaic } from 'react-mosaic-component';
 import 'react-mosaic-component/react-mosaic-component.css';
@@ -23,6 +22,7 @@ import type { CurrentTimetableFilters } from '@/features/dashboard/types';
 import { parseTimetableLessonBlocks } from '@/features/dashboard/utils';
 import { schoolDaysFromDTO } from '@/features/schedules/utils';
 import { initialScheduleSetup } from '@/shared/constants/routes';
+import { useGetData } from '@/shared/hooks/useGetData';
 import { addDaysToDate, getFirstDayOfWeek } from '@/shared/utils/date';
 
 const EditPage = () => {
@@ -34,7 +34,7 @@ const EditPage = () => {
         useSchedulePeriods();
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
-        useQuery({
+        useGetData({
             queryKey: ['scheduleSettings', schedule?.id],
             queryFn: () =>
                 scheduleSettingsGet(schedule ? schedule.id : '0-0-0-0-0'),
@@ -45,7 +45,7 @@ const EditPage = () => {
             enabled: !!lessonPeriods && !!lessonPeriods.length,
         });
 
-    const { data: dayOffs, isLoading: isdayOffLoading } = useQuery({
+    const { data: dayOffs, isLoading: isdayOffLoading } = useGetData({
         queryKey: ['dayOff', schedule?.id],
         queryFn: () =>
             dayOffGetAll({
@@ -55,7 +55,7 @@ const EditPage = () => {
         enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
-    const { data: collisions, isLoading: isCollisionLoading } = useQuery({
+    const { data: collisions, isLoading: isCollisionLoading } = useGetData({
         queryKey: ['collision', schedule?.id],
         queryFn: () =>
             collisionGetAll({
@@ -65,7 +65,7 @@ const EditPage = () => {
         enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
-    const { data: lessons, isLoading: isLessonLoading } = useQuery({
+    const { data: lessons, isLoading: isLessonLoading } = useGetData({
         queryKey: ['lesson', schedule?.id],
         queryFn: () =>
             lessonGetAll({
@@ -75,7 +75,7 @@ const EditPage = () => {
         enabled: !!lessonPeriods && !!lessonPeriods.length,
     });
 
-    const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useQuery({
+    const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useGetData({
         queryKey: [
             'lessonBlock',
             currentTimetableFilters?.entityId,

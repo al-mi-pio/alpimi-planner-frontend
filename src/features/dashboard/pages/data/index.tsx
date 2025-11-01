@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { type ReactNode, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mosaic } from 'react-mosaic-component';
@@ -13,6 +12,7 @@ import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import { TreeItem } from '@/shared/components/Tree';
 import { initialScheduleSetup } from '@/shared/constants/routes';
+import { useGetData } from '@/shared/hooks/useGetData';
 import Book from '@/shared/icons/Book';
 
 const DataPage = () => {
@@ -24,7 +24,7 @@ const DataPage = () => {
         useSchedulePeriods();
 
     const { data: scheduleSettings, isLoading: isScheduleSettingsLoading } =
-        useQuery({
+        useGetData({
             queryKey: ['scheduleSettings', schedule?.id],
             queryFn: () =>
                 scheduleSettingsGet(schedule ? schedule.id : '0-0-0-0-0'),
