@@ -4,6 +4,7 @@ import {
     DataEntityType,
     type ErrorMessage,
     type Id,
+    type ServiceResponse,
 } from '@/api/types';
 
 export interface ImportError {
@@ -16,9 +17,11 @@ export interface ImportDTO {
     payload: string;
 }
 
-export interface ImportResponse {
-    successfulItems: number;
-    unsuccessfulItems: Record<DataEntityType, ImportError[]>;
+export interface ImportResponse extends ServiceResponse {
+    content: {
+        successfulItems: number;
+        unsuccessfulItems: Record<DataEntityType, ImportError[]>;
+    };
 }
 
 export interface ExportResponse {
