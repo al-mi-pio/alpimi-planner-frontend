@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
+import LoadingBox from '@/shared/components/LoadingBox';
 import { sizes } from '@/shared/constants/dimensions';
 
-export const StyledWindow = styled.div`
+export const StyledWindow = styled(LoadingBox)`
     display: flex;
+    height: 60vh;
+    width: auto;
+    flex-direction: row;
     justify-content: space-evenly;
+    padding: ${sizes.large} 0;
+    margin: 0 ${sizes.small};
 `;
 
 export const ImportSection = styled.div`
@@ -17,7 +23,9 @@ export const ImportSection = styled.div`
 `;
 
 export const MultiStepWrapper = styled.div`
-    min-height: 250px;
+    min-height: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;

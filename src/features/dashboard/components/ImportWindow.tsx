@@ -6,9 +6,11 @@ import {
     MultiStepWrapper,
     StyledWindow,
 } from '@/features/dashboard/styles/ImportWindow.style';
+import { Loading } from '@/features/main/components/Loading';
 import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
 import Button from '@/shared/components/Button';
 import H from '@/shared/components/H';
+import P from '@/shared/components/P';
 import Upload from '@/shared/components/Upload';
 
 export const ImportWindow = ({
@@ -18,6 +20,7 @@ export const ImportWindow = ({
 }) => {
     const { t } = useTranslation('dashboard');
     const [isDraggedOver, setIsDraggedOver] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const handleDragover = (e: DragEvent<HTMLDivElement>) => {
         if (
             e.dataTransfer.items &&
@@ -31,11 +34,19 @@ export const ImportWindow = ({
 
     const handleUpload = async (files?: FileList | null) => {
         setIsDraggedOver(false);
+        setIsLoading(true);
         if (files && files[0] && files[0].type === 'text/xml') {
             const file = files[0];
             const data = await file.text();
-            console.log(data);
+            // TODO
         }
+        setIsLoading(false);
+    };
+
+    const handleDownload = async () => {
+        setIsLoading(true);
+        // TODO
+        setIsLoading(false);
     };
 
     const handleDragleave = () => {
@@ -55,9 +66,18 @@ export const ImportWindow = ({
     return (
         <div>
             <MultiStepWrapper>
-                {renderMultiStep && <CreateScheduleMultiStep currentStep={2} />}
+                {isLoading ? (
+                    <>
+                        <Loading />
+                        <P>{t('Please wait...')}</P>
+                    </>
+                ) : (
+                    renderMultiStep && (
+                        <CreateScheduleMultiStep currentStep={2} />
+                    )
+                )}
             </MultiStepWrapper>
-            <StyledWindow>
+            <StyledWindow loading={isLoading}>
                 <ImportSection>
                     <H level={2}>{t('Import')}</H>
                     <Upload
@@ -78,6 +98,7 @@ export const ImportWindow = ({
                     <Button
                         label={t('Download XML file')}
                         appearance="secondary"
+                        onClick={handleDownload}
                     />
                 </ImportSection>
             </StyledWindow>
