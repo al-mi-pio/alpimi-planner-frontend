@@ -1,18 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mosaic } from 'react-mosaic-component';
 import { useNavigate, useSearchParams } from 'react-router';
 
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
+import { DataEntityType } from '@/api/types';
 import { useSchedulePeriods } from '@/features/dashboard/hooks/useSchedulePeriods';
+import { DataTree } from '@/features/dashboard/styles/DataPage.style';
 import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
+import { TreeItem } from '@/shared/components/Tree';
 import { initialScheduleSetup } from '@/shared/constants/routes';
+import Book from '@/shared/icons/Book';
 
 const DataPage = () => {
+    const { t } = useTranslation('dashboard');
     const navigate = useNavigate();
     const [params] = useSearchParams();
+    const [selectedEntity, setSelectedEntity] = useState('import');
     const { schedule, lessonPeriods, isSchedulePeriodLoading } =
         useSchedulePeriods();
 
@@ -41,8 +48,48 @@ const DataPage = () => {
     )
         return null;
 
+    const LOCALES_MAP = {
+        import: t('Data import export'),
+        availability: t('Availability'),
+        classroom: t('Classrooms'),
+        classroomType: t('Classroom types'),
+        collisionType: t('Collision types'),
+        dayOff: t('Days off'),
+        group: t('Groups'),
+        lessonPeriod: t('Lesson periods'),
+        lesson: t('Lessons'),
+        lessonType: t('Lesson types'),
+        student: t('Students'),
+        subgroup: t('Subgroups'),
+        teacher: t('Teachers'),
+    };
+
     const windows: { [viewId: string]: ReactNode } = {
-        entities: <>{'test'}</>,
+        entities: (
+            <DataTree tabIndex={0}>
+                <TreeItem
+                    key="import"
+                    icon={<Book />}
+                    label={LOCALES_MAP.import}
+                    isSelected={selectedEntity === 'import'}
+                    onSelected={() => setSelectedEntity('import')}
+                    value="import"
+                />
+
+                {Object.values(DataEntityType).map((entityType) => (
+                    <TreeItem
+                        key={entityType}
+                        icon={<Book />}
+                        label={LOCALES_MAP[entityType]}
+                        isSelected={selectedEntity === entityType}
+                        onSelected={(entityType) =>
+                            entityType && setSelectedEntity(entityType)
+                        }
+                        value={entityType}
+                    />
+                ))}
+            </DataTree>
+        ),
         data: (
             <>
                 {params.get('firstTime') === 'true' && (
@@ -57,12 +104,13 @@ const DataPage = () => {
         <>
             <EditPageStyle />
             <Mosaic<string>
+                resize={{ minimumPaneSizePercentage: 16 }}
                 renderTile={(id) => windows[id]}
                 initialValue={{
                     direction: 'row',
                     first: 'entities',
                     second: 'data',
-                    splitPercentage: 20,
+                    splitPercentage: 16,
                 }}
             />
         </>
