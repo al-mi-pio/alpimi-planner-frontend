@@ -93,6 +93,7 @@ const DataPage = () => {
         data: (
             <ImportWindow
                 renderMultiStep={params.get('firstTime') === 'true'}
+                schedule={schedule}
             />
         ),
     };

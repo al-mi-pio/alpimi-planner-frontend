@@ -1,6 +1,9 @@
-import { type ChangeEvent, type DragEvent, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { type ChangeEvent, type DragEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { exportGet } from '@/api/services/dataService';
+import type { Schedule } from '@/api/types/ScheduleService';
 import {
     ImportSection,
     MultiStepWrapper,
@@ -12,15 +15,49 @@ import Button from '@/shared/components/Button';
 import H from '@/shared/components/H';
 import P from '@/shared/components/P';
 import Upload from '@/shared/components/Upload';
+import { getFilenameDate } from '@/shared/utils/date';
+import { createFile, downloadFile } from '@/shared/utils/file';
 
 export const ImportWindow = ({
     renderMultiStep,
+    schedule,
 }: {
     renderMultiStep?: boolean;
+    schedule: Schedule;
 }) => {
     const { t } = useTranslation('dashboard');
     const [isDraggedOver, setIsDraggedOver] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isImportLoading, setisImportLoading] = useState(false);
+    const [isExportPending, setIsExportPending] = useState(false);
+
+    const {
+        data: exportPayload,
+        isLoading: isExportLoading,
+        error: exportError,
+    } = useQuery({
+        queryKey: ['export', schedule.id],
+        queryFn: () => exportGet(schedule.id),
+        select: (data) => data.content.payload,
+        enabled: isExportPending,
+    });
+
+    useEffect(() => {
+        if (!isExportLoading) {
+            if (exportPayload) {
+                const file = createFile(
+                    `Alpimi_${schedule.name}_${getFilenameDate()}.xml`,
+                    'text/xml',
+                    exportPayload
+                );
+                downloadFile(file);
+                setIsExportPending(false);
+            }
+            if (exportError) {
+                setIsExportPending(false);
+            }
+        }
+    }, [exportPayload, isExportLoading, exportError]);
+
     const handleDragover = (e: DragEvent<HTMLDivElement>) => {
         if (
             e.dataTransfer.items &&
@@ -34,19 +71,17 @@ export const ImportWindow = ({
 
     const handleUpload = async (files?: FileList | null) => {
         setIsDraggedOver(false);
-        setIsLoading(true);
+        setisImportLoading(true);
         if (files && files[0] && files[0].type === 'text/xml') {
             const file = files[0];
             const data = await file.text();
             // TODO
         }
-        setIsLoading(false);
+        setisImportLoading(false);
     };
 
     const handleDownload = async () => {
-        setIsLoading(true);
-        // TODO
-        setIsLoading(false);
+        setIsExportPending(true);
     };
 
     const handleDragleave = () => {
@@ -66,7 +101,7 @@ export const ImportWindow = ({
     return (
         <div>
             <MultiStepWrapper>
-                {isLoading ? (
+                {isImportLoading || isExportPending ? (
                     <>
                         <Loading />
                         <P>{t('Please wait...')}</P>
@@ -77,7 +112,7 @@ export const ImportWindow = ({
                     )
                 )}
             </MultiStepWrapper>
-            <StyledWindow loading={isLoading}>
+            <StyledWindow loading={isImportLoading || isExportPending}>
                 <ImportSection>
                     <H level={2}>{t('Import')}</H>
                     <Upload
