@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { exportGet, importPost } from '@/api/services/dataService';
 import type { ImportResponse } from '@/api/types/DataService';
 import type { Schedule } from '@/api/types/ScheduleService';
+import { ImportModal } from '@/features/dashboard/components/ImportModal';
 import {
     ImportSection,
     MultiStepWrapper,
@@ -13,7 +14,6 @@ import { Loading } from '@/features/main/components/Loading';
 import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
 import Button from '@/shared/components/Button';
 import H from '@/shared/components/H';
-import Modal from '@/shared/components/Modal';
 import P from '@/shared/components/P';
 import Upload from '@/shared/components/Upload';
 import { useGetData } from '@/shared/hooks/useGetData';
@@ -137,7 +137,9 @@ export const ImportWindow = ({
                         }}
                     />
                 </ImportSection>
-                <H level={3}>{t('or')}</H>
+                <H level={3} style={{ alignSelf: 'center' }}>
+                    {t('or')}
+                </H>
                 <ImportSection>
                     <H level={2}>{t('Export data')}</H>
                     <Button
@@ -147,14 +149,7 @@ export const ImportWindow = ({
                     />
                 </ImportSection>
             </StyledWindow>
-            <Modal
-                open={!!modalContent}
-                title={t('Import result')}
-                onClose={() => setModalContent(undefined)}
-            >
-                {JSON.stringify(modalContent)}
-                {/*TODO: pretty display*/}
-            </Modal>
+            <ImportModal modalState={[modalContent, setModalContent]} />
         </div>
     );
 };
