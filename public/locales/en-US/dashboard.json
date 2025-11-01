@@ -46,5 +46,10 @@
     "from": "from",
     "to": "to",
     "Provide time in HHMM format": "Provide time in HH:MM format",
-    "Finish": "Finish"
+    "Finish": "Finish",
+    "Import": "Import",
+    "or": "or",
+    "Export data": "Export data",
+    "XML file": "XML file",
+    "Download XML file": "Download XML file"
 }

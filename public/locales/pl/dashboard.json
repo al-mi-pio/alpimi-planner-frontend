@@ -48,5 +48,10 @@
     "from": "od",
     "to": "do",
     "Provide time in HHMM format": "Wprowadź czas w formacie GG:MM",
-    "Finish": "Zakończ"
+    "Finish": "Zakończ",
+    "Import": "Importuj",
+    "or": "lub",
+    "Export data": "Exportuj dane",
+    "XML file": "Plik XML",
+    "Download XML file": "Pobierz plik XML"
 }

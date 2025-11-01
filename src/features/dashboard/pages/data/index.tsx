@@ -7,11 +7,19 @@ import { useNavigate, useSearchParams } from 'react-router';
 import { scheduleSettingsGet } from '@/api/services/scheduleSettingsService';
 import { DataEntityType } from '@/api/types';
 import { useSchedulePeriods } from '@/features/dashboard/hooks/useSchedulePeriods';
-import { DataTree } from '@/features/dashboard/styles/DataPage.style';
+import {
+    DataTree,
+    ImportSection,
+    ImportWindow,
+    MultiStepWrapper,
+} from '@/features/dashboard/styles/DataPage.style';
 import { EditPageStyle } from '@/features/dashboard/styles/EditPage.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
+import Button from '@/shared/components/Button';
+import H from '@/shared/components/H';
 import { TreeItem } from '@/shared/components/Tree';
+import Upload from '@/shared/components/Upload';
 import { initialScheduleSetup } from '@/shared/constants/routes';
 import Book from '@/shared/icons/Book';
 
@@ -91,12 +99,28 @@ const DataPage = () => {
             </DataTree>
         ),
         data: (
-            <>
-                {params.get('firstTime') === 'true' && (
-                    <CreateScheduleMultiStep currentStep={2} />
-                )}
-                {'test2'}
-            </>
+            <div>
+                <MultiStepWrapper>
+                    {params.get('firstTime') === 'true' && (
+                        <CreateScheduleMultiStep currentStep={2} />
+                    )}
+                </MultiStepWrapper>
+
+                <ImportWindow>
+                    <ImportSection>
+                        <H level={2}>{t('Import')}</H>
+                        <Upload label={t('XML file')} />
+                    </ImportSection>
+                    <H level={3}>{t('or')}</H>
+                    <ImportSection>
+                        <H level={2}>{t('Export data')}</H>
+                        <Button
+                            label={t('Download XML file')}
+                            appearance="secondary"
+                        />
+                    </ImportSection>
+                </ImportWindow>
+            </div>
         ),
     };
 
