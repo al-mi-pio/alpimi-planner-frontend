@@ -7,13 +7,24 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
+import type { DefaultError, QueryKey } from '@tanstack/query-core';
 import { AxiosError } from 'axios';
 
 import type { ErrorResponse } from '@/api/types';
 import { tokenExpirationUrl } from '@/shared/utils/url';
 
-export const useGetData = <T = object,>(
-    queryOptions: UndefinedInitialDataOptions<T>
+export const useGetData = <
+    TQueryFnData = unknown,
+    TError = DefaultError,
+    TData = TQueryFnData,
+    TQueryKey extends QueryKey = QueryKey,
+>(
+    queryOptions: UndefinedInitialDataOptions<
+        TQueryFnData,
+        TError,
+        TData,
+        TQueryKey
+    >
 ) => {
     const queryState = useQuery({ retry: false, ...queryOptions });
     const navigate = useNavigate();

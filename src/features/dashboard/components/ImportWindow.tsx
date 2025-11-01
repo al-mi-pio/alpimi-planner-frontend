@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import { type ChangeEvent, type DragEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { exportGet } from '@/api/services/dataService';
+import { exportGet, importPost } from '@/api/services/dataService';
+import type { ImportResponse } from '@/api/types/DataService';
 import type { Schedule } from '@/api/types/ScheduleService';
 import {
     ImportSection,
@@ -13,8 +13,11 @@ import { Loading } from '@/features/main/components/Loading';
 import { CreateScheduleMultiStep } from '@/features/schedules/components/CreateScheduleMultiStep';
 import Button from '@/shared/components/Button';
 import H from '@/shared/components/H';
+import Modal from '@/shared/components/Modal';
 import P from '@/shared/components/P';
 import Upload from '@/shared/components/Upload';
+import { useGetData } from '@/shared/hooks/useGetData';
+import { useMutateData } from '@/shared/hooks/useMutateData';
 import { getFilenameDate } from '@/shared/utils/date';
 import { createFile, downloadFile } from '@/shared/utils/file';
 
@@ -29,16 +32,23 @@ export const ImportWindow = ({
     const [isDraggedOver, setIsDraggedOver] = useState(false);
     const [isImportLoading, setisImportLoading] = useState(false);
     const [isExportPending, setIsExportPending] = useState(false);
+    const [modalContent, setModalContent] =
+        useState<ImportResponse['content']>();
 
-    const {
-        data: exportPayload,
-        isLoading: isExportLoading,
-        error: exportError,
-    } = useQuery({
+    const { data: exportPayload, isLoading: isExportLoading } = useGetData({
         queryKey: ['export', schedule.id],
         queryFn: () => exportGet(schedule.id),
         select: (data) => data.content.payload,
         enabled: isExportPending,
+    });
+
+    const onImportSuccess = ({ content }: ImportResponse) => {
+        setModalContent(content);
+    };
+
+    const { isPending: isImportPending, mutate: upload } = useMutateData({
+        mutationFn: importPost,
+        onSuccess: onImportSuccess,
     });
 
     useEffect(() => {
@@ -50,13 +60,11 @@ export const ImportWindow = ({
                     exportPayload
                 );
                 downloadFile(file);
-                setIsExportPending(false);
             }
-            if (exportError) {
-                setIsExportPending(false);
-            }
+
+            setIsExportPending(false);
         }
-    }, [exportPayload, isExportLoading, exportError]);
+    }, [exportPayload, isExportLoading]);
 
     const handleDragover = (e: DragEvent<HTMLDivElement>) => {
         if (
@@ -74,8 +82,8 @@ export const ImportWindow = ({
         setisImportLoading(true);
         if (files && files[0] && files[0].type === 'text/xml') {
             const file = files[0];
-            const data = await file.text();
-            // TODO
+            const payload = await file.text();
+            upload({ scheduleId: schedule.id, payload });
         }
         setisImportLoading(false);
     };
@@ -101,7 +109,7 @@ export const ImportWindow = ({
     return (
         <div>
             <MultiStepWrapper>
-                {isImportLoading || isExportPending ? (
+                {isImportLoading || isImportPending || isExportPending ? (
                     <>
                         <Loading />
                         <P>{t('Please wait...')}</P>
@@ -112,7 +120,9 @@ export const ImportWindow = ({
                     )
                 )}
             </MultiStepWrapper>
-            <StyledWindow loading={isImportLoading || isExportPending}>
+            <StyledWindow
+                loading={isImportLoading || isImportPending || isExportPending}
+            >
                 <ImportSection>
                     <H level={2}>{t('Import')}</H>
                     <Upload
@@ -137,6 +147,14 @@ export const ImportWindow = ({
                     />
                 </ImportSection>
             </StyledWindow>
+            <Modal
+                open={!!modalContent}
+                title={t('Import result')}
+                onClose={() => setModalContent(undefined)}
+            >
+                {JSON.stringify(modalContent)}
+                {/*TODO: pretty display*/}
+            </Modal>
         </div>
     );
 };
