@@ -1,6 +1,7 @@
 import type {
     ApiCustomBodyService,
     ApiCustomBodylessService,
+    ServiceResponse,
 } from '@/api/types';
 
 export interface AuthDTO {
@@ -8,10 +9,8 @@ export interface AuthDTO {
     password: string;
 }
 
-export interface AuthResponse {
+export interface AuthResponse extends ServiceResponse {
     content: string;
-    timestamp: string;
-    status: number;
 }
 
 export type AuthLogin = ApiCustomBodyService<AuthDTO, AuthResponse>;

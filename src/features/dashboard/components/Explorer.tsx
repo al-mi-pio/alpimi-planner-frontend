@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { use, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -16,6 +15,7 @@ import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWin
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
 import { generateTreeLookupMaps } from '@/features/dashboard/utils';
 import { Tree, TreeItem } from '@/shared/components/Tree';
+import { useGetData } from '@/shared/hooks/useGetData';
 import Book from '@/shared/icons/Book';
 import Calendar from '@/shared/icons/Calendar';
 import Clock from '@/shared/icons/Clock';
@@ -42,7 +42,7 @@ export const Explorer = ({
     const [lookupMaps, setLookupMaps] =
         useState<ReturnType<typeof generateTreeLookupMaps>['lookupMaps']>();
 
-    const { data: groups, isLoading: isGroupLoading } = useQuery({
+    const { data: groups, isLoading: isGroupLoading } = useGetData({
         queryKey: ['group', schedule?.id],
         queryFn: () =>
             groupGetAll({
@@ -52,7 +52,7 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
-    const { data: subgroups, isLoading: isSubgroupLoading } = useQuery({
+    const { data: subgroups, isLoading: isSubgroupLoading } = useGetData({
         queryKey: ['subgroup', schedule?.id],
         queryFn: () =>
             subgroupGetAll({
@@ -62,7 +62,7 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
-    const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useQuery({
+    const { data: lessonBlocks, isLoading: isLessonBlockLoading } = useGetData({
         queryKey: ['lessonBlock', schedule?.id],
         queryFn: () =>
             lessonBlockGetAll({
@@ -74,7 +74,7 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
-    const { data: teachers, isLoading: isTeacherLoading } = useQuery({
+    const { data: teachers, isLoading: isTeacherLoading } = useGetData({
         queryKey: ['teacher', schedule?.id],
         queryFn: () =>
             teacherGetAll({
@@ -86,7 +86,7 @@ export const Explorer = ({
         enabled: !!schedule,
     });
 
-    const { data: classrooms, isLoading: isClassroomLoading } = useQuery({
+    const { data: classrooms, isLoading: isClassroomLoading } = useGetData({
         queryKey: ['classroom', schedule?.id],
         queryFn: () =>
             classroomGetAll({

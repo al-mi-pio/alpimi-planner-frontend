@@ -59,3 +59,11 @@ export const isBetweenDates = (
 ) =>
     Date.parse(date) >= Date.parse(startDate) &&
     Date.parse(date) <= Date.parse(endDate);
+
+export const getFilenameDate = () => {
+    return new Date()
+        .toLocaleString('en-GB')
+        .replace(', ', '__')
+        .replaceAll('/', '-')
+        .replaceAll(':', '-');
+};

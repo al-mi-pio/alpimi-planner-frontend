@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { use, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useLoaderData } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { lessonPeriodGetAll } from '@/api/services/lessonPeriodService';
 import { scheduleGetByName } from '@/api/services/scheduleService';
 import type { ErrorResponse } from '@/api/types';
 import { UserContext } from '@/features/auth/contexts';
+import { useGetData } from '@/shared/hooks/useGetData';
 
 export const useSchedulePeriods = () => {
     const { customURL } = use(UserContext);
@@ -19,7 +19,7 @@ export const useSchedulePeriods = () => {
         data: schedule,
         isLoading: isScheduleLoading,
         error,
-    } = useQuery({
+    } = useGetData({
         queryKey: ['schedule', customURL, scheduleName],
         queryFn: () => scheduleGetByName(customURL, scheduleName),
         select: (data) => data.content,
@@ -27,15 +27,18 @@ export const useSchedulePeriods = () => {
         enabled: !!customURL && !!scheduleName,
     });
 
-    const { data: lessonPeriods, isLoading: isLessonPeriodLoading } = useQuery({
-        queryKey: ['lessonPeriod', schedule?.id],
-        queryFn: () =>
-            lessonPeriodGetAll({
-                params: { scheduleId: schedule ? schedule.id : '0-0-0-0-0' },
-            }),
-        select: (data) => data.content,
-        enabled: !!schedule,
-    });
+    const { data: lessonPeriods, isLoading: isLessonPeriodLoading } =
+        useGetData({
+            queryKey: ['lessonPeriod', schedule?.id],
+            queryFn: () =>
+                lessonPeriodGetAll({
+                    params: {
+                        scheduleId: schedule ? schedule.id : '0-0-0-0-0',
+                    },
+                }),
+            select: (data) => data.content,
+            enabled: !!schedule,
+        });
 
     useEffect(() => {
         if (error) {

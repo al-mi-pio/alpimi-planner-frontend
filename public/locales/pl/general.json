@@ -1,5 +1,4 @@
 {
-    "Hello world": "Witaj świecie",
     "No results...": "Brak wyników...",
     "Search": "Wyszukiwanie",
     "Close": "Zamknij",
@@ -13,5 +12,6 @@
     "{{count}} wk_one": "{{count}} tydz.",
     "{{count}} mo.": "{{count}} mies.",
     "{{count}} yr.": "{{count}} l.",
-    "{{count}} yr._one": "{{count}} rok"
+    "{{count}} yr._one": "{{count}} rok",
+    "Click or DragDrop to upload a file": "Kliknij lub przeciągnij i upuść aby wgrać plik"
 }

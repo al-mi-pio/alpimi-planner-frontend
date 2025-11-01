@@ -82,6 +82,20 @@ export type ApiDeleteService = (
     config?: AxiosRequestConfig
 ) => Promise<DeleteResponse>;
 
+export enum DataEntityType {
+    Availability = 'availability',
+    Classroom = 'classroom',
+    ClassroomType = 'classroomType',
+    DayOff = 'dayOff',
+    Group = 'group',
+    LessonPeriod = 'lessonPeriod',
+    Lesson = 'lesson',
+    LessonType = 'lessonType',
+    Student = 'student',
+    Subgroup = 'subgroup',
+    Teacher = 'teacher',
+}
+
 export enum EntityType {
     Availability = 'availability',
     Classroom = 'classroom',

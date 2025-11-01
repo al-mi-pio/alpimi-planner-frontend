@@ -8,6 +8,7 @@ import './i18n';
 
 import LoginPage from '@/features/auth/pages/login';
 import Auth from '@/features/auth/template';
+import DataPage from '@/features/dashboard/pages/data';
 import EditPage from '@/features/dashboard/pages/edit';
 import InitialSetupPage from '@/features/dashboard/pages/initialSetup';
 import Dashboard from '@/features/dashboard/template';
@@ -29,6 +30,7 @@ import {
     initialScheduleSetup,
     landingPage,
     login,
+    scheduleData,
     schedules,
 } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
@@ -91,6 +93,18 @@ const router = createBrowserRouter([
                     headerProps={initialSetupDashboardHeader(scheduleName)}
                 >
                     <InitialSetupPage />
+                </Dashboard>
+            );
+        },
+    },
+    {
+        path: scheduleData(':scheduleName'),
+        loader: ({ params }) => ({ scheduleName: params.scheduleName }),
+        Component: () => {
+            const { scheduleName } = useLoaderData();
+            return (
+                <Dashboard headerProps={editorDashboardHeader(scheduleName)}>
+                    <DataPage />
                 </Dashboard>
             );
         },
