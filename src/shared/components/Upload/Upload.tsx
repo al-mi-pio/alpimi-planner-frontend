@@ -18,7 +18,7 @@ export interface UploadProps
     /**
      * Optional props for the dropzone
      */
-    dropzoneProps?: ComponentPropsWithRef<'div'>;
+    dropzoneProps?: ComponentPropsWithRef<typeof StyledUpload>;
 }
 
 /**

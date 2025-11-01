@@ -1,3 +1,4 @@
+import { type ChangeEvent, type DragEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -16,6 +17,41 @@ export const ImportWindow = ({
     renderMultiStep?: boolean;
 }) => {
     const { t } = useTranslation('dashboard');
+    const [isDraggedOver, setIsDraggedOver] = useState(false);
+    const handleDragover = (e: DragEvent<HTMLDivElement>) => {
+        if (
+            e.dataTransfer.items &&
+            e.dataTransfer.items[0] &&
+            e.dataTransfer.items[0].type === 'text/xml'
+        ) {
+            e.preventDefault();
+            setIsDraggedOver(true);
+        }
+    };
+
+    const handleUpload = async (files?: FileList | null) => {
+        setIsDraggedOver(false);
+        if (files && files[0] && files[0].type === 'text/xml') {
+            const file = files[0];
+            const data = await file.text();
+            console.log(data);
+        }
+    };
+
+    const handleDragleave = () => {
+        setIsDraggedOver(false);
+    };
+
+    const handleDrop = async (e: DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        await handleUpload(e.dataTransfer.files);
+    };
+
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        await handleUpload(e.target.files);
+    };
+
     return (
         <div>
             <MultiStepWrapper>
@@ -24,7 +60,17 @@ export const ImportWindow = ({
             <StyledWindow>
                 <ImportSection>
                     <H level={2}>{t('Import')}</H>
-                    <Upload label={t('XML file')} />
+                    <Upload
+                        label={t('XML file')}
+                        accept="text/xml"
+                        onChange={handleChange}
+                        dropzoneProps={{
+                            onDragOver: handleDragover,
+                            onDrop: handleDrop,
+                            onDragLeave: handleDragleave,
+                            $isDraggedOver: isDraggedOver,
+                        }}
+                    />
                 </ImportSection>
                 <H level={3}>{t('or')}</H>
                 <ImportSection>
