@@ -52,7 +52,7 @@ export const ImportWindow = ({
     });
 
     useEffect(() => {
-        if (!isExportLoading) {
+        if (!isExportLoading && isExportPending) {
             if (exportPayload) {
                 const file = createFile(
                     `Alpimi_${schedule.name}_${getFilenameDate()}.xml`,
@@ -64,7 +64,7 @@ export const ImportWindow = ({
 
             setIsExportPending(false);
         }
-    }, [exportPayload, isExportLoading]);
+    }, [exportPayload, isExportLoading, isExportPending]);
 
     const handleDragover = (e: DragEvent<HTMLDivElement>) => {
         if (
