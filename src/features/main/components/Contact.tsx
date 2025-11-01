@@ -1,3 +1,4 @@
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import {
     type ComponentPropsWithRef,
     type FormEventHandler,
@@ -25,14 +26,25 @@ export type ContactProps = Omit<ComponentPropsWithRef<'div'>, 'children'>;
 export const Contact = (props: ContactProps) => {
     const { t } = useTranslation('main');
     const [message, setMessage] = useState('');
+    const [captchaResponse, setCaptchaResponse] = useState('');
+
+    const onHCaptchaChange = (token: string) => {
+        setCaptchaResponse(token);
+    };
 
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+        if (!captchaResponse) {
+            setMessage(t('hCaptcha Token is mandatory for this form '));
+            return;
+        }
+
         const target = e.target as HTMLFormElement;
         const formData = new FormData(target);
 
         setMessage('sending');
         formData.append('access_key', '56e75862-056a-4b5f-a6ea-b610e622f57e');
+        formData.append('h-captcha-response', captchaResponse);
 
         try {
             const response = await fetch('https://api.web3forms.com/submit', {
@@ -49,7 +61,8 @@ export const Contact = (props: ContactProps) => {
             } else {
                 setMessage(
                     t(
-                        'An error occurred while sending the message Please try again later'
+                        data.message ||
+                            'An error occurred while sending the message Please try again later'
                     )
                 );
             }
@@ -109,6 +122,11 @@ export const Contact = (props: ContactProps) => {
                             multiline
                             rows={10}
                             required
+                        />
+                        <HCaptcha
+                            sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                            reCaptchaCompat={false}
+                            onVerify={onHCaptchaChange}
                         />
                         <Button
                             type="submit"

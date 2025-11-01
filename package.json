@@ -17,6 +17,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@hcaptcha/react-hcaptcha": "^1.14.0",
     "@tanstack/react-query": "^5.83.0",
     "axios": "^1.10.0",
     "i18next": "^24.2.2",
