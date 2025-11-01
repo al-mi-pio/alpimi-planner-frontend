@@ -16,10 +16,17 @@ export const StyledWindow = styled(LoadingBox)`
 export const ImportSection = styled.div`
     display: flex;
     flex: 1;
-    margin: 0 ${sizes.largeXXL};
+    margin: 0 ${sizes.largeXL};
     flex-direction: column;
-    align-items: flex-start;
-    gap: ${sizes.large};
+    align-items: center;
+    padding: ${sizes.regular};
+    border-radius: ${sizes.small};
+    background-color: ${({ theme }) => theme.colors.sectionBackground};
+    overflow: hidden;
+
+    & :last-child {
+        margin: auto 0;
+    }
 `;
 
 export const MultiStepWrapper = styled.div`
