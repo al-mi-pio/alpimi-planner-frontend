@@ -7,6 +7,8 @@ on:
 
 env:
     NODE_VERSION: '20.16.0'
+    VITE_API_URL: ${{ secrets.VITE_API_URL }}
+    VITE_TOKEN_REFRESH_FREQUENCY_MS: ${{ secrets.VITE_TOKEN_REFRESH_FREQUENCY_MS }}
 
 jobs:
     build:
