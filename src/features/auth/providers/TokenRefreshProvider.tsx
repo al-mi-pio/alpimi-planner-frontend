@@ -17,6 +17,7 @@ export const TokenRefreshProvider = ({ children }: { children: ReactNode }) => {
     const { isPending, error, data, failureCount, failureReason } = useQuery({
         queryKey: ['token'],
         queryFn: authRefresh,
+        gcTime: 0,
         retry: true,
         retryDelay: 1000,
         refetchInterval: tokenRefreshFrequency,

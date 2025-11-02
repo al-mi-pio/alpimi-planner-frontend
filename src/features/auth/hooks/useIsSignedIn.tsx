@@ -8,6 +8,7 @@ export const useIsSignedIn = () => {
         queryKey: ['token'],
         queryFn: authRefresh,
         retry: false,
+        gcTime: 0,
         enabled: !!localStorage.getItem('accessToken'),
     });
 

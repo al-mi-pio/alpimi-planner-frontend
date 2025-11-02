@@ -54,7 +54,11 @@ const LoginPage = () => {
     });
 
     useEffect(() => {
-        if (params.get('redirect')?.startsWith(loginUrl)) setParams({});
+        if (
+            params.get('redirect')?.startsWith(loginUrl) ||
+            params.get('redirect') === schedules
+        )
+            setParams({});
 
         if (isSignedIn) navigate(params.get('redirect') ?? schedules);
     }, [isSignedIn]);
