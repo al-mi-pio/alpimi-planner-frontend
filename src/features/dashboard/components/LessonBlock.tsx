@@ -47,7 +47,7 @@ export const LessonBlock = ({
     const { setSelectedEntity } = usePropertiesWindow();
 
     const handleDragstart = (e: DragEvent) => {
-        e.dataTransfer?.setData('text/plain', (e.target as HTMLDivElement).id);
+        e.dataTransfer?.setData('text/plain', JSON.stringify(data));
     };
 
     useEffect(() => {

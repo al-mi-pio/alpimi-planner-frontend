@@ -46,4 +46,5 @@ export const ModalFooter = styled.div`
     display: flex;
     flex-direction: row-reverse;
     padding-top: ${sizes.smallXL};
+    gap: ${sizes.smallXL};
 `;

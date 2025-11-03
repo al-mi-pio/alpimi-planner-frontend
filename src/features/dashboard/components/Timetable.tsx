@@ -5,6 +5,7 @@ import type { DayOff } from '@/api/types/DayOffService';
 import type { LessonPeriod } from '@/api/types/LessonPeriodService';
 import type { ScheduleSettings } from '@/api/types/ScheduleSettingsService';
 import type { LessonBlockProps } from '@/features/dashboard/components/LessonBlock';
+import { LessonBlockDropModal } from '@/features/dashboard/components/LessonBlockDropModal';
 import { TimetableCell } from '@/features/dashboard/components/TimetableCell';
 import {
     HoveredBlockIdContext,
@@ -20,6 +21,7 @@ import {
     HeaderCellLeft,
     HeaderCellTop,
 } from '@/features/dashboard/styles/Timetable.style';
+import type { DroppedLesson } from '@/features/dashboard/types';
 import { weekDaysFromSchoolDays } from '@/features/dashboard/utils';
 import Button from '@/shared/components/Button';
 import H from '@/shared/components/H';
@@ -62,6 +64,7 @@ export const Timetable = ({
         )
     );
     const [hoveredBlockId, setHoveredBlockId] = useState<string | null>(null);
+    const [droppedLesson, setDroppedLesson] = useState<DroppedLesson>();
     const [currentTimetableFilters, setCurrentTimetableFilters] = use(
         CurrentTimetableFiltersContext
     );
@@ -227,6 +230,9 @@ export const Timetable = ({
                                                         )?.name
                                                     }
                                                     id={`${i}-${allWeekDays.indexOf(weekDay)}-cell`}
+                                                    setDroppedLesson={
+                                                        setDroppedLesson
+                                                    }
                                                     lessonBlockProps={
                                                         lessonBlocks[
                                                             `${i}-${allWeekDays.indexOf(weekDay)}-cell`
@@ -241,6 +247,9 @@ export const Timetable = ({
                     </OpenFoldersContext.Provider>
                 </Table>
             </Scrollable>
+            <LessonBlockDropModal
+                initialDataState={[droppedLesson, setDroppedLesson]}
+            />
         </Wrapper>
     );
 };
