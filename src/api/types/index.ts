@@ -33,7 +33,7 @@ export interface GetResponse<T> extends ServiceResponse {
     content: Entity<T>;
 }
 
-export type PatchResponse<T> = GetResponse<T>;
+export type PatchResponse = PostResponse;
 
 export type DeleteResponse = Omit<ServiceResponse, 'timestamp'>;
 
@@ -72,10 +72,9 @@ export type ApiGetService<T> = (
 ) => Promise<GetResponse<T>>;
 
 export type ApiPatchService<T> = (
-    id: Id,
-    data: T,
+    data: T & { id: Id },
     config?: AxiosRequestConfig
-) => Promise<PatchResponse<T>>;
+) => Promise<PatchResponse>;
 
 export type ApiDeleteService = (
     id: Id,
