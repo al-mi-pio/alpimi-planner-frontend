@@ -145,6 +145,7 @@ const EditPage = () => {
             collisions &&
             dayOffs && (
                 <Timetable
+                    scheduleId={schedule && schedule.id}
                     lessonPeriods={lessonPeriods}
                     scheduleSettings={scheduleSettings}
                     dayOffs={dayOffs}

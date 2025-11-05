@@ -1,6 +1,7 @@
 import { type ComponentPropsWithRef, use, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { Id } from '@/api/types';
 import type { DayOff } from '@/api/types/DayOffService';
 import type { LessonPeriod } from '@/api/types/LessonPeriodService';
 import type { ScheduleSettings } from '@/api/types/ScheduleSettingsService';
@@ -41,6 +42,7 @@ export interface TimetableProps
     extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
     lessonPeriods: LessonPeriod[];
     scheduleSettings: ScheduleSettings;
+    scheduleId?: Id;
     lessonBlocks: LessonBlocks;
     dayOffs: DayOff[];
 }
@@ -54,6 +56,7 @@ export const Timetable = ({
     lessonPeriods,
     scheduleSettings,
     lessonBlocks,
+    scheduleId,
     dayOffs,
 }: TimetableProps) => {
     const { t } = useTranslation('schedules');
@@ -249,6 +252,8 @@ export const Timetable = ({
             </Scrollable>
             <LessonBlockDropModal
                 initialDataState={[droppedLesson, setDroppedLesson]}
+                scheduleId={scheduleId}
+                weekDays={weekDays}
             />
         </Wrapper>
     );
