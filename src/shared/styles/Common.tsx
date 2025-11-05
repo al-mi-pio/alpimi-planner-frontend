@@ -31,6 +31,16 @@ export const InputStyles = css<{ $error?: boolean }>`
     & > input[type='number'] {
         appearance: textfield;
     }
+
+    &:has(input[disabled]) {
+        background-color: transparent;
+
+        div,
+        input {
+            color: ${({ theme }) => theme.colors.primaryText};
+            cursor: unset;
+        }
+    }
 `;
 
 export const StyledInput = styled.input<{ $error?: boolean }>`

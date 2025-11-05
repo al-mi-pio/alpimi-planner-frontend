@@ -38,6 +38,13 @@ export const StyledSelect: StyledComponent<ReactSelect> = styled(ReactSelect)<{
         }
     }
 
+    & > div[aria-disabled='true'] {
+        background-color: transparent;
+        div > div {
+            color: ${({ theme }) => theme.colors.primaryText} !important;
+        }
+    }
+
     border-radius: ${sizes.smallXL};
     width: 300px;
     outline: 1px solid ${(props) => props.theme.colors.primaryText};
