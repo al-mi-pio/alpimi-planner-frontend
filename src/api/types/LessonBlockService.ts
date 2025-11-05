@@ -25,7 +25,7 @@ export interface CreateLessonBlockDTO {
     lessonEnd: number;
     lessonId: Id;
     classroomId: Id | null;
-    weekInterval: number;
+    weekInterval: number | null;
 }
 
 export type PatchLessonBlockDTO = Partial<{
