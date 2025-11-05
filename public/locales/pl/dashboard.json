@@ -58,5 +58,18 @@
     "Import result": "Wynik importu",
     "Row {{rowIndex}}: {{reasons}}": "Wiersz {{rowIndex}}: {{reasons}}",
     "Successfully imported {{count}} rows of data": "Pomyślnie zaimportowano {{count}} wierszów danych",
-    "Failed to import {{count}} rows": "Nie udało się zaimportować {{count}} wierszów:"
+    "Failed to import {{count}} rows": "Nie udało się zaimportować {{count}} wierszów:",
+    "Lesson chosen": "Wybrano zajęcia",
+    "Select lesson": "Wybierz zajęcia",
+    "Moving lesson block": "Przesuwanie bloku lekcyjnego",
+    "Creating lesson block": "Tworzenie bloku lekcyjnego",
+    "Move": "Przesuń",
+    "Create": "Utwórz",
+    "Cancel": "Anuluj",
+    "Select classroom": "Wybierz salę",
+    "Repeat": "Powtarzaj",
+    "every": "co",
+    "week": "tygodni",
+    "week_one": "tydzień",
+    "week_few": "tygodnie"
 }
