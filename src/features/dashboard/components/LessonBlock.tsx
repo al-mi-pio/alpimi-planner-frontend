@@ -51,7 +51,12 @@ export const LessonBlock = ({
     };
 
     useEffect(() => {
-        if (hoveredBlockId === data.id) ref.current?.scrollIntoView();
+        if (
+            hoveredBlockId === data.id &&
+            ref.current?.closest('.lesson-block-folder') &&
+            ref.current?.draggable
+        )
+            ref.current?.scrollIntoView();
     }, [hoveredBlockId]);
 
     return (
@@ -62,6 +67,13 @@ export const LessonBlock = ({
             id={data.id}
             draggable={defaultProps.draggable ?? true}
             onDragStart={handleDragstart}
+            onClick={(e) => {
+                if ((e.target as HTMLDivElement).tagName === 'BUTTON') return;
+                setSelectedEntity({
+                    id: data.id,
+                    entity: EntityType.LessonBlock,
+                });
+            }}
         >
             <Title $color={data.lesson.lessonType.color}>
                 {renderWarningIcon(statuses.lessonBlock)}
