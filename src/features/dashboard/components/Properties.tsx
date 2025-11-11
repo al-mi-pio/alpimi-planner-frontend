@@ -12,8 +12,12 @@ import {
     StyledProperties,
 } from '@/features/dashboard/styles/Properties.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
+import Button from '@/shared/components/Button';
+import H from '@/shared/components/H';
 import P from '@/shared/components/P';
 import { useGetData } from '@/shared/hooks/useGetData';
+import Pencil from '@/shared/icons/Pencil';
+import Trash from '@/shared/icons/Trash';
 
 export const Properties = () => {
     const { selectedEntity } = usePropertiesWindow();
@@ -62,12 +66,14 @@ export const Properties = () => {
 
     return (
         <StyledProperties>
-            <Heading level={4}>
-                {'name' in data
-                    ? 'surname' in data
-                        ? getTeacherName(data)
-                        : data.name
-                    : t('Lesson block', { ns: 'dashboard' })}
+            <Heading>
+                <H level={4}>
+                    {'name' in data
+                        ? 'surname' in data
+                            ? getTeacherName(data)
+                            : data.name
+                        : t('Lesson block', { ns: 'dashboard' })}
+                </H>
             </Heading>
 
             {Object.entries(data).map(
@@ -93,6 +99,12 @@ export const Properties = () => {
                             </Bold>
                         </P>
                     )
+            )}
+            {!('name' in data) && (
+                <div>
+                    <Button icon={<Trash />} />
+                    <Button icon={<Pencil />} />
+                </div>
             )}
         </StyledProperties>
     );
