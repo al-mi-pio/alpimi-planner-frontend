@@ -14,6 +14,7 @@ import GitHub from '@/shared/icons/GitHub';
 import Group from '@/shared/icons/Group';
 import LeftArrow from '@/shared/icons/LeftArrow';
 import LinkedIn from '@/shared/icons/LinkedIn';
+import Pencil from '@/shared/icons/Pencil';
 import Plus from '@/shared/icons/Plus';
 import RightArrow from '@/shared/icons/RightArrow';
 import Search from '@/shared/icons/Search';
@@ -55,6 +56,7 @@ export default {
                         <Book secondary={secondary} />
                         <Doors secondary={secondary} />
                         <Trash secondary={secondary} />
+                        <Pencil secondary={secondary} />
                         <Tag secondary={secondary} />
                         <Search secondary={secondary} />
                         <Plus secondary={secondary} />
