@@ -42,26 +42,37 @@ export const LessonBlockDropModal = ({
     const queryClient = useQueryClient();
     const [sequential, setSequential] = useState(true);
     const isMoving = !!initialData && !('lessonId' in initialData);
-    const onSuccess = () => {
-        queryClient
-            .invalidateQueries({
-                queryKey: ['lessonBlock'],
-            })
-            .then(() => {
-                queryClient
-                    .refetchQueries({
-                        queryKey: ['lessonBlock'],
-                    })
-                    .then();
-            });
 
+    const refreshQuery = async () => {
+        await queryClient.invalidateQueries({
+            queryKey: ['lesson'],
+        });
+        await queryClient.refetchQueries({
+            queryKey: ['lesson'],
+        });
+        await queryClient.invalidateQueries({
+            queryKey: ['lessonBlock'],
+        });
+        await queryClient.refetchQueries({
+            queryKey: ['lessonBlock'],
+        });
+    };
+
+    const onPatchSuccess = () => {
+        refreshQuery().then();
         setInitialData(undefined);
+    };
+    const onPostSuccess = () => {
+        onPatchSuccess();
+    };
+    const onDeleteSuccess = () => {
+        onPatchSuccess();
     };
     const { post, patch, isPending, errors, resetErrors } =
         useMutateLessonBlock({
-            onPatchSuccess: onSuccess,
-            onDeleteSuccess: onSuccess,
-            onPostSuccess: onSuccess,
+            onPatchSuccess,
+            onDeleteSuccess,
+            onPostSuccess,
         });
     const { binders, submit, isErrored } = useLessonBlockForm({
         initialData: initialData && {
@@ -110,7 +121,7 @@ export const LessonBlockDropModal = ({
                             disabled={
                                 isErrored || isPending || isClassroomLoading
                             }
-                            onClick={async () => {
+                            onClick={() => {
                                 if (isMoving) {
                                     const { clusterId, id, ...dto } =
                                         initialData;
