@@ -36,3 +36,27 @@ export enum LessonTileStatus {
     Full = 'full',
     Overflowing = 'overflowing',
 }
+
+export type DroppedLesson = {
+    weekDay: number;
+    lessonStart: number;
+    lessonEnd: number;
+} & (
+    | {
+          lessonId: Id;
+      }
+    | {
+          id: Id;
+          clusterId: Id;
+      }
+);
+
+export interface LessonBlockForm {
+    weekDay: { label: string; value: string };
+    lessonStart: string;
+    lessonEnd: string;
+    lesson: { label: string; value: string };
+    classroom: { label: string; value: string };
+    interval: boolean;
+    weekInterval: string;
+}

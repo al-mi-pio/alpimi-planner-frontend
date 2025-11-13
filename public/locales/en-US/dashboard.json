@@ -56,5 +56,22 @@
     "Import result": "Import result",
     "Row {{rowIndex}}: {{reasons}}": "Row {{rowIndex}}: {{reasons}}",
     "Successfully imported {{count}} rows of data": "Successfully imported {{count}} rows of data",
-    "Failed to import {{count}} rows": "Failed to import {{count}} rows:"
+    "Failed to import {{count}} rows": "Failed to import {{count}} rows:",
+    "Lesson chosen": "Lesson chosen",
+    "Select lesson": "Select lesson",
+    "Moving lesson block": "Moving lesson block",
+    "Creating lesson block": "Creating lesson block",
+    "Editing lesson block": "Editing lesson block",
+    "Deleting lesson block": "Deleting lesson block",
+    "Apply for every lesson block in the sequence": "Apply for every lesson block in the sequence",
+    "Do you really want to delete this lesson block": "Do you really want to delete this lesson block?",
+    "Delete": "Delete",
+    "Move": "Move",
+    "Create": "Create",
+    "Cancel": "Cancel",
+    "Select classroom": "Select classroom",
+    "Repeat": "Repeat",
+    "every": "every",
+    "week": "week",
+    "week_other": "weeks"
 }

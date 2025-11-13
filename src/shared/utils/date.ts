@@ -33,9 +33,12 @@ export const addMinutesToTime = (time: string, minutes: number) => {
     return `${hours < 10 ? '0' + hours : hours}:${min < 10 ? '0' + min : min}`;
 };
 
+export const getAdjustedDayFromNumber = (day: number) => (day ? day - 1 : 6);
+export const adjustedDayToDto = (day: number) => (day + 1) % 7;
+
 export const getAdjustedDay = (stringDate: string) => {
     const day = new Date(stringDate).getUTCDay();
-    return day ? day - 1 : 6;
+    return getAdjustedDayFromNumber(day);
 };
 
 export const getFirstDayOfWeek = (stringDate: string) => {

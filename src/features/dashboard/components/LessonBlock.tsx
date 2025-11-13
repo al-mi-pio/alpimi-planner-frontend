@@ -47,11 +47,16 @@ export const LessonBlock = ({
     const { setSelectedEntity } = usePropertiesWindow();
 
     const handleDragstart = (e: DragEvent) => {
-        e.dataTransfer?.setData('text/plain', (e.target as HTMLDivElement).id);
+        e.dataTransfer?.setData('text/plain', JSON.stringify(data));
     };
 
     useEffect(() => {
-        if (hoveredBlockId === data.id) ref.current?.scrollIntoView();
+        if (
+            hoveredBlockId === data.id &&
+            ref.current?.closest('.lesson-block-folder') &&
+            ref.current?.draggable
+        )
+            ref.current?.scrollIntoView();
     }, [hoveredBlockId]);
 
     return (
@@ -62,6 +67,13 @@ export const LessonBlock = ({
             id={data.id}
             draggable={defaultProps.draggable ?? true}
             onDragStart={handleDragstart}
+            onClick={(e) => {
+                if ((e.target as HTMLDivElement).tagName === 'BUTTON') return;
+                setSelectedEntity({
+                    id: data.id,
+                    entity: EntityType.LessonBlock,
+                });
+            }}
         >
             <Title $color={data.lesson.lessonType.color}>
                 {renderWarningIcon(statuses.lessonBlock)}

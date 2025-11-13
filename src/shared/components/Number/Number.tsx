@@ -30,13 +30,16 @@ const Number = ({ label, error, ...defaultProps }: InputProps) => {
                     {...defaultProps}
                     value={value}
                     onChange={
-                        defaultProps.onChange ||
-                        (({ target }) => setValue(target.value))
+                        defaultProps.disabled
+                            ? undefined
+                            : defaultProps.onChange ||
+                              (({ target }) => setValue(target.value))
                     }
                 />
                 <SpinButtons>
                     <SpinButton
                         onClick={(e) => {
+                            if (defaultProps.disabled) return undefined;
                             if (defaultProps.onChange)
                                 defaultProps.onChange({
                                     ...e,
@@ -59,6 +62,7 @@ const Number = ({ label, error, ...defaultProps }: InputProps) => {
                     </SpinButton>
                     <SpinButton
                         onClick={(e) => {
+                            if (defaultProps.disabled) return undefined;
                             if (defaultProps.onChange)
                                 defaultProps.onChange({
                                     ...e,

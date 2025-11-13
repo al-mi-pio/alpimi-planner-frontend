@@ -123,7 +123,16 @@ const EditPage = () => {
         ) : (
             collisions && <CollisionsTable collisions={collisions} />
         ),
-        properties: <Properties />,
+        properties: isScheduleSettingsLoading ? (
+            <StyledLoading />
+        ) : (
+            scheduleSettings && (
+                <Properties
+                    scheduleSettings={scheduleSettings}
+                    scheduleId={schedule && schedule.id}
+                />
+            )
+        ),
         lessons: isLessonLoading ? (
             <StyledLoading />
         ) : (
@@ -145,6 +154,7 @@ const EditPage = () => {
             collisions &&
             dayOffs && (
                 <Timetable
+                    scheduleId={schedule && schedule.id}
                     lessonPeriods={lessonPeriods}
                     scheduleSettings={scheduleSettings}
                     dayOffs={dayOffs}

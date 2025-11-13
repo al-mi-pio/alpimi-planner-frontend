@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-import H from '@/shared/components/H';
 import { sizes } from '@/shared/constants/dimensions';
 
-export const Heading = styled(H)`
+export const Heading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: ${sizes.small};
     margin-bottom: ${sizes.smallXL};
 `;
 

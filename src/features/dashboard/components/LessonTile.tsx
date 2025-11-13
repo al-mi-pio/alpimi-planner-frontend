@@ -1,4 +1,4 @@
-import { use } from 'react';
+import { type DragEvent, use } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { EntityType } from '@/api/types';
@@ -19,6 +19,10 @@ export const LessonTile = ({
     const [, setCurrentTimetableFilters] = use(CurrentTimetableFiltersContext);
     const { setSelectedEntity } = usePropertiesWindow();
 
+    const handleDragstart = (e: DragEvent) => {
+        e.dataTransfer?.setData('text/plain', `{"lessonId": "${id}"}`);
+    };
+
     return (
         <StyledLessonTile
             $status={getLessonTileStatus(currentHours, amountOfHours)}
@@ -38,6 +42,8 @@ export const LessonTile = ({
                         }
                 )
             }
+            onDragStart={handleDragstart}
+            draggable
         >
             <P secondary>{name}</P>
             <P secondary>

@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getTeacherName } from '@/api/services/teacherService';
-import type { GetResponse } from '@/api/types';
+import type { GetResponse, Id } from '@/api/types';
+import type { ScheduleSettings } from '@/api/types/ScheduleSettingsService';
 import type { Teacher } from '@/api/types/TeacherService';
+import { LessonBlockModal } from '@/features/dashboard/components/LessonBlockModal';
 import { MAP_ENTITY_METHOD } from '@/features/dashboard/constants';
 import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
 import { CenterMessageWrapper } from '@/features/dashboard/styles/CollisionsTable.style';
@@ -12,12 +15,23 @@ import {
     StyledProperties,
 } from '@/features/dashboard/styles/Properties.style';
 import { StyledLoading } from '@/features/dashboard/styles/Timetable.style';
+import Button from '@/shared/components/Button';
+import H from '@/shared/components/H';
 import P from '@/shared/components/P';
 import { useGetData } from '@/shared/hooks/useGetData';
+import Pencil from '@/shared/icons/Pencil';
+import Trash from '@/shared/icons/Trash';
 
-export const Properties = () => {
+export const Properties = ({
+    scheduleId,
+    scheduleSettings,
+}: {
+    scheduleId?: Id;
+    scheduleSettings: ScheduleSettings;
+}) => {
     const { selectedEntity } = usePropertiesWindow();
     const { t } = useTranslation('fields');
+    const [modalType, setModalType] = useState<'edit' | 'delete'>();
     const { data, isLoading } = useGetData({
         queryKey: [selectedEntity?.entity, selectedEntity?.id],
         queryFn: selectedEntity
@@ -62,12 +76,14 @@ export const Properties = () => {
 
     return (
         <StyledProperties>
-            <Heading level={4}>
-                {'name' in data
-                    ? 'surname' in data
-                        ? getTeacherName(data)
-                        : data.name
-                    : t('Lesson block', { ns: 'dashboard' })}
+            <Heading>
+                <H level={4}>
+                    {'name' in data
+                        ? 'surname' in data
+                            ? getTeacherName(data)
+                            : data.name
+                        : t('Lesson block', { ns: 'dashboard' })}
+                </H>
             </Heading>
 
             {Object.entries(data).map(
@@ -93,6 +109,25 @@ export const Properties = () => {
                             </Bold>
                         </P>
                     )
+            )}
+            {!('name' in data) && (
+                <div>
+                    <Button
+                        icon={<Trash />}
+                        onClick={() => setModalType('delete')}
+                    />
+                    <Button
+                        icon={<Pencil />}
+                        onClick={() => setModalType('edit')}
+                    />
+                    <LessonBlockModal
+                        modalType={modalType}
+                        scheduleId={scheduleId}
+                        scheduleSettings={scheduleSettings}
+                        onClose={() => setModalType(undefined)}
+                        data={data}
+                    />
+                </div>
             )}
         </StyledProperties>
     );
