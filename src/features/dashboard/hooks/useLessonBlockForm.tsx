@@ -2,12 +2,18 @@ import type { UseMutateFunction } from '@tanstack/react-query';
 import { type ChangeEvent, use, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { ErrorsState } from '@/api/types';
-import type { CreateLessonBlockDTO } from '@/api/types/LessonBlockService';
+import type { ErrorsState, Id, PatchResponse } from '@/api/types';
+import type {
+    CreateLessonBlockDTO,
+    PatchLessonBlockDTO,
+} from '@/api/types/LessonBlockService';
 import { getDefaultLessonBlockForm } from '@/features/dashboard/constants/dto';
 import { CurrentTimetableFiltersContext } from '@/features/dashboard/contexts';
 import type { LessonBlockForm } from '@/features/dashboard/types';
-import { lessonBlockFormToDTO } from '@/features/dashboard/utils/dto';
+import {
+    lessonBlockFormToDTO,
+    lessonBlockFormToPatchDTO,
+} from '@/features/dashboard/utils/dto';
 
 export interface useLessonBlockFormProps {
     initialData?: Partial<LessonBlockForm>;
@@ -99,9 +105,28 @@ export const useLessonBlockForm = ({
         }
     };
 
+    const edit =
+        (id: Id) =>
+        (
+            patch: UseMutateFunction<
+                PatchResponse,
+                unknown,
+                PatchLessonBlockDTO & { id: Id }
+            >
+        ) => {
+            if (currentTimetableFilters) {
+                patch(lessonBlockFormToPatchDTO(form, id));
+            }
+        };
+
     useEffect(() => {
         setFilteredErrors(errors);
     }, [errors]);
 
-    return { binders, submit, isErrored: !!Object.keys(filteredErrors).length };
+    return {
+        binders,
+        submit,
+        edit,
+        isErrored: !!Object.keys(filteredErrors).length,
+    };
 };
