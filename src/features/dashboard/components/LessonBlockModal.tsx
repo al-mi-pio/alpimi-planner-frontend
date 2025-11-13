@@ -90,6 +90,9 @@ export const LessonBlockModal = ({
 
     const { binders, edit, isErrored } = useLessonBlockForm({
         initialData: {
+            classroom: data.classroom
+                ? { label: data.classroom?.name, value: data.classroom?.id }
+                : { label: t('Select classroom'), value: '' },
             lessonStart: String(data.lessonStart + 1),
             lessonEnd: String(data.lessonEnd + 1),
             weekDay: {
