@@ -161,7 +161,7 @@ export const LessonBlockDropModal = ({
                     {isMoving ? (
                         <Checkbox
                             label={t(
-                                'Change every lesson block in the sequence'
+                                'Apply for every lesson block in the sequence'
                             )}
                             name="sequential"
                             checked={sequential}
