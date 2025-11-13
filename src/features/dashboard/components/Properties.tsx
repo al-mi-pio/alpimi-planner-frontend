@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getTeacherName } from '@/api/services/teacherService';
-import type { GetResponse } from '@/api/types';
+import type { GetResponse, Id } from '@/api/types';
+import type { ScheduleSettings } from '@/api/types/ScheduleSettingsService';
 import type { Teacher } from '@/api/types/TeacherService';
+import { LessonBlockModal } from '@/features/dashboard/components/LessonBlockModal';
 import { MAP_ENTITY_METHOD } from '@/features/dashboard/constants';
 import { usePropertiesWindow } from '@/features/dashboard/hooks/usePropertiesWindow';
 import { CenterMessageWrapper } from '@/features/dashboard/styles/CollisionsTable.style';
@@ -19,9 +22,16 @@ import { useGetData } from '@/shared/hooks/useGetData';
 import Pencil from '@/shared/icons/Pencil';
 import Trash from '@/shared/icons/Trash';
 
-export const Properties = () => {
+export const Properties = ({
+    scheduleId,
+    scheduleSettings,
+}: {
+    scheduleId?: Id;
+    scheduleSettings: ScheduleSettings;
+}) => {
     const { selectedEntity } = usePropertiesWindow();
     const { t } = useTranslation('fields');
+    const [modalType, setModalType] = useState<'edit' | 'delete'>();
     const { data, isLoading } = useGetData({
         queryKey: [selectedEntity?.entity, selectedEntity?.id],
         queryFn: selectedEntity
@@ -102,8 +112,21 @@ export const Properties = () => {
             )}
             {!('name' in data) && (
                 <div>
-                    <Button icon={<Trash />} />
-                    <Button icon={<Pencil />} />
+                    <Button
+                        icon={<Trash />}
+                        onClick={() => setModalType('delete')}
+                    />
+                    <Button
+                        icon={<Pencil />}
+                        onClick={() => setModalType('edit')}
+                    />
+                    <LessonBlockModal
+                        modalType={modalType}
+                        scheduleId={scheduleId}
+                        scheduleSettings={scheduleSettings}
+                        onClose={() => setModalType(undefined)}
+                        data={data}
+                    />
                 </div>
             )}
         </StyledProperties>
