@@ -86,5 +86,8 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "overrides": {
+    "react": "$react"
   }
 }
