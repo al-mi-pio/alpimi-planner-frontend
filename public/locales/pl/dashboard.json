@@ -5,7 +5,7 @@
     "Add new": "Dodaj nowy",
     "Edit": "Edytuj",
     "Data": "Dane",
-    "View": "Widok",
+    "Settings": "Opcje",
     "User dropdown button": "Przycisk menu rozsuwanego użytkownika",
     "Logout": "Wyloguj",
     "None": "Brak",
@@ -76,5 +76,12 @@
     "every": "co",
     "week": "tygodni",
     "week_one": "tydzień",
-    "week_few": "tygodnie"
+    "week_few": "tygodnie",
+    "Schedule settings": "Ustawienia planu",
+    "Settings changed successfully": "Pomyślnie zmieniono ustawienia",
+    "Schedule is currently visible for everyone": "Plan jest aktualnie widoczny dla uczniów",
+    "Schedule is currently hidden for everyone": "Plan nie jest aktualnie widoczny dla uczniów",
+    "Hide": "Ukryj",
+    "Share": "Opublikuj",
+    "Link for students": "Link dla uczniów: "
 }

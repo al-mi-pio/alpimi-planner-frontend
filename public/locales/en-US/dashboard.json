@@ -5,7 +5,7 @@
     "Add new": "Add new",
     "Edit": "Edit",
     "Data": "Data",
-    "View": "View",
+    "Settings": "Settings",
     "User dropdown button": "User dropdown button",
     "Logout": "Logout",
     "None": "None",
@@ -73,5 +73,12 @@
     "Repeat": "Repeat",
     "every": "every",
     "week": "week",
-    "week_other": "weeks"
+    "week_other": "weeks",
+    "Schedule settings": "Schedule settings",
+    "Settings changed successfully": "Settings changed successfully",
+    "Schedule is currently visible for everyone": "Schedule is currently visible for everyone",
+    "Schedule is currently hidden for everyone": "Schedule is currently hidden for everyone",
+    "Hide": "Hide",
+    "Share": "Share",
+    "Link for students": "Link for students: "
 }
