@@ -1,4 +1,4 @@
-import type { ApiGetService, Entity } from '@/api/types';
+import type { ApiGetService, ApiPatchService, Entity } from '@/api/types';
 
 export type ScheduleSettings = Entity<{
     schoolHour: number;
@@ -8,4 +8,7 @@ export type ScheduleSettings = Entity<{
     isPublic: boolean;
 }>;
 
+export type PatchScheduleSettingsDTO = Partial<ScheduleSettings>;
+
+export type ScheduleSettingsPatch = ApiPatchService<PatchScheduleSettingsDTO>;
 export type ScheduleSettingsGet = ApiGetService<ScheduleSettings>;

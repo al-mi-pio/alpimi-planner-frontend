@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 import type { Id } from '@/api/types';
-import type { ScheduleSettingsGet } from '@/api/types/ScheduleSettingsService';
+import type {
+    ScheduleSettingsGet,
+    ScheduleSettingsPatch,
+} from '@/api/types/ScheduleSettingsService';
 import {
     catchApiErrors,
     getDefaultConfig,
@@ -16,5 +19,14 @@ export const scheduleSettingsEntityUrl = (id: Id) =>
 export const scheduleSettingsGet: ScheduleSettingsGet = (id, config?) =>
     axios
         .get(scheduleSettingsEntityUrl(id), getDefaultConfig(config))
+        .then(parseAxiosResponse)
+        .catch(catchApiErrors);
+
+export const scheduleSettingsPatch: ScheduleSettingsPatch = (
+    { id, ...data },
+    config?
+) =>
+    axios
+        .patch(scheduleSettingsEntityUrl(id), data, getDefaultConfig(config))
         .then(parseAxiosResponse)
         .catch(catchApiErrors);
