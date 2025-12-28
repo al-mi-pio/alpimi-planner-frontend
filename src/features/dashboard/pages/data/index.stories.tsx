@@ -6,7 +6,7 @@ import { editorDashboardHeader } from '@/features/schedules/constants';
 import { PageStoryStyles } from '@/shared/styles/Stories';
 
 export default {
-    title: 'Pages/Schedules Data',
+    title: 'Pages/Schedule Data',
     tags: ['!autodocs'],
     component: DataPage,
     render: () => (
@@ -17,4 +17,4 @@ export default {
     ),
 } satisfies Meta<typeof DataPage>;
 
-export const SchedulesData: StoryObj<typeof DataPage> = {};
+export const ScheduleData: StoryObj<typeof DataPage> = {};

@@ -7,8 +7,8 @@ export const createSchedule = `${schedules}/create/schedule`;
 export const editSchedule = (scheduleName: string) =>
     `${schedules}/schedule/${scheduleName}`;
 
-export const viewSchedule = (scheduleName: string) =>
-    `${editSchedule(scheduleName)}/view`;
+export const scheduleSettings = (scheduleName: string) =>
+    `${editSchedule(scheduleName)}/settings`;
 
 export const scheduleData = (scheduleName: string) =>
     `${editSchedule(scheduleName)}/data`;

@@ -11,6 +11,7 @@ import {
     Status,
     type Statuses,
 } from '@/features/dashboard/types';
+import { studentView } from '@/shared/constants/routes';
 import { weekDays } from '@/shared/constants/time';
 import ErrorSign from '@/shared/icons/ErrorSign';
 import WarningSign from '@/shared/icons/WarningSign';
@@ -158,3 +159,6 @@ export const generateTreeLookupMaps = (
         },
     };
 };
+
+export const studentViewLink = (userUrl: string, scheduleName: string) =>
+    window.location.origin + studentView(userUrl, scheduleName);

@@ -7,7 +7,7 @@ import {
     initialScheduleSetup,
     scheduleData,
     schedules,
-    viewSchedule,
+    scheduleSettings,
 } from '@/shared/constants/routes';
 import { weekDays } from '@/shared/constants/time';
 import { capitalize } from '@/shared/utils/string';
@@ -34,8 +34,8 @@ export const editorDashboardHeader = (scheduleName: string) => ({
             route: scheduleData(scheduleName),
         },
         {
-            label: 'View',
-            route: viewSchedule(scheduleName),
+            label: 'Settings',
+            route: scheduleSettings(scheduleName),
         },
     ],
     backRoute: schedules,
