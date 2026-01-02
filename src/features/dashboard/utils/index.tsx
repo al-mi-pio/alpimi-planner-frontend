@@ -58,7 +58,8 @@ export const parseTimetableLessonBlocks = (
     lessonBlocks: LessonBlock[],
     lessonPeriods: LessonPeriod[],
     collisions: Collision[],
-    schoolDays: string
+    schoolDays: string,
+    readOnly?: boolean
 ): LessonBlocks =>
     lessonPeriods.reduce(
         (prevPeriods, _, periodIndex) => ({
@@ -82,6 +83,7 @@ export const parseTimetableLessonBlocks = (
                                     lessonBlock.lesson.subgroups,
                                     lessonBlock.id
                                 ),
+                                readOnly,
                             })),
                 }),
                 {}

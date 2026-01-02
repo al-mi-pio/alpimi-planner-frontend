@@ -58,6 +58,7 @@ export const Timetable = ({
     lessonBlocks,
     scheduleId,
     dayOffs,
+    ...defaultProps
 }: TimetableProps) => {
     const { t } = useTranslation('schedules');
     const weekDays = weekDaysFromSchoolDays(scheduleSettings.schoolDays);
@@ -114,7 +115,7 @@ export const Timetable = ({
     }, []);
 
     return (
-        <Wrapper>
+        <Wrapper {...defaultProps}>
             <Navigation>
                 {currentTimetableFilters && (
                     <>

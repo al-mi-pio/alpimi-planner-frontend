@@ -15,11 +15,14 @@ import SettingsPage from '@/features/dashboard/pages/settings';
 import Dashboard from '@/features/dashboard/template';
 import Page404 from '@/features/main/pages/404';
 import LandingPage from '@/features/main/pages/landing';
+import StudentViewPage from '@/features/main/pages/studentView';
+import PublicDashboard from '@/features/main/template';
 import {
     createScheduleDashboardHeader,
     editorDashboardHeader,
     initialSetupDashboardHeader,
     schedulesDashboardHeader,
+    studentViewDashboardHeader,
 } from '@/features/schedules/constants';
 import CreateSchedulePage from '@/features/schedules/pages/create';
 import SchedulesPage from '@/features/schedules/pages/list';
@@ -34,6 +37,7 @@ import {
     scheduleData,
     schedules,
     scheduleSettings,
+    studentView,
 } from '@/shared/constants/routes';
 import { ThemeProvider } from '@/shared/contexts/ThemeProvider';
 
@@ -120,6 +124,26 @@ const router = createBrowserRouter([
                 <Dashboard headerProps={editorDashboardHeader(scheduleName)}>
                     <SettingsPage />
                 </Dashboard>
+            );
+        },
+    },
+    {
+        path: studentView(':userUrl', ':scheduleName'),
+        loader: ({ params }) => ({
+            scheduleName: params.scheduleName,
+            userUrl: params.userUrl,
+        }),
+        Component: () => {
+            const { scheduleName, userUrl } = useLoaderData();
+            return (
+                <PublicDashboard
+                    headerProps={studentViewDashboardHeader(
+                        userUrl,
+                        scheduleName
+                    )}
+                >
+                    <StudentViewPage />
+                </PublicDashboard>
             );
         },
     },

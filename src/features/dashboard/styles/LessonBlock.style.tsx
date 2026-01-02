@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { fontSizes, lineHeights, sizes } from '@/shared/constants/dimensions';
 import { FocusStyle } from '@/shared/styles/Common';
 
-export const Wrapper = styled.div<{ $hovered: boolean }>`
+export const Wrapper = styled.div<{ $hovered: boolean; $readOnly?: boolean }>`
     ${({ $hovered }) => ($hovered ? FocusStyle : '')};
+    ${({ $readOnly }) =>
+        !$readOnly
+            ? 'cursor: grab; &:hover{ transform: scale(1.02); transition: 100ms ease-out; }'
+            : ''};
     min-width: 190px;
     max-width: 190px;
     height: 110px;
@@ -12,7 +16,6 @@ export const Wrapper = styled.div<{ $hovered: boolean }>`
     flex-direction: column;
     border-radius: ${sizes.smallXL};
     overflow: hidden;
-    cursor: grab;
 
     & svg {
         min-width: 19px;
@@ -26,11 +29,6 @@ export const Wrapper = styled.div<{ $hovered: boolean }>`
         font-size: ${fontSizes.small};
         line-height: ${lineHeights.small};
         white-space: nowrap;
-    }
-
-    &:hover {
-        transform: scale(1.02);
-        transition: 100ms ease-out;
     }
 `;
 
