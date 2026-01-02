@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { getTeacherName } from '@/api/services/teacherService';
 import { EntityType } from '@/api/types';
 import type { LessonBlock as LessonBlockType } from '@/api/types/LessonBlockService';
+import { ReadOnlyLessonBlock } from '@/features/dashboard/components/ReadOnlyLessonBlock';
 import {
     HoveredBlockIdContext,
     CurrentTimetableFiltersContext,
@@ -30,6 +31,7 @@ export interface LessonBlockProps
     extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
     data: LessonBlockType;
     statuses: Statuses;
+    readOnly?: boolean;
 }
 
 /**
@@ -38,6 +40,7 @@ export interface LessonBlockProps
 export const LessonBlock = ({
     data,
     statuses,
+    readOnly,
     ...defaultProps
 }: LessonBlockProps) => {
     const { t } = useTranslation('dashboard');
@@ -58,6 +61,8 @@ export const LessonBlock = ({
         )
             ref.current?.scrollIntoView();
     }, [hoveredBlockId]);
+
+    if (readOnly) return <ReadOnlyLessonBlock data={data} />;
 
     return (
         <Wrapper
