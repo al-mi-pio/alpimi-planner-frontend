@@ -8,6 +8,7 @@ import {
     scheduleData,
     schedules,
     scheduleSettings,
+    studentView,
 } from '@/shared/constants/routes';
 import { weekDays } from '@/shared/constants/time';
 import { capitalize } from '@/shared/utils/string';
@@ -62,6 +63,31 @@ export const createScheduleDashboardHeader = {
     ],
     backRoute: schedules,
 };
+
+export const studentViewDashboardHeader = (
+    userUrl: string,
+    scheduleName: string
+) => ({
+    navigation: [
+        {
+            label: 'Album number',
+            route: studentView(userUrl, scheduleName),
+        },
+        {
+            label: 'Groups',
+            route: '', // TODO
+        },
+        {
+            label: 'Teachers',
+            route: '', // TODO
+        },
+        {
+            label: 'Classrooms',
+            route: '', // TODO
+        },
+    ],
+    noUser: true,
+});
 
 export const getDefaultScheduleForm = (t: TFunction): ScheduleForm => ({
     name: '',
