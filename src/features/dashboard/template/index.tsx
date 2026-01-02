@@ -12,7 +12,7 @@ import {
 } from '@/features/dashboard/styles/Dashboard.style';
 import Toast from '@/shared/components/Toast';
 
-interface DashboardProps {
+export interface DashboardProps {
     children?: ReactNode;
     headerProps?: DashboardHeaderProps;
 }

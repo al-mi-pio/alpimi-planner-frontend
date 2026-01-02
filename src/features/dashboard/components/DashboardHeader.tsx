@@ -25,6 +25,7 @@ export interface DashboardHeaderProps
     backRoute?: string;
     navigation: NavButton[];
     header?: string;
+    noUser?: boolean;
 }
 
 /**
@@ -34,6 +35,7 @@ export const DashboardHeader = ({
     backRoute,
     header,
     navigation,
+    noUser,
     ...defaultProps
 }: DashboardHeaderProps) => {
     const queryClient = useQueryClient();
@@ -73,20 +75,22 @@ export const DashboardHeader = ({
             </Header>
 
             <User>
-                <Dropdown
-                    label={<UserCircle />}
-                    buttonLabel={t('User dropdown button')}
-                >
-                    <DropdownItem
-                        onClick={() => {
-                            queryClient.clear();
-                            localStorage.removeItem('accessToken');
-                            navigate(login);
-                        }}
+                {!noUser && (
+                    <Dropdown
+                        label={<UserCircle />}
+                        buttonLabel={t('User dropdown button')}
                     >
-                        {t('Logout')}
-                    </DropdownItem>
-                </Dropdown>
+                        <DropdownItem
+                            onClick={() => {
+                                queryClient.clear();
+                                localStorage.removeItem('accessToken');
+                                navigate(login);
+                            }}
+                        >
+                            {t('Logout')}
+                        </DropdownItem>
+                    </Dropdown>
+                )}
             </User>
         </Wrapper>
     );

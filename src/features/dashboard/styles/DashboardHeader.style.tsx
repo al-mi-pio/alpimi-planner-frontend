@@ -65,6 +65,7 @@ export const StyledButton = styled(Button)<{ $selected?: boolean }>`
     max-height: 40px;
     min-width: unset;
     padding: ${sizes.smallXL} ${sizes.regular};
+    white-space: nowrap;
     ${({ $selected, theme }) =>
         $selected
             ? `background-color: ${theme.colors.primaryBackground}; border-color: transparent;`
