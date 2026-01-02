@@ -4,7 +4,7 @@ import { Timetable } from '@/features/dashboard/components/Timetable';
 import { sizes } from '@/shared/constants/dimensions';
 
 export const PageWrapper = styled.div`
-    height: 78vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,4 +14,5 @@ export const PageWrapper = styled.div`
 
 export const StyledTimetable = styled(Timetable)`
     overflow-y: auto;
+    width: fit-content;
 `;
